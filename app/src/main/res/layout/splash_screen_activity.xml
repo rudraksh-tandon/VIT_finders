@@ -2,11 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/main_background">
 
     <ImageView
-        android:id="@+id/splash_image"
-        android:layout_width="match_parent"
+        android:id="@+id/splashImage"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:src="@drawable/app_intro" />
+        android:src="@drawable/app_intro"/>
 </LinearLayout>
