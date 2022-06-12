@@ -1,8 +1,13 @@
 package com.ieeeias.vit_finders;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MotionEvent;
+import android.widget.VideoView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashScreen extends AppCompatActivity {
@@ -27,11 +32,12 @@ public class SplashScreen extends AppCompatActivity {
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
+//        getSupportActionBar().hide();
 //        setContentView(R.layout.splash_screen_activity);
 //        try {
 //            VideoView videoHolder = new VideoView(this);
 //            setContentView(videoHolder);
-//            Uri video = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.app_intro_2);
+//            Uri video = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.app_intro);
 //            videoHolder.setVideoURI(video);
 ////            videoHolder.start();
 //
