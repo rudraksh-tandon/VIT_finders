@@ -1,13 +1,15 @@
 package com.ieeeias.vit_finders;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Adapter;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -18,7 +20,16 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import static android.content.ContentValues.TAG;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+
+    RecyclerView recyclerView;
+    LinearLayoutManager layoutManager;
+    List<ModelClasslost>itemList;
+    Adapter adapter;
 
     GoogleSignInClient mGoogleSignInClient;
     private static int RC_SIGN_IN=1000;
@@ -27,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
+
+
+
+
+
+
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -45,6 +62,27 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    private void iniData() {
+        itemList=new ArrayList<>(); //we can also add data from firebase
+        itemList.add(new ModelClasslost(R.drawable.lost_item_img,"speaker","SJT"));
+        itemList.add(new ModelClasslost(R.drawable.lost_item_img,"speaker","SJT"));
+        itemList.add(new ModelClasslost(R.drawable.lost_item_img,"speaker","SJT"));
+
+
+
+    }
+    private void iniRecyclerView() {
+
+        recyclerView=findViewById(R.id.rview);
+        layoutManager=new LinearLayoutManager(this);
+        layoutManager.setOrientation(RecyclerView.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+      adapter = (Adapter) new com.ieeeias.vit_finders.Adapter(itemList);
+    recyclerView.setAdapter((RecyclerView.Adapter) adapter);
+    ((RecyclerView.Adapter<?>) adapter).notifyDataSetChanged();
+
+    }
+
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
@@ -78,5 +116,6 @@ public class MainActivity extends AppCompatActivity {
             Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
 
         }
+
     }
 }
