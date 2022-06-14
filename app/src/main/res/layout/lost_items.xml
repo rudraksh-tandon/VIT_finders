@@ -6,12 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".LostItemsActivity">
 
-    <ListView
-        android:id="@+id/list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp" />
-
     <!-- Empty view for the list -->
 <!--    <RelativeLayout-->
 <!--        android:id="@+id/empty_view"-->
@@ -50,13 +44,22 @@
 <!--            android:textColor="#A2AAB0"/>-->
 <!--    </RelativeLayout>-->
 
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:src="@drawable/ic_launcher_foreground"
-        android:layout_margin="16dp"
-        android:contentDescription="add new item" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="add new item"
+        android:src="@drawable/ic_launcher_foreground" />
 </RelativeLayout>
