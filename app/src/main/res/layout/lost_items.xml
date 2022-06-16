@@ -45,7 +45,7 @@
 <!--    </RelativeLayout>-->
 
     <ListView
-        android:id="@+id/list"
+        android:id="@+id/itemsList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp" />

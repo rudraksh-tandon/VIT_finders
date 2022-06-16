@@ -25,7 +25,5 @@ public class LostItemsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
 }
