@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "297164258672",
+    "project_id": "vit-finders",
+    "storage_bucket": "vit-finders.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297164258672:android:b8457a422b267cfd7563b5",
+        "android_client_info": {
+          "package_name": "com.ieeeias.vit_finders"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "297164258672-cs4gq03tmm2ceoqpb1mq8leq7q1h8fqu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdgdme0p4N4acEVe9qPT9CnWhRkyxb9PM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "297164258672-cs4gq03tmm2ceoqpb1mq8leq7q1h8fqu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
