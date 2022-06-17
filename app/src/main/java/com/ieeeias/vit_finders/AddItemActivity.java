@@ -1,30 +1,50 @@
 package com.ieeeias.vit_finders;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AddItemActivity extends AppCompatActivity {
 
+    ActivityResultLauncher<Intent> startForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+        @Override
+        public void onActivityResult(ActivityResult result) {
+            if(result != null && result.getResultCode() == RESULT_OK){
+
+            }
+        }
+    });
+
     private static final int PIC_ID = 1;
     Bitmap photo;
+    private Uri imageUri;
 //    private ListItemAdapter mListItemAdapter;
 //    private ListView mListItemView;
 
     private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference mItemDatabaseReference;
+    private DatabaseReference mDatabaseReference;
+    private StorageReference mStorageReference;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,8 +59,9 @@ public class AddItemActivity extends AppCompatActivity {
 //        mListItemAdapter = new ListItemAdapter(this, R.layout.list_item, listItems);
 //        mListItemView.setAdapter(mListItemAdapter);
 
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mItemDatabaseReference = mFirebaseDatabase.getReference().child("items");
+//        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference("items");
+        mStorageReference =  FirebaseStorage.getInstance().getReference();
 
         Button submitButton = (Button) findViewById(R.id.button);
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -48,18 +69,22 @@ public class AddItemActivity extends AppCompatActivity {
             public void onClick(View view) {
 //                ListItem listItem = new ListItem()
                 NewItem newItem = new NewItem(1, getName(), getBrand(), getDate(), getLocation(), getContact());
-                mItemDatabaseReference.push().setValue(newItem);
+                mDatabaseReference.push().setValue(newItem);
             }
         });
 
-//        ImageView imageView = (ImageView) findViewById(R.id.imageView);
-//        imageView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
+        ImageView imageView = (ImageView) findViewById(R.id.imageView);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 //                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 //                startActivityForResult(cameraIntent, PIC_ID);
-//            }
-//        });
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startForResult.launch(intent);
+            }
+        });
     }
 
 //    public void onActivityResult(int requestCode, int resultCode, Intent data) {
