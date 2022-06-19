@@ -3,6 +3,7 @@ package com.ieeeias.vit_finders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.SoundEffectConstants;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.ListView;
@@ -101,13 +102,34 @@ public class MainActivity extends AppCompatActivity {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+            String result= account.toString();
+
+            System.out.println(result);
+
+            Boolean bool=result .contains("@vitstudent.ac.in");
+            if(bool) {
+
+                System.out.println(result);
+
+
+
+                Intent intent = new Intent(MainActivity.this, LostItemsActivity.class);
+                startActivity(intent);
+                Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
+            }
+            else{
+                Toast.makeText(MainActivity.this, "Access denied Please use VIT MAIL ID", Toast.LENGTH_LONG).show();
+            }
 
             // Signed in successfully, show authenticated UI.
 
-        } catch (ApiException e) {
-            // The ApiException status code indicates the detailed failure reason.
-            // Please refer to the GoogleSignInStatusCodes class reference for more information.
-            Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
+
+
+        } catch (ApiException e){
+                // The ApiException status code indicates the detailed failure reason.
+                // Please refer to the GoogleSignInStatusCodes class reference for more information.
+                Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
+
 
         }
     }
