@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -100,8 +101,6 @@ public class MainActivity extends AppCompatActivity {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
-//            if(GoogleSignIn.getLastSignedInAccount(context) != null)
-
 
             // Signed in successfully, show authenticated UI.
 

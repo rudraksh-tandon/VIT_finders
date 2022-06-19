@@ -1,19 +1,19 @@
 package com.ieeeias.vit_finders;
 
 public class NewItem {
-    private int imageView;
-    private String nameView;
-    private String brandView;
-    private String dateView;
-    private String locView;
-    private String contactView;
+    public int imageView;
+    public String nameView;
+    public String brandView;
+    public String dateView;
+    public String locView;
+    public String contactView;
 
     public NewItem(){
 
     }
 
-    public NewItem(int imageView, String nameView, String brandView, String dateView, String locView, String contactView) {
-        this.imageView = imageView;
+    public NewItem(String nameView, String brandView, String dateView, String locView, String contactView) {
+//        this.imageView = imageView;
         this.nameView = nameView;
         this.brandView = brandView;
         this.dateView = dateView;

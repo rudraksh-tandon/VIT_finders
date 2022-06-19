@@ -72,8 +72,9 @@ public class AddItemActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                ListItem listItem = new ListItem()
-                NewItem newItem = new NewItem(1, getName(), getBrand(), getDate(), getLocation(), getContact());
+                NewItem newItem = new NewItem(getName(), getBrand(), getDate(), getLocation(), getContact());
                 mDatabaseReference.push().setValue(newItem);
+                Intent intent = new Intent(AddItemActivity.this, LostItemsActivity.class);
             }
         });
 
