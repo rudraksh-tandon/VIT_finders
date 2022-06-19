@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,18 +20,19 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import static android.content.ContentValues.TAG;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
-
-    RecyclerView recyclerView;
-    LinearLayoutManager layoutManager;
-    List<ModelClasslost>itemList;
-    Adapter adapter;
+//    RecyclerView recyclerView;
+//    LinearLayoutManager layoutManager;
+//    List<ListItem>itemList;
+//    Adapter adapter;
 
     GoogleSignInClient mGoogleSignInClient;
     private static int RC_SIGN_IN=1000;
@@ -38,12 +41,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
-
-
-
-
-
-
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -60,28 +57,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
-    private void iniData() {
-        itemList=new ArrayList<>(); //we can also add data from firebase
-        itemList.add(new ModelClasslost(R.drawable.lost_item_img,"speaker","SJT"));
-        itemList.add(new ModelClasslost(R.drawable.lost_item_img,"speaker","SJT"));
-        itemList.add(new ModelClasslost(R.drawable.lost_item_img,"speaker","SJT"));
-
-
-
-    }
-    private void iniRecyclerView() {
-
-        recyclerView=findViewById(R.id.rview);
-        layoutManager=new LinearLayoutManager(this);
-        layoutManager.setOrientation(RecyclerView.VERTICAL);
-        recyclerView.setLayoutManager(layoutManager);
-      adapter = (Adapter) new com.ieeeias.vit_finders.Adapter(itemList);
-    recyclerView.setAdapter((RecyclerView.Adapter) adapter);
-    ((RecyclerView.Adapter<?>) adapter).notifyDataSetChanged();
-
-    }
+//    private void iniData() {
+//        itemList=new ArrayList<>(); //we can also add data from firebase
+//        itemList.add(new ListItem(R.drawable.lost_item_img,"speaker","SJT"));
+//        itemList.add(new ListItem(R.drawable.lost_item_img,"speaker","SJT"));
+//        itemList.add(new ListItem(R.drawable.lost_item_img,"speaker","SJT"));
+//
+//
+//
+//    }
+//    private void iniRecyclerView() {
+//
+//        recyclerView=findViewById(R.id.rview);
+//        layoutManager=new LinearLayoutManager(this);
+//        layoutManager.setOrientation(RecyclerView.VERTICAL);
+//        recyclerView.setLayoutManager(layoutManager);
+//      adapter = (Adapter) new ListItemAdapter(itemList);
+//    recyclerView.setAdapter((RecyclerView.Adapter) adapter);
+//    ((RecyclerView.Adapter<?>) adapter).notifyDataSetChanged();
+//
+//    }
 
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -106,8 +102,6 @@ public class MainActivity extends AppCompatActivity {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
 
-
-
             // Signed in successfully, show authenticated UI.
 
         } catch (ApiException e) {
@@ -116,6 +110,5 @@ public class MainActivity extends AppCompatActivity {
             Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
 
         }
-
     }
 }

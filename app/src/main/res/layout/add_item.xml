@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="568dp"
@@ -92,33 +92,33 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/editTextName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="220dp"
         android:layout_marginEnd="12dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType = "textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
+        android:id="@+id/editTextBrand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName4"
+        app:layout_constraintEnd_toEndOf="@+id/editTextName"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName4"
+        app:layout_constraintStart_toStartOf="@+id/editTextName"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.431"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName7"
+        android:id="@+id/editTextLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -132,7 +132,7 @@
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName8"
+        android:id="@+id/editTextContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="188dp"
@@ -145,7 +145,7 @@
         tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/editTextDate2"
+        android:id="@+id/editTextDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
