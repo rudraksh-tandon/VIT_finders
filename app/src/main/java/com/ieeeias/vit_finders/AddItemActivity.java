@@ -9,6 +9,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -19,6 +20,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.github.drjacky.imagepicker.ImagePicker;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -30,14 +32,14 @@ import java.util.List;
 
 public class AddItemActivity extends AppCompatActivity {
 
-    ActivityResultLauncher<Intent> startForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-        @Override
-        public void onActivityResult(ActivityResult result) {
-            if(result != null && result.getResultCode() == RESULT_OK){
-
-            }
-        }
-    });
+//    ActivityResultLauncher<Intent> startForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+//        @Override
+//        public void onActivityResult(ActivityResult result) {
+//            if(result != null && result.getResultCode() == RESULT_OK){
+//
+//            }
+//        }
+//    });
 
 //    private static final int PIC_ID = 1;
 //    Bitmap photo;
@@ -46,6 +48,7 @@ public class AddItemActivity extends AppCompatActivity {
 //    private ListView mListItemView;
 
     ImageView imageView;
+    ImageButton imageButton;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private StorageReference mStorageReference;
@@ -79,18 +82,32 @@ public class AddItemActivity extends AppCompatActivity {
         });
 
         imageView = (ImageView) findViewById(R.id.imageView);
-        imageView.setOnClickListener(new View.OnClickListener() {
+        imageButton = (ImageButton) findViewById(R.id.imageButton);
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ImagePicker.Companion.with(AddItemActivity.this)
+//                        .crop()	    			//Crop image(Optional), Check Customization for more option
+//                        .cropOval()	    		//Allow dimmed layer to have a circle inside
+//                        .cropFreeStyle()	    //Let the user to resize crop bounds
+//                        .galleryOnly()          //We have to define what image provider we want to use
+//                        .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+                        .createIntent();
+            }
+        });
+//        imageView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
 //                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 //                startActivityForResult(cameraIntent, PIC_ID);
 //                Intent intent = new Intent();
 //                intent.setAction(Intent.ACTION_GET_CONTENT);
 //                intent.setType("image/*");
 //                startForResult.launch(intent);
-                imageChooser();
-            }
-        });
+//                imageChooser();
+//            }
+//        });
     }
 
 //    public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -156,35 +173,35 @@ public class AddItemActivity extends AppCompatActivity {
         return date;
     }
 
-    private void imageChooser() {
-        Intent i = new Intent();
-        i.setType("image/*");
-        i.setAction(Intent.ACTION_GET_CONTENT);
-
-        launchSomeActivity.launch(i);
-    }
-
-    ActivityResultLauncher<Intent> launchSomeActivity = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            result -> {
-                if (result.getResultCode()
-                        == Activity.RESULT_OK) {
-                    Intent data = result.getData();
-                    // do your operation from here....
-                    if (data != null
-                            && data.getData() != null) {
-                        Uri selectedImageUri = data.getData();
-                        Bitmap selectedImageBitmap = null;
-                        try {
-                            selectedImageBitmap = MediaStore.Images.Media.getBitmap(
-                                    this.getContentResolver(),
-                                    selectedImageUri);
-                        }
-                        catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        imageView.setImageBitmap(selectedImageBitmap);
-                    }
-                }
-            });
+//    private void imageChooser() {
+//        Intent i = new Intent();
+//        i.setType("image/*");
+//        i.setAction(Intent.ACTION_GET_CONTENT);
+//
+//        launchSomeActivity.launch(i);
+//    }
+//
+//    ActivityResultLauncher<Intent> launchSomeActivity = registerForActivityResult(
+//            new ActivityResultContracts.StartActivityForResult(),
+//            result -> {
+//                if (result.getResultCode()
+//                        == Activity.RESULT_OK) {
+//                    Intent data = result.getData();
+//                    // do your operation from here....
+//                    if (data != null
+//                            && data.getData() != null) {
+//                        Uri selectedImageUri = data.getData();
+//                        Bitmap selectedImageBitmap = null;
+//                        try {
+//                            selectedImageBitmap = MediaStore.Images.Media.getBitmap(
+//                                    this.getContentResolver(),
+//                                    selectedImageUri);
+//                        }
+//                        catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
+//                        imageView.setImageBitmap(selectedImageBitmap);
+//                    }
+//                }
+//            });
 }
