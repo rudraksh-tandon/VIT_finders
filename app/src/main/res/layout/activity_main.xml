@@ -11,11 +11,11 @@
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
-        android:layout_width="222dp"
-        android:layout_height="69dp"
-        android:layout_marginTop="368dp"
+        android:layout_width="262dp"
+        android:layout_height="99dp"
+        android:layout_marginTop="364dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.544"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
