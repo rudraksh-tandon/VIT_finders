@@ -9,7 +9,7 @@ android {
     defaultConfig {
         applicationId "com.ieeeias.vit_finders"
         minSdk 24
-        targetSdk 32
+        targetSdk 31
         versionCode 1
         versionName "1.0"
 
@@ -38,6 +38,7 @@ dependencies {
 //    implementation project(path: ':app')
     implementation 'com.google.firebase:firebase-storage:20.0.1'
     implementation 'com.google.firebase:firebase-database:20.0.5'
+    implementation 'com.google.firebase:firebase-auth:21.0.5'
     testImplementation 'junit:junit:4.13.2'
     apply plugin: 'com.android.application'
     implementation 'com.google.android.gms:play-services-auth:20.2.0'
@@ -46,4 +47,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation 'com.github.Drjacky:ImagePicker:2.1.15'
+    implementation 'com.getbase:floatingactionbutton:1.10.1'
 }

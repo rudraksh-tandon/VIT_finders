@@ -2,7 +2,7 @@
     <string name="app_name">VIT_finders</string>
     <string name="itemname">Item</string>
     <string name="brand">Brand</string>
-    <string name="loc">Location</string>
+    <string name="date">Date</string>
     <string name="contact">Phone No.</string>
     <string name="address">Room/BLock</string>
     <string name="block">Block</string>

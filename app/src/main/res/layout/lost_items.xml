@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LostItemsActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".LostItemsActivity"
+    android:background="@drawable/sign_in_back">
 
     <!-- Empty view for the list -->
 <!--    <RelativeLayout-->
@@ -44,13 +45,24 @@
 <!--            android:textColor="#A2AAB0"/>-->
 <!--    </RelativeLayout>-->
 
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="25dp"
+        android:src="@drawable/app_logo" />
+
     <ListView
         android:id="@+id/itemsList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/logo"
         android:padding="16dp" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.getbase.floatingactionbutton.AddFloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,6 +72,6 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:contentDescription="add new item"
-        android:src="@drawable/ic_launcher_foreground" />
+        app:fab_colorNormal="@color/space_pink"
+        app:rippleColor="@color/purple"/>
 </RelativeLayout>

@@ -10,14 +10,14 @@
         android:exported="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/app_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/app_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.VIT_finders"
         tools:targetApi="31">
         <activity
-            android:name=".SplashScreen"
+            android:name=".SplashScreenActivity"
             android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
@@ -36,6 +36,14 @@
             android:exported="true"/>
         <activity
             android:name=".AddItemActivity"
+            android:screenOrientation="portrait"
+            android:exported="true"/>
+        <activity
+            android:name=".ItemDescriptionActivity"
+            android:screenOrientation="portrait"
+            android:exported="true"/>
+        <activity
+            android:name=".OtpVerifyActivity"
             android:screenOrientation="portrait"
             android:exported="true"/>
     </application>

@@ -1,7 +1,8 @@
 package com.ieeeias.vit_finders;
 
 public class NewItem {
-    public int imageView;
+//    public Model model;
+    public String imageUrl;
     public String nameView;
     public String brandView;
     public String dateView;
@@ -12,13 +13,23 @@ public class NewItem {
 
     }
 
-    public NewItem(String nameView, String brandView, String dateView, String locView, String contactView) {
+    public NewItem(String imageUrl, String nameView, String brandView, String dateView, String locView, String contactView) {
 //        this.imageView = imageView;
+//        this.model = model;
+        this.imageUrl = imageUrl;
         this.nameView = nameView;
         this.brandView = brandView;
         this.dateView = dateView;
         this.locView = locView;
         this.contactView = contactView;
+    }
+
+    public String getImageUrl(){
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl){
+        this.imageUrl = imageUrl;
     }
 
 //    public int getImageView() {

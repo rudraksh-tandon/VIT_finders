@@ -33,7 +33,7 @@ public class ListItemAdapter extends ArrayAdapter<ListItem> {
 
         ImageView photoImageView = (ImageView) convertView.findViewById(R.id.image);
         TextView messageTextView = (TextView) convertView.findViewById(R.id.name);
-        TextView authorTextView = (TextView) convertView.findViewById(R.id.location);
+        TextView authorTextView = (TextView) convertView.findViewById(R.id.date);
 
         ListItem item = getItem(position);
 

@@ -1,16 +1,12 @@
 package com.ieeeias.vit_finders;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.MotionEvent;
-import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SplashScreen extends AppCompatActivity {
+public class SplashScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +16,7 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+                Intent intent = new Intent(SplashScreenActivity.this, LostItemsActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -28,7 +24,7 @@ public class SplashScreen extends AppCompatActivity {
     }
 }
 
-//public class SplashScreen extends AppCompatActivity {
+//public class SplashScreenActivity extends AppCompatActivity {
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);

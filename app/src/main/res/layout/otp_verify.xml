@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/sentText"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="50dp"
+        android:gravity="center_horizontal"
+        android:textAlignment="center" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="40dp">
+
+        <EditText
+            android:id="@+id/inputNum1"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginTop="200dp"
+            android:background="@drawable/otp_background_box"
+            android:ems="2"
+            android:inputType="number"
+            android:textAlignment="center" />
+        <!--            android:layout_alignParentStart="true"-->
+        <!--            android:layout_alignParentEnd="true"-->
+        <!--            android:hint="ENTER OTP"/>-->
+        <EditText
+            android:id="@+id/inputNum2"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="200dp"
+            android:background="@drawable/otp_background_box"
+            android:ems="2"
+            android:inputType="number"
+            android:textAlignment="center" />
+        <EditText
+            android:id="@+id/inputNum3"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="200dp"
+            android:background="@drawable/otp_background_box"
+            android:ems="2"
+            android:inputType="number"
+            android:textAlignment="center" />
+        <EditText
+            android:id="@+id/inputNum4"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="200dp"
+            android:background="@drawable/otp_background_box"
+            android:ems="2"
+            android:inputType="number"
+            android:textAlignment="center" />
+        <EditText
+            android:id="@+id/inputNum5"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="200dp"
+            android:background="@drawable/otp_background_box"
+            android:ems="2"
+            android:inputType="number"
+            android:textAlignment="center" />
+        <EditText
+            android:id="@+id/inputNum6"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="200dp"
+            android:background="@drawable/otp_background_box"
+            android:ems="2"
+            android:inputType="number"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
+        android:textAlignment="center"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:textStyle="bold"
+        android:text="VERIFY" />
+
+    <TextView
+        android:id="@+id/resendText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="470dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:text="RESEND OTP" />
+</RelativeLayout>

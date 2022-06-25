@@ -1,57 +1,68 @@
 package com.ieeeias.vit_finders;
 
-import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListView;
+import android.widget.Toast;
+import static android.content.ContentValues.TAG;
 
 import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.drjacky.imagepicker.ImagePicker;
+import com.github.drjacky.imagepicker.constant.ImageProvider;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import org.jetbrains.annotations.NotNull;
+
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.internal.Intrinsics;
 
 public class AddItemActivity extends AppCompatActivity {
 
-//    ActivityResultLauncher<Intent> startForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-//        @Override
-//        public void onActivityResult(ActivityResult result) {
-//            if(result != null && result.getResultCode() == RESULT_OK){
-//
-//            }
-//        }
-//    });
+    private ImageView imageView;
+    private ImageButton imageButton;
+    private Uri imageUri;
+    private DatabaseReference mDatabaseReference;
+    private StorageReference mStorageReference;
+    private NewItem newItem;
+    private String newItemId;
+
+    ActivityResultLauncher<Intent> launcher =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), (ActivityResult result) -> {
+                if (result.getResultCode() == RESULT_OK) {
+                    imageUri = result.getData().getData();
+                    imageView.setImageURI(imageUri);
+                    // Use the uri to load the image
+                } else if (result.getResultCode() == ImagePicker.RESULT_ERROR) {
+                    // Use ImagePicker.Companion.getError(result.getData()) to show an error
+                }
+            });
 
 //    private static final int PIC_ID = 1;
 //    Bitmap photo;
-//    private Uri imageUri;
 //    private ListItemAdapter mListItemAdapter;
 //    private ListView mListItemView;
-
-    ImageView imageView;
-    ImageButton imageButton;
-    private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference mDatabaseReference;
-    private StorageReference mStorageReference;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,17 +81,6 @@ public class AddItemActivity extends AppCompatActivity {
         mDatabaseReference = FirebaseDatabase.getInstance().getReference("items");
         mStorageReference =  FirebaseStorage.getInstance().getReference();
 
-        Button submitButton = (Button) findViewById(R.id.button);
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                ListItem listItem = new ListItem()
-                NewItem newItem = new NewItem(getName(), getBrand(), getDate(), getLocation(), getContact());
-                mDatabaseReference.push().setValue(newItem);
-                Intent intent = new Intent(AddItemActivity.this, LostItemsActivity.class);
-            }
-        });
-
         imageView = (ImageView) findViewById(R.id.imageView);
         imageButton = (ImageButton) findViewById(R.id.imageButton);
 
@@ -88,14 +88,47 @@ public class AddItemActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ImagePicker.Companion.with(AddItemActivity.this)
-//                        .crop()	    			//Crop image(Optional), Check Customization for more option
-//                        .cropOval()	    		//Allow dimmed layer to have a circle inside
-//                        .cropFreeStyle()	    //Let the user to resize crop bounds
-//                        .galleryOnly()          //We have to define what image provider we want to use
-//                        .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
-                        .createIntent();
+                        .crop()
+                        .cropOval()
+                        .maxResultSize(512, 512, true)
+                        .provider(ImageProvider.BOTH)
+                        .createIntentFromDialog(new Function1() {
+                            public Object invoke(Object var1) {
+                                this.invoke((Intent) var1);
+                                return Unit.INSTANCE;
+                            }
+
+                            public final void invoke(@NotNull Intent it) {
+                                Intrinsics.checkNotNullParameter(it, "it");
+                                launcher.launch(it);
+                            }
+                        });
+
             }
         });
+
+        Button submitButton = (Button) findViewById(R.id.button);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                ListItem listItem = new ListItem()
+                if(imageUri != null){
+                    uploadImage(imageUri);
+//                    Log.e(TAG, "image url = " + imageUrl);
+//                    Log.e(TAG, "model id = " + modelId);
+//                    Log.e(TAG, "model = " + model.toString());
+//                    newItem = new NewItem(imageUrl, getName(), getBrand(), getDate(), getLocation(), getContact());
+//                    mDatabaseReference.push().setValue(newItem);
+                    Toast.makeText(AddItemActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(AddItemActivity.this, LostItemsActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(AddItemActivity.this, "Please upload image", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
 //        imageView.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -204,4 +237,34 @@ public class AddItemActivity extends AppCompatActivity {
 //                    }
 //                }
 //            });
+
+    private void uploadImage(Uri uri){
+        StorageReference ref = mStorageReference.child(System.currentTimeMillis() + "." + getFileExtension(uri));
+        ref.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+//                        imageUrl = uri.toString();
+//                        model = new Model(imageUrl);
+                        newItem = new NewItem(uri.toString(), getName(), getBrand(), getDate(), getLocation(), getContact());
+                        newItemId = mDatabaseReference.push().getKey();
+                        mDatabaseReference.child(newItemId).setValue(newItem);
+                    }
+                });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(AddItemActivity.this, "Uploading failed", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private String getFileExtension(Uri uri){
+        ContentResolver cr = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cr.getType(uri));
+    }
 }
