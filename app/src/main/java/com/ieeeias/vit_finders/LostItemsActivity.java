@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class LostItemsActivity extends AppCompatActivity {
@@ -17,8 +18,8 @@ public class LostItemsActivity extends AppCompatActivity {
         setContentView(R.layout.lost_items);
 
         // Setup FAB to open AddItemActivity
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        //FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LostItemsActivity.this, AddItemActivity.class);

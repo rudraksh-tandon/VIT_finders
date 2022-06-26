@@ -1,18 +1,19 @@
 package com.ieeeias.vit_finders;
 
+import android.app.DatePickerDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
-import static android.content.ContentValues.TAG;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultLauncher;
@@ -28,17 +29,23 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Calendar;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 
 public class AddItemActivity extends AppCompatActivity {
+    TextView tt;
+    //ImageView ig;
+    int y;
+    int m;
+    int d;
 
     private ImageView imageView;
     private ImageButton imageButton;
@@ -69,6 +76,27 @@ public class AddItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.add_item);
+        tt=findViewById(R.id.tt);
+        //ig=findViewById(R.id.ig);
+        final Calendar c=Calendar.getInstance();
+        tt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                y=c.get(Calendar.YEAR);
+                m=c.get(Calendar.MONTH);
+                d=c.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog g= new DatePickerDialog(AddItemActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                        i1=i1+1;
+                        tt.setText(i2+"/"+i1+"/"+i);
+
+                    }
+                },y,m,d);
+                g.show();
+
+            }
+        });
 
 //        mListItemView = (ListView) findViewById(R.id.itemsList);
 
@@ -201,7 +229,7 @@ public class AddItemActivity extends AppCompatActivity {
         return contact;
     }
     private String getDate(){
-        EditText dateView = findViewById(R.id.editTextDate);
+        EditText dateView = findViewById(R.id.tt);
         String date = dateView.getText().toString();
         return date;
     }
