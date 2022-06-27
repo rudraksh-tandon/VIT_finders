@@ -93,7 +93,6 @@ public class LostItemsActivity extends AppCompatActivity {
         });
 
         // Setup FAB to open AddItemActivity
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

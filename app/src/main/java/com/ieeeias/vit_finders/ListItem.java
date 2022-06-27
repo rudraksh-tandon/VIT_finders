@@ -14,13 +14,13 @@ public class ListItem {
 
     }
 
-    public ListItem(String imageUrl, String nameView, String locView) {
+    public ListItem(String imageUrl, String nameView, String locView, String brandView, String dateView, String contactView) {
         this.imageUrl = imageUrl;
         this.nameView = nameView;
         this.locView = locView;
-//        this.brandView = brandView;
-//        this.dateView = dateView;
-//        this.contactView = contactView;
+        this.brandView = brandView;
+        this.dateView = dateView;
+        this.contactView = contactView;
 
 
     }
@@ -50,13 +50,13 @@ public class ListItem {
 //    public void setLocView(String locView){
 //        this.locView = locView;
 //    }
-//    public String getBrandView() {
-//    return brandView;
-//}
-//    public String getDateView() {
-//        return dateView;
-//    }
-//    public String getContactView() {
-//        return contactView;
-//    }
+    public String getBrandView() {
+    return brandView;
+}
+    public String getDateView() {
+        return dateView;
+    }
+    public String getContactView() {
+        return contactView;
+    }
 }
