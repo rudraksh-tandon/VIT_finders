@@ -99,30 +99,25 @@ public class MainActivity extends AppCompatActivity {
             handleSignInResult(task);
         }
     }
-    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask){
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
             Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
 
-            //String result= account.toString();
-
+            String result= account.toString();
             //System.out.println(result);
 
-            //Boolean boolean =result .contains("@vitstudent.ac.in");
-            //if(boolean) {
-
-            //System.out.println(result);
-
-
-
-            Intent intent = new Intent(MainActivity.this, LostItemsActivity.class);
-            startActivity(intent);
-            //Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
-            //}
-            //else{
-            //Toast.makeText(MainActivity.this, "Access denied Please use VIT MAIL ID", Toast.LENGTH_LONG).show();
-            // }
+            boolean bool =result .contains("@vitstudent.ac.in");
+            if(bool) {
+//                System.out.println(result);
+                Intent intent = new Intent(MainActivity.this, LostItemsActivity.class);
+                startActivity(intent);
+                Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
+            }
+            else{
+                Toast.makeText(MainActivity.this, "Access denied Please use VIT MAIL ID", Toast.LENGTH_LONG).show();
+            }
 
             // Signed in successfully, show authenticated UI.
 
@@ -132,8 +127,6 @@ public class MainActivity extends AppCompatActivity {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.e(TAG, "signInResult:failed code=" + e.getStatusCode());
-
-
         }
     }
 }

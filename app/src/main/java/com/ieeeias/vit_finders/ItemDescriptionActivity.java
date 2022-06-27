@@ -34,6 +34,8 @@ public class ItemDescriptionActivity extends AppCompatActivity {
         mDatabaseReference = FirebaseDatabase.getInstance().getReference("items");
         mStorageReference =  FirebaseStorage.getInstance().getReference();
 
+
+
         Button button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -12,6 +12,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.List;
 
 public class ListItemAdapter extends ArrayAdapter<ListItem> {
@@ -20,7 +26,7 @@ public class ListItemAdapter extends ArrayAdapter<ListItem> {
 //    public ListItemAdapter(List<ListItem> itemList) {
 //        this.itemList = itemList;
 //    }
-
+    URL imageUrl;
     public ListItemAdapter(Context context, int resource, List<ListItem> objects) {
         super(context, resource, objects);
     }
@@ -31,11 +37,22 @@ public class ListItemAdapter extends ArrayAdapter<ListItem> {
             convertView = ((Activity) getContext()).getLayoutInflater().inflate(R.layout.list_item, parent, false);
         }
 
-        ImageView photoImageView = (ImageView) convertView.findViewById(R.id.image);
-        TextView messageTextView = (TextView) convertView.findViewById(R.id.name);
-        TextView authorTextView = (TextView) convertView.findViewById(R.id.date);
+        ImageView imageView = (ImageView) convertView.findViewById(R.id.image);
+        TextView nameView = (TextView) convertView.findViewById(R.id.name);
+        TextView locView = (TextView) convertView.findViewById(R.id.loc);
 
         ListItem item = getItem(position);
+
+//        imageView.setImageURI(item.getImageUrl());
+        try {
+            URI imageUri = new URI(item.getImageUrl());
+            imageUrl = imageUri.toURL();
+        } catch (URISyntaxException | MalformedURLException e) {
+            e.printStackTrace();
+        }
+        Glide.with(getContext()).load(imageUrl).into(imageView);
+        nameView.setText(item.getNameView());
+        locView.setText(item.getLocView());
 
 //        boolean isPhoto = message.getPhotoUrl() != null;
 //        if (isPhoto) {

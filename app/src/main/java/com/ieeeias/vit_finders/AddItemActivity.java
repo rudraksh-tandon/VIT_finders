@@ -79,7 +79,7 @@ public class AddItemActivity extends AppCompatActivity {
 
 //        mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = FirebaseDatabase.getInstance().getReference("items");
-        mStorageReference =  FirebaseStorage.getInstance().getReference();
+        mStorageReference =  FirebaseStorage.getInstance().getReference("items");
 
         imageView = (ImageView) findViewById(R.id.imageView);
         imageButton = (ImageButton) findViewById(R.id.imageButton);

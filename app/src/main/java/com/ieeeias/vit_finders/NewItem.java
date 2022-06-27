@@ -1,5 +1,7 @@
 package com.ieeeias.vit_finders;
 
+import java.net.URL;
+
 public class NewItem {
 //    public Model model;
     public String imageUrl;
