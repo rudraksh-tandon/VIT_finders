@@ -5,11 +5,13 @@ import android.content.ContentUris;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -84,11 +86,24 @@ public class LostItemsActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Intent intent = new Intent(LostItemsActivity.this, ItemDescriptionActivity.class);
-                String key = mDatabaseReference.child("items").getKey();
-//                intent.putExtra("key", key);
-//                startActivity(intent);
-                Log.w(TAG, "key = " + key);
+                try{
+                    Intent intent = new Intent(LostItemsActivity.this, ItemDescriptionActivity.class);
+                    ListItem listItem = (ListItem) listView.getItemAtPosition(i);
+                    intent.putExtra("name", listItem.getNameView());
+                    intent.putExtra("brand", listItem.getBrandView());
+                    intent.putExtra("date", listItem.getDateView());
+                    intent.putExtra("location", listItem.getLocView());
+                    intent.putExtra("contact", listItem.getContactView());
+                    intent.putExtra("imageUrl", listItem.getImageUrl());
+                    startActivity(intent);
+                }catch (Exception e){
+                    Log.w(TAG, e.getMessage());
+                }
+//                String key = mDatabaseReference.child("items").getKey();
+//                intent.putExtra("listItem", itemList);
+////                intent.putExtra("key", key);
+////                startActivity(intent);
+//                Log.w(TAG, "key = " + key);
             }
         });
 
@@ -100,5 +115,7 @@ public class LostItemsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+//        ProgressBar progressBar = findViewById(R.id.progressBar);
     }
 }

@@ -76,23 +76,24 @@ public class AddItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.add_item);
-        tt=findViewById(R.id.tt);
+        tt = findViewById(R.id.tt);
+        ImageView calendar = findViewById(R.id.calendar);
         //ig=findViewById(R.id.ig);
         final Calendar c=Calendar.getInstance();
-        tt.setOnClickListener(new View.OnClickListener() {
+        calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                y=c.get(Calendar.YEAR);
-                m=c.get(Calendar.MONTH);
-                d=c.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog g= new DatePickerDialog(AddItemActivity.this, new DatePickerDialog.OnDateSetListener() {
+                y = c.get(Calendar.YEAR);
+                m = c.get(Calendar.MONTH);
+                d = c.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog g = new DatePickerDialog(AddItemActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                        i1=i1+1;
+                        i1 = i1+1;
                         tt.setText(i2+"/"+i1+"/"+i);
 
                     }
-                },y,m,d);
+                }, y, m, d);
                 g.show();
 
             }

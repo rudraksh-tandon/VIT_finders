@@ -3,6 +3,7 @@ package com.ieeeias.vit_finders;
 import java.net.URL;
 
 public class ListItem {
+
     private String imageUrl;
     private String nameView;
     private String locView;
@@ -39,24 +40,41 @@ public class ListItem {
         return nameView;
     }
 
-//    public void setNameView(String nameView){
-//        this.nameView = nameView;
-//    }
+    public void setNameView(String nameView){
+        this.nameView = nameView;
+    }
 
     public String getLocView() {
         return locView;
     }
 
-//    public void setLocView(String locView){
-//        this.locView = locView;
-//    }
+    public void setLocView(String locView){
+        this.locView = locView;
+    }
     public String getBrandView() {
-    return brandView;
-}
+        return brandView;
+    }
     public String getDateView() {
         return dateView;
     }
+
     public String getContactView() {
         return contactView;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public void setBrandView(String brandView) {
+        this.brandView = brandView;
+    }
+
+    public void setDateView(String dateView) {
+        this.dateView = dateView;
+    }
+
+    public void setContactView(String contactView) {
+        this.contactView = contactView;
     }
 }

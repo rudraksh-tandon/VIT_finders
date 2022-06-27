@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
@@ -18,6 +21,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class ItemDescriptionActivity extends AppCompatActivity {
@@ -25,6 +32,9 @@ public class ItemDescriptionActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseReference;
     private StorageReference mStorageReference;
 
+//    ListItem listItem = getIntent().getParcelableExtra("list item");
+
+    URL imageUrl;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +44,28 @@ public class ItemDescriptionActivity extends AppCompatActivity {
         mDatabaseReference = FirebaseDatabase.getInstance().getReference("items");
         mStorageReference =  FirebaseStorage.getInstance().getReference();
 
+        TextView nameView = findViewById(R.id.nameView) ;
+        TextView brandView = findViewById(R.id.brandView);
+        TextView dateView = findViewById(R.id.dateView);
+        TextView contactView = findViewById(R.id.contactView);
+        TextView locView = findViewById(R.id.locView);
+        ImageView imageView = findViewById(R.id.imageView);
+        URI imageUri;
+//        URL imageUrl;
 
+        try {
+            imageUri = new URI(getIntent().getStringExtra("imageUrl"));
+            imageUrl = imageUri.toURL();
+        } catch (URISyntaxException | MalformedURLException e) {
+            e.printStackTrace();
+        }
+//        Glide.with(getContext()).load(imageUrl).into(imageView);
+        Glide.with(getApplicationContext()).load(imageUrl).into(imageView);
+        nameView.setText(getIntent().getStringExtra("name"));
+        locView.setText(getIntent().getStringExtra("location"));
+        brandView.setText(getIntent().getStringExtra("brand"));
+        dateView.setText(getIntent().getStringExtra("date"));
+        contactView.setText(getIntent().getStringExtra("contact"));
 
         Button button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
