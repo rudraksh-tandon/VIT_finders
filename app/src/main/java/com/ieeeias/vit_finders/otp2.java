@@ -33,7 +33,7 @@ public class otp2 extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+
         setContentView(R.layout.otpq);
         tt=findViewById(R.id.tt);
         et1=findViewById(R.id.et1);
