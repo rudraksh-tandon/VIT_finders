@@ -46,12 +46,13 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="@+id/ph">
+        app:layout_constraintBottom_toTopOf="@+id/ph"
+        tools:layout_editor_absoluteX="-13dp">
 
         <Button
             android:id="@+id/otp"
-            android:layout_width="363dp"
-            android:layout_height="111dp"
+            android:layout_width="395dp"
+            android:layout_height="155dp"
             android:layout_gravity="bottom|center_horizontal|end"
             android:gravity="bottom|center"
             android:text="Get OTP"

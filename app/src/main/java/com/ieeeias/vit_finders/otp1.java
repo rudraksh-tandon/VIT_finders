@@ -25,7 +25,7 @@ public class otp1 extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+
         setContentView(R.layout.otpp);
         ph=findViewById(R.id.ph);
         otp=findViewById(R.id.otp);

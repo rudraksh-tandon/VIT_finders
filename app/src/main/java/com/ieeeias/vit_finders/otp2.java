@@ -35,7 +35,7 @@ public class otp2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.otpq);
-        tt=findViewById(R.id.tt);
+        //tt=findViewById(R.id.tt);
         et1=findViewById(R.id.et1);
         et2=findViewById(R.id.et2);
         et3=findViewById(R.id.et3);
