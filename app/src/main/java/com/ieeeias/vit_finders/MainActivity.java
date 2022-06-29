@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
             boolean bool =result .contains("@vitstudent.ac.in");
             if(bool) {
 //                System.out.println(result);
-                Intent intent = new Intent(MainActivity.this, LostItemsActivity.class);
+                Intent intent = new Intent(MainActivity.this, MainScreenActivity.class);
                 startActivity(intent);
                 Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
             }

@@ -31,6 +31,11 @@
             android:screenOrientation="portrait"
             android:excludeFromRecents="true"/>
         <activity
+            android:name=".MainScreenActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:excludeFromRecents="true"/>
+        <activity
             android:name=".LostItemsActivity"
             android:screenOrientation="portrait"
             android:exported="true"/>
@@ -44,6 +49,14 @@
             android:exported="true"/>
         <activity
             android:name=".OtpVerifyActivity"
+            android:screenOrientation="portrait"
+            android:exported="true"/>
+        <activity
+            android:name=".otp1"
+            android:screenOrientation="portrait"
+            android:exported="true"/>
+        <activity
+            android:name=".otp2"
             android:screenOrientation="portrait"
             android:exported="true"/>
     </application>

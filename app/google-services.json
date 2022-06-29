@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "297164258672",
+    "firebase_url": "https://vit-finders-default-rtdb.firebaseio.com",
     "project_id": "vit-finders",
     "storage_bucket": "vit-finders.appspot.com"
   },

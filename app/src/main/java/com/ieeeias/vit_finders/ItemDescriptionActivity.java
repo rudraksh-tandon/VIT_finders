@@ -34,7 +34,7 @@ public class ItemDescriptionActivity extends AppCompatActivity {
 
 //    ListItem listItem = getIntent().getParcelableExtra("list item");
 
-    URL imageUrl;
+    private URL imageUrl;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +81,7 @@ public class ItemDescriptionActivity extends AppCompatActivity {
                     public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
 //                        delete the item from database and then move to the lost items list
 //                        Toast.makeText(ItemDescriptionActivity.this, "OTP verified successfully", Toast.LENGTH_LONG).show();
+//                        deletion()
                         Intent intent = new Intent(ItemDescriptionActivity.this, LostItemsActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);

@@ -7,11 +7,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -45,6 +49,9 @@ public class LostItemsActivity extends AppCompatActivity {
         ArrayList<ListItem> itemList = new ArrayList<>();
         ListItemAdapter mAdapter = new ListItemAdapter(this, R.layout.list_item, itemList);
         listView.setAdapter(mAdapter);
+
+        View emptyView = findViewById(R.id.empty_view);
+        listView.setEmptyView(emptyView);
 
         mDatabaseReference = FirebaseDatabase.getInstance().getReference("items");
 //        mStorageReference =  FirebaseStorage.getInstance().getReference();
@@ -115,7 +122,30 @@ public class LostItemsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
 
-//        ProgressBar progressBar = findViewById(R.id.progressBar);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.search, menu);
+        MenuItem item = menu.findItem(R.id.search);
+        SearchView searchView = (SearchView) item.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    private void textSearch(String str){
+
     }
 }

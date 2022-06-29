@@ -1,13 +1,11 @@
 <resources>
     <string name="app_name">VIT_finders</string>
-    <string name="itemname">Item</string>
+    <string name="item_name">Item</string>
     <string name="brand">Brand</string>
     <string name="date">Date</string>
-    <string name="contact">Phone No.</string>
-    <string name="address">Room/BLock</string>
-    <string name="block">Block</string>
-    <string name="desc">Description</string>
-    <string name="details">Details</string>
-    <string name="wpno">WhatsAppNO</string>
     <string name="location">Location</string>
+    <string name="empty_view_title_text">No results found</string>
+    <string name="empty_view_subtitle_text">We couldn\'t find what you searched for</string>
+    <string name="lost_item_text">Ohh, I have lost something</string>
+    <string name="found_item_text">Hey, I have found something</string>
 </resources>
