@@ -75,7 +75,7 @@ public class otp1 extends AppCompatActivity {
 ////                        startActivity(intent);
                     }
                     else{
-                        Toast.makeText(otp1.this, "Please Enter correct mobile number", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(otp1.this, "Please Enter correct mobile number", Toast.LENGTH_LONG).show();
                     }
                 }else {
                     Toast.makeText(otp1.this,"Enter mobilenumber",Toast.LENGTH_LONG).show();

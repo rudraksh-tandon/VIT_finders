@@ -26,6 +26,8 @@ public class otp2 extends AppCompatActivity {
     EditText et2;
     EditText et3;
     EditText et4;
+    EditText et5;
+    EditText et6;
     TextView tt;
     Button bt1;
     String otpg;
@@ -40,6 +42,8 @@ public class otp2 extends AppCompatActivity {
         et2=findViewById(R.id.et2);
         et3=findViewById(R.id.et3);
         et4=findViewById(R.id.et4);
+        et5=findViewById(R.id.et5);
+        et6=findViewById(R.id.et6);
         bt1=findViewById(R.id.so);
 
         //tt.setText(String.format("+91-%s",getIntent().getStringExtra("Mobile")));
@@ -49,7 +53,7 @@ public class otp2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(!et1.getText().toString().trim().isEmpty() && !et2.getText().toString().trim().isEmpty() && !et3.getText().toString().trim().isEmpty() && !et4.getText().toString().trim().isEmpty()){
-                    String codeotp =et1.getText().toString()+et2.getText().toString()+et3.getText().toString()+et4.getText().toString();
+                    String codeotp =et1.getText().toString()+et2.getText().toString()+et3.getText().toString()+et4.getText().toString()+et5.getText().toString()+et6.getText().toString();
                     if(otpg!=null){
                         PhoneAuthCredential pho= PhoneAuthProvider.getCredential(otpg,codeotp);
                         FirebaseAuth.getInstance().signInWithCredential(pho).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -84,11 +88,11 @@ public class otp2 extends AppCompatActivity {
 
 
         });
-        numberotpmethod();
+        numberotp();
 
     }
 
-    private void numberotpmethod() {
+    private void numberotp() {
         et1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -137,6 +141,44 @@ public class otp2 extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(!charSequence.toString().trim().isEmpty()){
                     et4.requestFocus();
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        et4.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(!charSequence.toString().trim().isEmpty()){
+                    et5.requestFocus();
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        et5.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(!charSequence.toString().trim().isEmpty()){
+                    et6.requestFocus();
                 }
 
             }
