@@ -41,11 +41,9 @@ import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 
 public class AddItemActivity extends AppCompatActivity {
-    TextView tt;
+    TextView date;
     //ImageView ig;
-    int y;
-    int m;
-    int d;
+    int year, mon, day;
 
     private ImageView imageView;
     private ImageButton imageButton;
@@ -76,24 +74,24 @@ public class AddItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.add_item);
-        tt = findViewById(R.id.tt);
+        date = findViewById(R.id.editDateView);
         ImageView calendar = findViewById(R.id.calendar);
         //ig=findViewById(R.id.ig);
-        final Calendar c=Calendar.getInstance();
+        final Calendar c = Calendar.getInstance();
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                y = c.get(Calendar.YEAR);
-                m = c.get(Calendar.MONTH);
-                d = c.get(Calendar.DAY_OF_MONTH);
+                year = c.get(Calendar.YEAR);
+                mon = c.get(Calendar.MONTH);
+                day = c.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog g = new DatePickerDialog(AddItemActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                        i1 = i1+1;
-                        tt.setText(i2+"/"+i1+"/"+i);
+                        i1 = i1 + 1;
+                        date.setText(i2 + "/" + i1+ "/" + i);
 
                     }
-                }, y, m, d);
+                }, year, mon, day);
                 g.show();
 
             }
@@ -210,27 +208,27 @@ public class AddItemActivity extends AppCompatActivity {
 //    }
 
     private String getName(){
-        EditText nameView = findViewById(R.id.editTextName);
+        EditText nameView = findViewById(R.id.editNameView);
         String name = nameView.getText().toString();
         return name;
     }
     private String getBrand(){
-        EditText brandView = findViewById(R.id.editTextBrand);
+        EditText brandView = findViewById(R.id.editBrandView);
         String brand = brandView.getText().toString();
         return brand;
     }
     private String getLocation(){
-        EditText locView = findViewById(R.id.editTextLocation);
+        EditText locView = findViewById(R.id.editLocView);
         String loc = locView.getText().toString();
         return loc;
     }
     private String getContact(){
-        EditText contactView = findViewById(R.id.editTextContact);
+        EditText contactView = findViewById(R.id.editContactView);
         String contact = contactView.getText().toString();
         return contact;
     }
     private String getDate(){
-        EditText dateView = findViewById(R.id.tt);
+        EditText dateView = findViewById(R.id.editDateView);
         String date = dateView.getText().toString();
         return date;
     }

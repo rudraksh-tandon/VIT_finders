@@ -71,33 +71,28 @@ public class ItemDescriptionActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 //              send contact number from the database
-                PhoneAuthProvider.getInstance().verifyPhoneNumber("+91" + "6393764373",
+                PhoneAuthProvider.getInstance().verifyPhoneNumber("+91" + getIntent().getStringExtra("contact"),
                         60,
                         TimeUnit.SECONDS,
                         ItemDescriptionActivity.this,
                         new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-                    @Override
-                    public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-//                        delete the item from database and then move to the lost items list
-//                        Toast.makeText(ItemDescriptionActivity.this, "OTP verified successfully", Toast.LENGTH_LONG).show();
-//                        deletion()
-                        Intent intent = new Intent(ItemDescriptionActivity.this, LostItemsActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
-                    }
+                            @Override
+                            public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+                            }
 
-                    @Override
-                    public void onVerificationFailed(@NonNull FirebaseException e) {
-                        Toast.makeText(ItemDescriptionActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                    }
+                            @Override
+                            public void onVerificationFailed(@NonNull FirebaseException e) {
+                                Toast.makeText(ItemDescriptionActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                            }
 
                             @Override
                             public void onCodeSent(@NonNull String backendOtp, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-//                                super.onCodeSent(s, forceResendingToken);
-                                Intent intent = new Intent(ItemDescriptionActivity.this, OtpVerifyActivity.class);
+//                                super.onCodeSent(backendOtp, forceResendingToken);
+                                Intent intent = new Intent(getApplicationContext(), OtpVerifyActivity.class);
 //                              send contact number from the database
-                                intent.putExtra("mobile", "6393764373");
+                                intent.putExtra("mobile", getIntent().getStringExtra("contact"));
                                 intent.putExtra("backendOtp", backendOtp);
                                 startActivity(intent);
                             }
@@ -105,6 +100,6 @@ public class ItemDescriptionActivity extends AppCompatActivity {
             }
         });
 
-        
+
     }
 }

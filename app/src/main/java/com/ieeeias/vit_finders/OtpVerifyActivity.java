@@ -1,5 +1,6 @@
 package com.ieeeias.vit_finders;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -79,6 +80,7 @@ public class OtpVerifyActivity extends AppCompatActivity {
             }
         });
 
+        button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,33 +88,34 @@ public class OtpVerifyActivity extends AppCompatActivity {
                         !inputNum3.toString().isEmpty() && !inputNum4.toString().isEmpty() &&
                         !inputNum5.toString().isEmpty() && !inputNum6.toString().isEmpty()){
 
-                        String inputOtp = inputNum1.getText().toString() +
-                                inputNum2.getText().toString() +
-                                inputNum3.getText().toString() +
-                                inputNum4.getText().toString() +
-                                inputNum5.getText().toString() +
-                                inputNum6.getText().toString();
+                    String inputOtp = inputNum1.getText().toString() +
+                            inputNum2.getText().toString() +
+                            inputNum3.getText().toString() +
+                            inputNum4.getText().toString() +
+                            inputNum5.getText().toString() +
+                            inputNum6.getText().toString();
 
-                        if(backendOtp != null){
-                            PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(backendOtp, inputOtp);
-                            FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if(task.isSuccessful()){
-//                                        Intent intent = new Intent(OtpVerifyActivity.this, LostItemsActivity.class);
-//                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                                        startActivity(intent);
-                                        Toast.makeText(OtpVerifyActivity.this, "OTP verified successfully", Toast.LENGTH_LONG).show();
-                                    }
-                                    else{
-                                        Toast.makeText(OtpVerifyActivity.this, "Enter the correct OTP", Toast.LENGTH_LONG).show();
-                                    }
+                    if(backendOtp != null){
+                        PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(backendOtp, inputOtp);
+                        FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(task.isSuccessful()){
+                                    Toast.makeText(OtpVerifyActivity.this, "OTP verified successfully", Toast.LENGTH_LONG).show();
+//                                        delete()
+                                    Intent intent = new Intent(OtpVerifyActivity.this, LostItemsActivity.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(intent);
                                 }
-                            });
-                        }
-                        else{
-                            Toast.makeText(OtpVerifyActivity.this, "Please check internet connection", Toast.LENGTH_LONG).show();
-                        }
+                                else{
+                                    Toast.makeText(OtpVerifyActivity.this, "Enter the correct OTP", Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
+                    }
+                    else{
+                        Toast.makeText(OtpVerifyActivity.this, "Please check internet connection", Toast.LENGTH_LONG).show();
+                    }
                 }
                 else{
                     Toast.makeText(OtpVerifyActivity.this, "Enter all the digits", Toast.LENGTH_SHORT).show();

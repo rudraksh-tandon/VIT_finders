@@ -12,23 +12,15 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import static android.content.ContentValues.TAG;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 //    RecyclerView recyclerView;
@@ -103,15 +95,16 @@ public class MainActivity extends AppCompatActivity {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
-            Toast.makeText(MainActivity.this, "Signin okk Successfull", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(MainActivity.this, MainScreenActivity.class);
-            startActivity(intent);
             Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
 
+            Intent intent = new Intent(MainActivity.this, MainScreenActivity.class);
+                startActivity(intent);
 //            String result= account.toString();
 //            //System.out.println(result);
 //
-//            boolean bool =result .contains("@vitstudent.ac.in");
+//            Log.w(TAG, "email = " + result);
+//            boolean bool = result.contains("@vitstudent.ac.in");
+//
 //            if(bool) {
 ////                System.out.println(result);
 //                Intent intent = new Intent(MainActivity.this, MainScreenActivity.class);

@@ -93,7 +93,7 @@ public class LostItemsActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                try{
+                try {
                     Intent intent = new Intent(LostItemsActivity.this, ItemDescriptionActivity.class);
                     ListItem listItem = (ListItem) listView.getItemAtPosition(i);
                     intent.putExtra("name", listItem.getNameView());
@@ -103,7 +103,7 @@ public class LostItemsActivity extends AppCompatActivity {
                     intent.putExtra("contact", listItem.getContactView());
                     intent.putExtra("imageUrl", listItem.getImageUrl());
                     startActivity(intent);
-                }catch (Exception e){
+                } catch (Exception e) {
                     Log.w(TAG, e.getMessage());
                 }
 //                String key = mDatabaseReference.child("items").getKey();
@@ -115,37 +115,38 @@ public class LostItemsActivity extends AppCompatActivity {
         });
 
         // Setup FAB to open AddItemActivity
-        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LostItemsActivity.this, AddItemActivity.class);
-                startActivity(intent);
-            }
-        });
+//        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(LostItemsActivity.this, AddItemActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.search, menu);
-        MenuItem item = menu.findItem(R.id.search);
-        SearchView searchView = (SearchView) item.getActionView();
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                return false;
-            }
-        });
-
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    private void textSearch(String str){
-
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.search, menu);
+//        MenuItem item = menu.findItem(R.id.search);
+//        SearchView searchView = (SearchView) item.getActionView();
+//
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String s) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String s) {
+//                return false;
+//            }
+//        });
+//
+//        return super.onCreateOptionsMenu(menu);
+//    }
+//
+//    private void textSearch(String str){
+//
+//    }
 }
+
