@@ -95,25 +95,17 @@ public class MainActivity extends AppCompatActivity {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
-            Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
+            String result = acct.getEmail();
+            boolean bool = result.contains("@vitstudent.ac.in");
 
-            Intent intent = new Intent(MainActivity.this, MainScreenActivity.class);
+            if(bool) {
+                Intent intent = new Intent(MainActivity.this, MainScreenActivity.class);
                 startActivity(intent);
-//            String result= account.toString();
-//            //System.out.println(result);
-//
-//            Log.w(TAG, "email = " + result);
-//            boolean bool = result.contains("@vitstudent.ac.in");
-//
-//            if(bool) {
-////                System.out.println(result);
-//                Intent intent = new Intent(MainActivity.this, MainScreenActivity.class);
-//                startActivity(intent);
-//                Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
-//            }
-//            else{
-//                Toast.makeText(MainActivity.this, "Access denied Please use VIT MAIL ID", Toast.LENGTH_LONG).show();
-//            }
+                Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
+            }
+            else{
+                Toast.makeText(MainActivity.this, "Access denied Please use VIT MAIL ID", Toast.LENGTH_LONG).show();
+            }
 
             // Signed in successfully, show authenticated UI.
 
