@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +19,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import static android.content.ContentValues.TAG;
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 //    Adapter adapter;
 
     GoogleSignInClient mGoogleSignInClient;
+    Button sg;
     private static int RC_SIGN_IN=1000;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        sg=findViewById(R.id.sg);
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         // Set the dimensions of the sign-in button.
         Button signInButton = findViewById(R.id.button);
@@ -72,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
 //    ((RecyclerView.Adapter<?>) adapter).notifyDataSetChanged();
 //
 //    }
+
 
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -116,5 +121,28 @@ public class MainActivity extends AppCompatActivity {
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.e(TAG, "signInResult:failed code=" + e.getStatusCode());
         }
+
+
+
     }
+
+    private void signOut() {
+        mGoogleSignInClient.signOut()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Toast.makeText(MainActivity.this,"Signout successfull",Toast.LENGTH_LONG).show();
+                    }
+                });
+        sg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signOut();
+            }
+        });
+    }
+
+
+
+
 }
