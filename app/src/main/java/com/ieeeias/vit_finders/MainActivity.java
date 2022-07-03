@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
     GoogleSignInClient mGoogleSignInClient;
     Button sg;
+    Button signInButton ;
+
     private static int RC_SIGN_IN=1000;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,10 +45,12 @@ public class MainActivity extends AppCompatActivity {
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        signInButton=findViewById(R.id.button);
+
         sg=findViewById(R.id.sg);
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         // Set the dimensions of the sign-in button.
-        Button signInButton = findViewById(R.id.button);
+
 //        signInButton.setSize(SignInButton.SIZE_STANDARD);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,15 +105,30 @@ public class MainActivity extends AppCompatActivity {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
             String result = acct.getEmail();
-            boolean bool = result.contains("@vitstudent.ac.in");
+            boolean bool = result.contains("@vitstudent");
+            Toast.makeText(MainActivity.this, "Enter", Toast.LENGTH_LONG).show();
 
-            if(bool) {
+            System.out.println(bool);
+            System.out.println(result);
+
+            if(bool==true) {
                 Intent intent = new Intent(MainActivity.this, MainScreenActivity.class);
                 startActivity(intent);
-                Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
+               Toast.makeText(MainActivity.this, "Signin22 Successfull", Toast.LENGTH_LONG).show();
+                signInButton.setVisibility(View.VISIBLE);
+               sg.setVisibility(View.INVISIBLE);
             }
             else{
+//                Intent intent = new Intent(MainActivity.this, personalinfo.class);
+//                startActivity(intent);
+//                Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
                 Toast.makeText(MainActivity.this, "Access denied Please use VIT MAIL ID", Toast.LENGTH_LONG).show();
+                signInButton.setVisibility(View.INVISIBLE);
+                sg.setVisibility(View.VISIBLE);
+
+
+
+
             }
 
             // Signed in successfully, show authenticated UI.
@@ -120,9 +139,14 @@ public class MainActivity extends AppCompatActivity {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.e(TAG, "signInResult:failed code=" + e.getStatusCode());
+            sg.setVisibility(View.VISIBLE);
         }
-
-
+        sg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signOut();
+            }
+        });
 
     }
 
@@ -131,18 +155,17 @@ public class MainActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(MainActivity.this,"Signout successfull",Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this,"signout sucessfull",Toast.LENGTH_LONG).show();
+                        // ...
                     }
                 });
-        sg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signOut();
-            }
-        });
+
     }
 
-
-
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        sg.setVisibility(View.VISIBLE);
+        signInButton.setVisibility(View.INVISIBLE);
+    }
 }
