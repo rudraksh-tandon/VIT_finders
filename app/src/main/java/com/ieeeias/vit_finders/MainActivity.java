@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
             GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
             String result = acct.getEmail();
             boolean bool = result.contains("@vitstudent");
-            Toast.makeText(MainActivity.this, "Enter", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "successfull", Toast.LENGTH_LONG).show();
 
             System.out.println(bool);
             System.out.println(result);
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
             if(bool==true) {
                 Intent intent = new Intent(MainActivity.this, MainScreenActivity.class);
                 startActivity(intent);
-               Toast.makeText(MainActivity.this, "Signin22 Successfull", Toast.LENGTH_LONG).show();
+               Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
                 signInButton.setVisibility(View.VISIBLE);
                sg.setVisibility(View.INVISIBLE);
             }
