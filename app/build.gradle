@@ -39,6 +39,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:20.0.1'
     implementation 'com.google.firebase:firebase-database:20.0.5'
     implementation 'com.google.firebase:firebase-auth:21.0.5'
+    implementation 'com.google.firebase:firebase-firestore:24.2.0'
     testImplementation 'junit:junit:4.13.2'
     apply plugin: 'com.android.application'
     implementation 'com.google.android.gms:play-services-auth:20.2.0'

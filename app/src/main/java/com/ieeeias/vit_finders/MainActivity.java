@@ -25,10 +25,6 @@ import com.google.android.gms.tasks.Task;
 import static android.content.ContentValues.TAG;
 
 public class MainActivity extends AppCompatActivity {
-//    RecyclerView recyclerView;
-//    LinearLayoutManager layoutManager;
-//    List<ListItem>itemList;
-//    Adapter adapter;
 
     GoogleSignInClient mGoogleSignInClient;
     Button sg;
@@ -43,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-        sg=findViewById(R.id.sg);
+        sg = findViewById(R.id.sg);
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         // Set the dimensions of the sign-in button.
         Button signInButton = findViewById(R.id.button);
@@ -56,27 +52,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-//    private void iniData() {
-//        itemList=new ArrayList<>(); //we can also add data from firebase
-//        itemList.add(new ListItem(R.drawable.lost_item_img,"speaker","SJT"));
-//        itemList.add(new ListItem(R.drawable.lost_item_img,"speaker","SJT"));
-//        itemList.add(new ListItem(R.drawable.lost_item_img,"speaker","SJT"));
-//
-//
-//
-//    }
-//    private void iniRecyclerView() {
-//
-//        recyclerView=findViewById(R.id.rview);
-//        layoutManager=new LinearLayoutManager(this);
-//        layoutManager.setOrientation(RecyclerView.VERTICAL);
-//        recyclerView.setLayoutManager(layoutManager);
-//      adapter = (Adapter) new ListItemAdapter(itemList);
-//    recyclerView.setAdapter((RecyclerView.Adapter) adapter);
-//    ((RecyclerView.Adapter<?>) adapter).notifyDataSetChanged();
-//
-//    }
-
 
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -101,28 +76,25 @@ public class MainActivity extends AppCompatActivity {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
             String result = acct.getEmail();
+//            Log.w(TAG, result);
             boolean bool = result.contains("@vitstudent.ac.in");
 
             if(bool) {
                 Intent intent = new Intent(MainActivity.this, MainScreenActivity.class);
                 startActivity(intent);
                 Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
+
             }
             else{
                 Toast.makeText(MainActivity.this, "Access denied Please use VIT MAIL ID", Toast.LENGTH_LONG).show();
+                mGoogleSignInClient.signOut();
             }
-
-            // Signed in successfully, show authenticated UI.
-
-
 
         } catch (ApiException e){
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.e(TAG, "signInResult:failed code=" + e.getStatusCode());
         }
-
-
 
     }
 
@@ -131,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(MainActivity.this,"Signout successfull",Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this,"Sign out Successful",Toast.LENGTH_LONG).show();
                     }
                 });
         sg.setOnClickListener(new View.OnClickListener() {
@@ -141,8 +113,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
-
 }
