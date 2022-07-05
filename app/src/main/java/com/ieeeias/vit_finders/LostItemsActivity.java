@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
@@ -36,15 +38,25 @@ public class LostItemsActivity extends AppCompatActivity {
 
     private ListView listView;
     private DatabaseReference mDatabaseReference;
+    ImageView ig;
 //    private StorageReference mStorageReference;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.lost_items);
 
         listView = findViewById(R.id.itemsList);
+        ig=findViewById(R.id.personal);
+        ig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(LostItemsActivity.this,personalinfo.class);
+                startActivity(intent);
+            }
+        });
 
         ArrayList<ListItem> itemList = new ArrayList<>();
         ListItemAdapter mAdapter = new ListItemAdapter(this, R.layout.list_item, itemList);

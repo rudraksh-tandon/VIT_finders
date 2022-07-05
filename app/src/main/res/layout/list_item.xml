@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="140dp"
     android:background="@drawable/list_item_box"
-    android:layout_marginStart="10dp"
+    android:layout_marginStart="1dp"
     android:layout_marginEnd="10dp">
 
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="15dp"
-            android:scaleType="centerCrop"
-            tools:srcCompat="@drawable/lost_item_img"/>
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="15dp"
+        android:scaleType="centerCrop"
 
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="140dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="20dp"
-            android:layout_toEndOf="@id/image"
-            android:textColor="@color/black"
-            tools:text="@string/itemname"
-            android:textSize="25sp" />
+        tools:srcCompat="@drawable/lost_item_img" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@id/image"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+         />
 
         <TextView
             android:id="@+id/loc"
@@ -39,4 +41,14 @@
             tools:text="@string/location"
             android:textSize="25sp" />
 
-    </RelativeLayout>
+    <ImageView
+        android:id="@+id/personal"
+        android:layout_width="36dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="350dp"
+        android:layout_marginTop="0dp"
+        android:scaleType="center"
+        android:src="@drawable/ic_baseline_person_24" />
+
+
+</RelativeLayout>

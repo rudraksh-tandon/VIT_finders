@@ -45,132 +45,172 @@
         android:id="@+id/name"
         android:layout_width="140dp"
         android:layout_height="50dp"
-        android:layout_marginTop="55dp"
         android:layout_marginStart="20dp"
+        android:layout_marginBottom="380dp"
         android:text="ITEM NAME"
+        android:textColor="#4CAF50"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/editNameView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/brand"
         android:layout_width="140dp"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
         android:text="BRAND"
-        android:textStyle="bold"
+        android:textColor="#4CAF50"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/editBrandView"
-        app:layout_constraintTop_toBottomOf="@+id/name"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <TextView
         android:id="@+id/date"
         android:layout_width="140dp"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
         android:text="DATE"
-        android:textStyle="bold"
+        android:textColor="#4CAF50"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/editDateView"
-        app:layout_constraintTop_toBottomOf="@+id/brand"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/brand" />
 
     <TextView
         android:id="@+id/location"
         android:layout_width="140dp"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
         android:text="LOCATION"
-        android:textStyle="bold"
+        android:textColor="#4CAF50"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/editLocView"
-        app:layout_constraintTop_toBottomOf="@+id/date"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date" />
 
     <TextView
         android:id="@+id/contact"
         android:layout_width="140dp"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
         android:text="CONTACT"
-        android:textStyle="bold"
+        android:textColor="#4CAF50"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/editContactView"
-        app:layout_constraintTop_toBottomOf="@+id/location"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/location" />
 
     <EditText
         android:id="@+id/editNameView"
         android:layout_width="180dp"
         android:layout_height="50dp"
-        android:layout_marginTop="55dp"
-        android:layout_marginStart="190dp"
+        android:layout_marginEnd="16dp"
+        android:textColorHint="#131313"
+        android:textColorLink="#16E1C3"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        android:backgroundTint="#009688"
+        app:layout_constraintBottom_toBottomOf="@+id/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/name"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/editBrandView"
         android:layout_width="180dp"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="190dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#009688"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/editNameView"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="@+id/brand"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/brand"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/editDateView"
         android:layout_width="180dp"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="190dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#009688"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/editBrandView"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="@+id/date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/date"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/editLocView"
         android:layout_width="180dp"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="190dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#009688"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/editDateView"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="@+id/location"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/location"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/editContactView"
         android:layout_width="180dp"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="190dp"
+        android:backgroundTint="#009688"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/editLocView"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="@+id/contact"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.917"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/contact"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#009688"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:srcCompat="@android:drawable/ic_menu_upload" />
+        app:srcCompat="@android:drawable/ic_menu_upload"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <ImageView
         android:id="@+id/calendar"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="9dp"
+        android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/editDateView"
         app:layout_constraintEnd_toEndOf="@+id/editDateView"
-        app:srcCompat="@drawable/calendar" />
+        app:srcCompat="@drawable/cc2" />
+
+    <ImageView
+        android:id="@+id/personal"
+        android:layout_width="36dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="356dp"
+        android:layout_marginBottom="668dp"
+        android:scaleType="center"
+        android:src="@drawable/ic_baseline_person_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,6 +28,7 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class ItemDescriptionActivity extends AppCompatActivity {
+    ImageView ig;
 
     private DatabaseReference mDatabaseReference;
     private StorageReference mStorageReference;
@@ -50,6 +51,15 @@ public class ItemDescriptionActivity extends AppCompatActivity {
         TextView contactView = findViewById(R.id.contactView);
         TextView locView = findViewById(R.id.locView);
         ImageView imageView = findViewById(R.id.imageView);
+
+        ig=findViewById(R.id.personal);
+        ig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(ItemDescriptionActivity.this,personalinfo.class);
+                startActivity(intent);
+            }
+        });
         URI imageUri;
 //        URL imageUrl;
 

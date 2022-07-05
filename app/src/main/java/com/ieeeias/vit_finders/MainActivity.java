@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
             System.out.println(result);
 
             if(bool==true) {
-                Intent intent = new Intent(MainActivity.this, MainScreenActivity.class);
+                Intent intent = new Intent(MainActivity.this, AddItemActivity.class);
                 startActivity(intent);
                Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
                 signInButton.setVisibility(View.VISIBLE);
@@ -141,31 +141,8 @@ public class MainActivity extends AppCompatActivity {
             Log.e(TAG, "signInResult:failed code=" + e.getStatusCode());
             sg.setVisibility(View.VISIBLE);
         }
-        sg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signOut();
-            }
-        });
 
     }
 
-    private void signOut() {
-        mGoogleSignInClient.signOut()
-                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(MainActivity.this,"signout sucessfull",Toast.LENGTH_LONG).show();
-                        // ...
-                    }
-                });
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        sg.setVisibility(View.VISIBLE);
-        signInButton.setVisibility(View.INVISIBLE);
-    }
 }
