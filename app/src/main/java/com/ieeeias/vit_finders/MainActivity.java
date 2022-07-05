@@ -1,6 +1,7 @@
 package com.ieeeias.vit_finders;
 
 import android.content.Intent;
+import android.content.IntentSender;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.SoundEffectConstants;
@@ -21,6 +22,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.play.core.appupdate.AppUpdateInfo;
+import com.google.android.play.core.appupdate.AppUpdateManager;
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.install.model.AppUpdateType;
+import com.google.android.play.core.install.model.UpdateAvailability;
 
 import static android.content.ContentValues.TAG;
 
@@ -32,11 +38,14 @@ public class MainActivity extends AppCompatActivity {
 
     GoogleSignInClient mGoogleSignInClient;
     Button sg;
-    Button signInButton ;
+    Button signInButton;
 
-    private static int RC_SIGN_IN=1000;
+    private static int RC_SIGN_IN = 1000;
+    private final int updatereqcode = 1600;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
@@ -45,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-        signInButton=findViewById(R.id.button);
+        signInButton = findViewById(R.id.button);
 
-        sg=findViewById(R.id.sg);
+        sg = findViewById(R.id.sg);
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         // Set the dimensions of the sign-in button.
 
@@ -59,7 +68,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
     }
+
+
 //    private void iniData() {
 //        itemList=new ArrayList<>(); //we can also add data from firebase
 //        itemList.add(new ListItem(R.drawable.lost_item_img,"speaker","SJT"));
@@ -88,8 +100,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        appupdate();
         super.onActivityResult(requestCode, resultCode, data);
 
         // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
@@ -100,7 +115,9 @@ public class MainActivity extends AppCompatActivity {
             handleSignInResult(task);
         }
     }
-    private void handleSignInResult(Task<GoogleSignInAccount> completedTask){
+
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        appupdate();
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
@@ -111,14 +128,13 @@ public class MainActivity extends AppCompatActivity {
             System.out.println(bool);
             System.out.println(result);
 
-            if(bool==true) {
+            if (bool == true) {
                 Intent intent = new Intent(MainActivity.this, AddItemActivity.class);
                 startActivity(intent);
-               Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
                 signInButton.setVisibility(View.VISIBLE);
-               sg.setVisibility(View.INVISIBLE);
-            }
-            else{
+                sg.setVisibility(View.INVISIBLE);
+            } else {
 //                Intent intent = new Intent(MainActivity.this, personalinfo.class);
 //                startActivity(intent);
 //                Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
@@ -127,15 +143,12 @@ public class MainActivity extends AppCompatActivity {
                 sg.setVisibility(View.VISIBLE);
 
 
-
-
             }
 
             // Signed in successfully, show authenticated UI.
 
 
-
-        } catch (ApiException e){
+        } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.e(TAG, "signInResult:failed code=" + e.getStatusCode());
@@ -144,5 +157,48 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void appupdate() {
+        AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(this);
 
+// Returns an intent object that you use to check for an update.
+        Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
+
+// Checks that the platform will allow the specified type of update.
+        appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                    // This example applies an immediate update. To apply a flexible update
+                    // instead, pass in AppUpdateType.FLEXIBLE
+                    && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
+                // Request the update.
+                try {
+
+
+                    appUpdateManager.startUpdateFlowForResult(appUpdateInfo, AppUpdateType.IMMEDIATE
+                            , MainActivity.this, updatereqcode);
+                } catch (IntentSender.SendIntentException exception) {
+                    Toast.makeText(this, "Calling in app update", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+    }
+
+
+
+    protected void onActivityResult1(int requestcc, int resultcode,@Nullable Intent data) {
+
+        super.onActivityResult(requestcc, resultcode, data);
+        if (data == null) return;
+        if (requestcc == updatereqcode) {
+            Toast.makeText(this, "Downloading started", Toast.LENGTH_LONG).show();
+
+        }
+        if (requestcc == updatereqcode) {
+            Toast.makeText(this, "failed to make request", Toast.LENGTH_LONG).show();
+
+        }
+
+
+    }
 }
+
