@@ -30,13 +30,5 @@
         android:background="@drawable/login_background_box"
         android:text="LOGIN" />
 
-    <Button
-        android:id="@+id/sg"
-        android:layout_width="208dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="-72dp"
-        android:background="@drawable/login_background_box"
-        android:text="SIgnout " />
+
 </RelativeLayout>

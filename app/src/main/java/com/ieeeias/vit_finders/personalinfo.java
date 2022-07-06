@@ -122,7 +122,9 @@ public class personalinfo extends AppCompatActivity {
                             }
                         }
                     });
+
         }
+
 //        signout.setOnClickListener(view -> {
 //
 //

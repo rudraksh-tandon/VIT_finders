@@ -112,4 +112,10 @@ public class ItemDescriptionActivity extends AppCompatActivity {
 
 
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent= new Intent(ItemDescriptionActivity.this,LostItemsActivity.class);
+        startActivity(intent);
+    }
 }

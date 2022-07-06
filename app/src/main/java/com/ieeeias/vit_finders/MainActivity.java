@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 //    Adapter adapter;
 
     GoogleSignInClient mGoogleSignInClient;
-    Button sg;
+    //Button sg;
     Button signInButton;
 
     private static int RC_SIGN_IN = 1000;
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         signInButton = findViewById(R.id.button);
 
-        sg = findViewById(R.id.sg);
+        //sg = findViewById(R.id.sg);
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         // Set the dimensions of the sign-in button.
 
@@ -132,15 +132,15 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, AddItemActivity.class);
                 startActivity(intent);
                 Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
-                signInButton.setVisibility(View.VISIBLE);
-                sg.setVisibility(View.INVISIBLE);
+                //signInButton.setVisibility(View.VISIBLE);
+                //sg.setVisibility(View.INVISIBLE);
             } else {
 //                Intent intent = new Intent(MainActivity.this, personalinfo.class);
 //                startActivity(intent);
 //                Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
                 Toast.makeText(MainActivity.this, "Access denied Please use VIT MAIL ID", Toast.LENGTH_LONG).show();
-                signInButton.setVisibility(View.INVISIBLE);
-                sg.setVisibility(View.VISIBLE);
+                //signInButton.setVisibility(View.INVISIBLE);
+                //sg.setVisibility(View.VISIBLE);
 
 
             }
@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.e(TAG, "signInResult:failed code=" + e.getStatusCode());
-            sg.setVisibility(View.VISIBLE);
+            //sg.setVisibility(View.VISIBLE);
         }
 
     }
@@ -199,6 +199,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+
     }
-}
+
+    }
+
+
+
 

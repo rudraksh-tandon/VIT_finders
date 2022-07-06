@@ -160,5 +160,11 @@ public class LostItemsActivity extends AppCompatActivity {
 //    private void textSearch(String str){
 //
 //    }
+@Override
+public void onBackPressed() {
+    super.onBackPressed();
+    Intent intent= new Intent(LostItemsActivity.this,MainScreenActivity.class);
+    startActivity(intent);
+}
 }
 

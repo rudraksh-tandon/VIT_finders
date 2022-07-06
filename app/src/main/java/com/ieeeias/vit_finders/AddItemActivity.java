@@ -305,4 +305,10 @@ public class AddItemActivity extends AppCompatActivity {
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cr.getType(uri));
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent= new Intent(AddItemActivity.this,MainScreenActivity.class);
+        startActivity(intent);
+    }
 }
