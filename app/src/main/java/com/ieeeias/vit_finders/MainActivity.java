@@ -135,12 +135,20 @@ public class MainActivity extends AppCompatActivity {
                 //signInButton.setVisibility(View.VISIBLE);
                 //sg.setVisibility(View.INVISIBLE);
             } else {
-//                Intent intent = new Intent(MainActivity.this, personalinfo.class);
+ //                Intent intent = new Intent(MainActivity.this, personalinfo.class);
 //                startActivity(intent);
 //                Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
                 Toast.makeText(MainActivity.this, "Access denied Please use VIT MAIL ID", Toast.LENGTH_LONG).show();
                 //signInButton.setVisibility(View.INVISIBLE);
                 //sg.setVisibility(View.VISIBLE);
+
+                    mGoogleSignInClient.signOut()
+                            .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    Toast.makeText(MainActivity.this,"Signout successful",Toast.LENGTH_LONG).show();
+                                }
+                            });
 
 
             }
@@ -149,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         } catch (ApiException e) {
+
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.e(TAG, "signInResult:failed code=" + e.getStatusCode());
@@ -177,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
                             , MainActivity.this, updatereqcode);
                 } catch (IntentSender.SendIntentException exception) {
                     Toast.makeText(this, "Calling in app update", Toast.LENGTH_SHORT).show();
+                    signIn();
                 }
             }
         });
