@@ -3,10 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".LostItemsActivity"
     android:background="@drawable/main_background">
 
-<!-- Empty view for the list -->
+    <!-- Empty view for the list -->
     <RelativeLayout
         android:id="@+id/empty_view"
         android:layout_width="wrap_content"
@@ -53,18 +54,37 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginBottom="20dp"
-        android:src="@drawable/app_logo" />
+        android:src="@drawable/app_logo"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/profile_image"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/logo"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/list_item_box"
+        android:layout_margin="10dp"
+        app:queryHint="Search Item name"
+        app:iconifiedByDefault="false"/>
 
     <ListView
         android:id="@+id/itemsList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/logo"
+        android:layout_below="@+id/searchBar"
         android:divider="@android:color/transparent"
-        android:dividerHeight="10dp"
+        android:dividerHeight="8dp"
         android:padding="16dp" />
 
     <!--    <com.getbase.floatingactionbutton.AddFloatingActionButton-->
@@ -80,17 +100,9 @@
     <!--        app:fab_colorNormal="@color/space_pink"-->
     <!--        app:rippleColor="@color/purple"/>-->
 
-<!--        <ProgressBar-->
-<!--            android:id="@+id/progressBar"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_centerInParent="true"/>-->
-    <ImageView
-        android:id="@+id/personal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="350dp"
-        android:layout_marginTop="0dp"
-        android:scaleType="center"
-        android:src="@drawable/lgggg" />
+    <!--        <ProgressBar-->
+    <!--            android:id="@+id/progressBar"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_centerInParent="true"/>-->
 </RelativeLayout>

@@ -13,7 +13,20 @@
         android:layout_alignParentStart="true"
         android:src="@drawable/app_logo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/profile_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"/>
 
     <ImageView
         android:id="@+id/imageView"
@@ -156,16 +169,5 @@
         app:layout_constraintEnd_toStartOf="@+id/contactView"
         app:layout_constraintTop_toBottomOf="@+id/location"
         app:layout_constraintStart_toStartOf="parent"/>
-
-    <ImageView
-        android:id="@+id/personal"
-        android:layout_width="49dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="356dp"
-        android:layout_marginBottom="668dp"
-        android:scaleType="center"
-        android:src="@drawable/lgggg"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

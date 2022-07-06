@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.net.URL;
 
-public class ListItem  {
+public class ListItem{
 
     private String imageUrl;
     private String nameView;
@@ -16,7 +16,7 @@ public class ListItem  {
     private String brandView;
     private String dateView;
     private String contactView;
-
+    ImageView ig;
 
     public ListItem(){
 
