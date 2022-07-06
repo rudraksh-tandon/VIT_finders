@@ -3,36 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/profiledesign"
 
 
     android:layout_height="match_parent">
 
 
-    <ImageView
-        android:id="@+id/personal"
-        android:layout_width="401dp"
-        android:layout_height="176dp"
-        android:layout_marginTop="4dp"
-        android:textColor="#1AD121"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/ppo"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <EditText
         android:id="@+id/pegv"
 
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_marginTop="608dp"
+        android:layout_marginTop="648dp"
         android:backgroundTint="#009688"
-        android:textColor="#1AD121"
-        android:enabled="false"
         android:ems="10"
+        android:enabled="false"
         android:inputType="none"
+        android:textColor="#1AD121"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
@@ -41,13 +32,13 @@
         android:id="@+id/personfamily"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_marginTop="484dp"
+        android:layout_marginTop="532dp"
+        android:backgroundTint="#009688"
         android:ems="10"
-        android:inputType="none"
         android:enabled="false"
+        android:inputType="none"
         android:textColor="#1AD121"
         app:layout_constraintEnd_toEndOf="parent"
-        android:backgroundTint="#009688"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -57,32 +48,32 @@
         android:id="@+id/persongivenname"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="56dp"
         android:backgroundTint="#009688"
-        android:textColor="#1AD121"
         android:ems="10"
-        android:inputType="none"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
         android:enabled="false"
+        android:inputType="none"
+        android:textColor="#1AD121"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/namee"
         tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/namee"
         android:layout_width="402dp"
-        android:backgroundTint="#009688"
         android:layout_height="88dp"
-        android:layout_marginTop="216dp"
-        android:textColor="#1AD121"
+        android:layout_marginTop="232dp"
+        android:backgroundTint="#009688"
         android:ems="10"
         android:enabled="false"
         android:inputType="none"
+        android:textColor="#1AD121"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/personal"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
