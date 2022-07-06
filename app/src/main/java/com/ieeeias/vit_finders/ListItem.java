@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.net.URL;
 
-public class ListItem extends AppCompatActivity {
+public class ListItem{
 
     private String imageUrl;
     private String nameView;
@@ -24,14 +24,7 @@ public class ListItem extends AppCompatActivity {
 
 
     public ListItem(String imageUrl, String nameView, String locView, String brandView, String dateView, String contactView) {
-        ig=findViewById(R.id.personal);
-        ig.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent= new Intent(ListItem.this,personalinfo.class);
-                startActivity(intent);
-            }
-        });
+
         this.imageUrl = imageUrl;
         this.nameView = nameView;
         this.locView = locView;

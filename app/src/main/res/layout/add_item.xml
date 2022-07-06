@@ -13,7 +13,20 @@
         android:layout_alignParentStart="true"
         android:src="@drawable/app_logo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/profile_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"/>
 
     <ImageView
         android:id="@+id/imageView"
@@ -22,7 +35,8 @@
         android:layout_marginStart="80dp"
         android:layout_marginEnd="80dp"
         android:layout_marginTop="80dp"
-        android:src="@drawable/lost_item_img"
+        tools:src="@drawable/main_screen_box"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -46,15 +60,15 @@
         android:layout_width="140dp"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
-        android:layout_marginBottom="380dp"
+        android:layout_marginTop="40dp"
         android:text="ITEM NAME"
         android:textColor="#4CAF50"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/editNameView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/brand"
@@ -67,8 +81,8 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/editBrandView"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <TextView
@@ -201,16 +215,5 @@
         app:layout_constraintBottom_toBottomOf="@+id/editDateView"
         app:layout_constraintEnd_toEndOf="@+id/editDateView"
         app:srcCompat="@drawable/cc2" />
-
-    <ImageView
-        android:id="@+id/personal"
-        android:layout_width="57dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="356dp"
-        android:layout_marginBottom="668dp"
-        android:scaleType="center"
-        android:src="@drawable/lgggg"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
