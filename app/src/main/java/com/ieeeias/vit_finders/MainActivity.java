@@ -123,22 +123,23 @@ public class MainActivity extends AppCompatActivity {
             GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
             String result = acct.getEmail();
             boolean bool = result.contains("@vitstudent");
-            Toast.makeText(MainActivity.this, "successfull", Toast.LENGTH_LONG).show();
-
-            System.out.println(bool);
-            System.out.println(result);
+//            Toast.makeText(MainActivity.this, "successfull", Toast.LENGTH_LONG).show();
+//Log.w(TAG, "email="+result);
+//            System.out.println(bool);
+//            System.out.println(result);
 
             if (bool == true) {
-                Intent intent = new Intent(MainActivity.this, AddItemActivity.class);
-                startActivity(intent);
                 Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainActivity.this, MainScreenActivity.class);
+                startActivity(intent);
                 //signInButton.setVisibility(View.VISIBLE);
                 //sg.setVisibility(View.INVISIBLE);
             } else {
- //                Intent intent = new Intent(MainActivity.this, personalinfo.class);
+ //                Intent intent = new Intent(MainActivity.this, PersonalInfo.class);
 //                startActivity(intent);
 //                Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
                 Toast.makeText(MainActivity.this, "Access denied Please use VIT MAIL ID", Toast.LENGTH_LONG).show();
+//                signin();
                 //signInButton.setVisibility(View.INVISIBLE);
                 //sg.setVisibility(View.VISIBLE);
 
@@ -146,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                             .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    Toast.makeText(MainActivity.this,"Signout successful",Toast.LENGTH_LONG).show();
+//                                    Toast.makeText(MainActivity.this,"Signout successful",Toast.LENGTH_LONG).show();
                                 }
                             });
 
@@ -207,8 +208,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "failed to make request", Toast.LENGTH_LONG).show();
 
         }
-
-
 
     }
 

@@ -44,7 +44,7 @@ public class AddItemActivity extends AppCompatActivity {
     TextView date;
     //ImageView ig;
     int year, mon, day;
-    ImageView ig;
+    ImageView profile;
 
     private ImageView imageView;
     private ImageButton imageButton;
@@ -78,14 +78,14 @@ public class AddItemActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.add_item);
         date = findViewById(R.id.editDateView);
-        ig=findViewById(R.id.personal);
-        ig.setOnClickListener(new View.OnClickListener() {
-
+        profile = findViewById(R.id.profile_image);
+        profile.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent= new Intent(AddItemActivity.this,personalinfo.class);
+                Intent intent= new Intent(AddItemActivity.this, PersonalInfo.class);
                 startActivity(intent);
             }
         });
+
         ImageView calendar = findViewById(R.id.calendar);
         //ig=findViewById(R.id.ig);
         final Calendar c = Calendar.getInstance();

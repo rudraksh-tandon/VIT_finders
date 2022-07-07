@@ -48,24 +48,11 @@
             android:name=".ItemDescriptionActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".OtpVerifyActivity"
+        <activity android:name=".OtpVerifyActivity"
             android:exported="true"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".personalinfo"
-            android:exported="true"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".otp1"
-            android:exported="true"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".otp2"
-            android:exported="true"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ListItem"
+            android:name=".PersonalInfo"
             android:exported="true"
             android:screenOrientation="portrait" />
 

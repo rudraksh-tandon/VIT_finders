@@ -21,8 +21,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -32,7 +30,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.HashMap;
 import java.util.Map;
 
-public class personalinfo extends AppCompatActivity {
+public class PersonalInfo extends AppCompatActivity {
     String dsame=null;
     DatabaseReference reference;
 
@@ -48,15 +46,15 @@ public class personalinfo extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-        setContentView(R.layout.personinfo);
+        setContentView(R.layout.person_info);
 
 
-       name=findViewById(R.id.namee);
+       name = findViewById(R.id.namee);
         email = findViewById(R.id.pegv);
         persongiven = findViewById(R.id.persongivenname);
         personfamily = findViewById(R.id.personfamily);
         //id = findViewById(R.id.id);
-        pic = findViewById(R.id.personal);
+        pic = findViewById(R.id.profile_image);
 
 
 
@@ -135,7 +133,7 @@ public class personalinfo extends AppCompatActivity {
 //                            @Override
 //                            public void onClick(DialogInterface dialogInterface, int i) {
 //                                finish();
-//                                Intent intent= new Intent(personalinfo.this,AddItemActivity.class);
+//                                Intent intent= new Intent(PersonalInfo.this,AddItemActivity.class);
 //                                startActivity(intent);
 //                            }
 //                        })
@@ -170,7 +168,7 @@ public class personalinfo extends AppCompatActivity {
 //            public void onClick(View view) {
 //
 //               // update();
-//                Toast.makeText(personalinfo.this,"Done",Toast.LENGTH_LONG).show();
+//                Toast.makeText(PersonalInfo.this,"Done",Toast.LENGTH_LONG).show();
 //
 //            }
 //        });
@@ -193,7 +191,7 @@ public class personalinfo extends AppCompatActivity {
 //                .addOnSuccessListener(new OnSuccessListener<Void>() {
 //                    @Override
 //                    public void onSuccess(Void unused) {
-//                        Toast.makeText(personalinfo.this,"Done",Toast.LENGTH_LONG).show();
+//                        Toast.makeText(PersonalInfo.this,"Done",Toast.LENGTH_LONG).show();
 //
 //                    }
 //                });
