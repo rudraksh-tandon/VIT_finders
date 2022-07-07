@@ -13,6 +13,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="150dp"
         android:layout_marginEnd="50dp"
+        android:textSize="22sp"
         android:gravity="center_horizontal"
         android:textAlignment="center" />
 
@@ -114,4 +115,21 @@
         android:textColor="@color/white"
         android:gravity="center"
         android:text="RESEND OTP" />
+
+    <ProgressBar
+        android:id="@+id/pg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginTop="400dp"
+        android:background="@drawable/login_background_box" />
+
+    <ProgressBar
+        android:id="@+id/pg2"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="490dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"/>
 </RelativeLayout>

@@ -7,6 +7,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ public class OtpVerifyActivity extends AppCompatActivity {
     TextView sentText, resendText;
     Button button;
     String backendOtp;
+    ProgressBar pgbar, pgbar2;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,10 +51,16 @@ public class OtpVerifyActivity extends AppCompatActivity {
 
         //tt.setText(String.format("+91-%s",getIntent().getStringExtra("Mobile")));
 
+        pgbar2 = findViewById(R.id.pg2);
+        pgbar2.setVisibility(View.INVISIBLE);
+
         resendText = findViewById(R.id.resendText);
         resendText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                pgbar2.setVisibility(View.VISIBLE);
+
                 PhoneAuthProvider.getInstance().verifyPhoneNumber("+91" + getIntent().getStringExtra("mobile"),
                         60,
                         TimeUnit.SECONDS,
@@ -60,19 +68,22 @@ public class OtpVerifyActivity extends AppCompatActivity {
                         new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                             @Override
                             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+                                pgbar2.setVisibility(View.GONE);
 //                        delete the item from database and then move to the lost items list
-                                Toast.makeText(OtpVerifyActivity.this, "OTP verified successfully", Toast.LENGTH_LONG).show();
+//                                Toast.makeText(OtpVerifyActivity.this, "OTP verified successfully", Toast.LENGTH_LONG).show();
 //                        Intent intent = new Intent(ItemDescriptionActivity.this, LostItemsActivity.class);
 //                        startActivity(intent);
                             }
 
                             @Override
                             public void onVerificationFailed(@NonNull FirebaseException e) {
+                                pgbar2.setVisibility(View.GONE);
                                 Toast.makeText(OtpVerifyActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                             }
 
                             @Override
                             public void onCodeSent(@NonNull String newBackendOtp, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+                                pgbar2.setVisibility(View.GONE);
                                 backendOtp = newBackendOtp;
                                 Toast.makeText(OtpVerifyActivity.this, "OTP sent successfully", Toast.LENGTH_SHORT).show();
                             }
@@ -80,11 +91,18 @@ public class OtpVerifyActivity extends AppCompatActivity {
             }
         });
 
+        pgbar = findViewById(R.id.pg);
+        pgbar.setVisibility(View.INVISIBLE);
+
         button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
+
+                pgbar.setVisibility(View.VISIBLE);
+                button.setVisibility(View.INVISIBLE);
+
                 if(!inputNum1.toString().isEmpty() && !inputNum2.toString().isEmpty() &&
                         !inputNum3.toString().isEmpty() && !inputNum4.toString().isEmpty() &&
                         !inputNum5.toString().isEmpty() && !inputNum6.toString().isEmpty()){
@@ -101,35 +119,38 @@ public class OtpVerifyActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
+                                    pgbar.setVisibility(View.GONE);
+                                    button.setVisibility(View.VISIBLE);
+//                                    onDelete()
                                     Toast.makeText(OtpVerifyActivity.this, "OTP verified successfully", Toast.LENGTH_LONG).show();
                                     Intent intent=new Intent(OtpVerifyActivity.this,MainScreenActivity.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     startActivity(intent);
                                 }
                                 else {
+                                    pgbar.setVisibility(View.GONE);
+                                    button.setVisibility(View.VISIBLE);
                                     Toast.makeText(OtpVerifyActivity.this, "Please Enter correct OTP", Toast.LENGTH_SHORT).show();
-
                                 }
 
                             }
                         });
                     }
                     else {
+                        pgbar.setVisibility(View.GONE);
+                        button.setVisibility(View.VISIBLE);
                         Toast.makeText(OtpVerifyActivity.this, "Please check your Internet connection", Toast.LENGTH_SHORT).show();
 
                     }
                     //Toast.makeText(OtpVerifyActivity.this, "OTP VERIFY", Toast.LENGTH_SHORT).show();
 
                 }else {
+                    pgbar.setVisibility(View.GONE);
+                    button.setVisibility(View.VISIBLE);
                     Toast.makeText(OtpVerifyActivity.this, "Please Enter correct OTP", Toast.LENGTH_SHORT).show();
 
                 }
-
-
             }
-
-
-
         });
         numberOtpMove();
 
