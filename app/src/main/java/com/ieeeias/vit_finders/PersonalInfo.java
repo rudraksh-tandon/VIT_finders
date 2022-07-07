@@ -1,5 +1,6 @@
 package com.ieeeias.vit_finders;
 
+import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,17 +32,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PersonalInfo extends AppCompatActivity {
-    String dsame=null;
+
     DatabaseReference reference;
 
     GoogleSignInClient googleSignInClient;
     TextView name, email, personfamily, persongiven,id;
 
-    ImageView pic;
 
 
 
 
+
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +56,7 @@ public class PersonalInfo extends AppCompatActivity {
         persongiven = findViewById(R.id.persongivenname);
         personfamily = findViewById(R.id.personfamily);
         //id = findViewById(R.id.id);
-        pic = findViewById(R.id.profile_image);
+
 
 
 
@@ -80,7 +82,7 @@ public class PersonalInfo extends AppCompatActivity {
             personfamily.setText(personFamilyName+" (Registration id)");
             persongiven.setText(personGivenName+" (Name)");
 
-            Glide.with(this).load(String.valueOf(personPhoto)).into(pic);
+            //Glide.with(this).load(String.valueOf(personPhoto)).into(pic);
             FirebaseFirestore db1 = FirebaseFirestore.getInstance();
             // Create a new user with a first and last name
 
