@@ -58,14 +58,14 @@
 
         <LinearLayout
             android:id="@+id/linearLayoutName"
-            android:layout_width="725dp"
-            android:layout_height="85dp"
-            android:layout_margin="20dp"
-            android:background="@drawable/colurs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@drawable/colurs"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView">
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            android:layout_margin="20dp">
 
             <TextView
                 android:id="@+id/name"
@@ -82,8 +82,8 @@
                 android:layout_width="180dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="@color/black"
                 android:textColor="@color/black"
+                android:backgroundTint="@color/black"
                 android:textSize="20sp"
                 tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
         </LinearLayout>
