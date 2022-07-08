@@ -55,6 +55,10 @@
             android:name=".PersonalInfo"
             android:exported="true"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".aboutus"
+            android:exported="true"
+            android:screenOrientation="portrait" />
 
     </application>
 

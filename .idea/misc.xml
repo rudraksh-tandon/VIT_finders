@@ -15,11 +15,13 @@
         <entry key="..\:/Users/User-pc/AndroidStudioProjects/Lost-And-Found-App/app/src/main/res/xml/login.xml" value="0.265625" />
         <entry key="..\:/Users/User-pc/StudioProjects/VIT_finders/SignIN/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User-pc/StudioProjects/VIT_finders/SignIN/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User-pc/StudioProjects/VIT_finders/app/src/main/res/drawable/colurs.xml" value="0.2595" />
+        <entry key="..\:/Users/User-pc/StudioProjects/VIT_finders/app/src/main/res/layout/aboutus.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User-pc/StudioProjects/VIT_finders/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User-pc/StudioProjects/VIT_finders/app/src/main/res/layout/add_item.xml" value="0.2" />
         <entry key="..\:/Users/User-pc/StudioProjects/VIT_finders/app/src/main/res/layout/app_bar_nav.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User-pc/StudioProjects/VIT_finders/app/src/main/res/layout/content_nav.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/User-pc/StudioProjects/VIT_finders/app/src/main/res/layout/description.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User-pc/StudioProjects/VIT_finders/app/src/main/res/layout/description.xml" value="0.176" />
         <entry key="..\:/Users/User-pc/StudioProjects/VIT_finders/app/src/main/res/layout/list_item.xml" value="0.4" />
         <entry key="..\:/Users/User-pc/StudioProjects/VIT_finders/app/src/main/res/layout/lost_items.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User-pc/StudioProjects/VIT_finders/app/src/main/res/layout/main_screen.xml" value="0.25416666666666665" />
@@ -29,7 +31,7 @@
         <entry key="..\:/Users/User-pc/StudioProjects/VIT_finders/app/src/main/res/layout/person_info.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User-pc/StudioProjects/VIT_finders/app/src/main/res/layout/personinfo.xml" value="0.1" />
         <entry key="..\:/Users/User-pc/StudioProjects/VIT_finders/app/src/main/res/layout/recycleview.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/User-pc/StudioProjects/VIT_finders/app/src/main/res/layout/splash_screen_activity.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User-pc/StudioProjects/VIT_finders/app/src/main/res/layout/splash_screen_activity.xml" value="0.4" />
         <entry key="..\:/Users/rudra/AndroidStudioProjects/vit_finders/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.137" />
         <entry key="..\:/Users/rudra/AndroidStudioProjects/vit_finders/app/src/main/res/drawable/add_item_button.xml" value="0.137" />
         <entry key="..\:/Users/rudra/AndroidStudioProjects/vit_finders/app/src/main/res/drawable/add_item_icon.xml" value="0.137" />
