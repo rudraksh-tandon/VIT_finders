@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +23,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.TimeUnit;
 
@@ -31,6 +38,9 @@ public class OtpVerifyActivity extends AppCompatActivity {
     Button button;
     String backendOtp;
     ProgressBar pgbar, pgbar2;
+//    String img;
+//    ItemDescriptionActivity ida=new ItemDescriptionActivity();
+//    String imgf=ida.img;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,6 +61,8 @@ public class OtpVerifyActivity extends AppCompatActivity {
 
         //tt.setText(String.format("+91-%s",getIntent().getStringExtra("Mobile")));
 
+//        Log.w(, "img="+imgf);
+//        System.out.print("imgf = " + imgf);
         pgbar2 = findViewById(R.id.pg2);
         pgbar2.setVisibility(View.INVISIBLE);
 
@@ -121,7 +133,7 @@ public class OtpVerifyActivity extends AppCompatActivity {
                                 if(task.isSuccessful()){
                                     pgbar.setVisibility(View.GONE);
                                     button.setVisibility(View.VISIBLE);
-//                                    onDelete()
+                                    onDelete(getIntent().getStringExtra("imageUrl"));
                                     Toast.makeText(OtpVerifyActivity.this, "OTP verified successfully", Toast.LENGTH_LONG).show();
                                     Intent intent=new Intent(OtpVerifyActivity.this,MainScreenActivity.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -229,5 +241,27 @@ public class OtpVerifyActivity extends AppCompatActivity {
         });
     }
 
+    private void onDelete( String img) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        Query applesQuery = ref.child("items").orderByChild("imageUrl").equalTo(img);
+
+        applesQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
+                    appleSnapshot.getRef().removeValue();
+
+                }
+            }
+
+            @Override
+
+            public void onCancelled(DatabaseError databaseError) {
+
+                Log.e( "onCancelled", String.valueOf(databaseError.toException()));
+            }
+        });
+    }
 
 }

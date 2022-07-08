@@ -207,7 +207,6 @@
             android:layout_marginStart="100dp"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="40dp"
-            android:backgroundTint="@color/purple"
             android:layout_marginEnd="100dp"
             android:background="@drawable/login_background_box"
             android:text="Received"
@@ -219,8 +218,8 @@
 
         <ProgressBar
             android:id="@+id/pg"
-            android:layout_width="239dp"
-            android:layout_height="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="110dp"
             android:layout_marginEnd="110dp"
             android:background="@drawable/login_background_box"

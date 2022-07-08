@@ -105,6 +105,7 @@ package com.ieeeias.vit_finders;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -130,7 +131,7 @@ import java.util.concurrent.TimeUnit;
 public class ItemDescriptionActivity extends AppCompatActivity {
     ImageView profile;
     ProgressBar pgbar;
-
+    String img;
     private URL imageUrl;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -163,6 +164,8 @@ public class ItemDescriptionActivity extends AppCompatActivity {
         }
 
         Glide.with(getApplicationContext()).load(imageUrl).into(imageView);
+//        img=getIntent().getStringExtra("imageUrl");
+        Log.w("ItemDescription", "img = "+img);
         nameView.setText(getIntent().getStringExtra("name"));
         locView.setText(getIntent().getStringExtra("location"));
         brandView.setText(getIntent().getStringExtra("brand"));
@@ -206,6 +209,7 @@ public class ItemDescriptionActivity extends AppCompatActivity {
                                 Intent intent= new Intent(getApplicationContext(), OtpVerifyActivity.class);
                                 intent.putExtra("mobile", getIntent().getStringExtra("contact"));
                                 intent.putExtra("backendOtp", s);
+                                intent.putExtra("imageUrl", getIntent().getStringExtra("imageUrl"));
                                 startActivity(intent);
                             }
                         }
