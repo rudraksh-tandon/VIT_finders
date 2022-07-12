@@ -145,6 +145,7 @@ public class ItemDescriptionActivity extends AppCompatActivity {
         TextView contactView = findViewById(R.id.contactView);
         TextView locView = findViewById(R.id.locView);
         ImageView imageView = findViewById(R.id.imageView);
+        TextView categoryView = findViewById(R.id.categoryView);
 
         profile = findViewById(R.id.profile_image);
         profile.setOnClickListener(new View.OnClickListener() {
@@ -171,6 +172,7 @@ public class ItemDescriptionActivity extends AppCompatActivity {
         brandView.setText(getIntent().getStringExtra("brand"));
         dateView.setText(getIntent().getStringExtra("date"));
         contactView.setText(getIntent().getStringExtra("contact"));
+        categoryView.setText(getIntent().getStringExtra("category"));
 
         pgbar = findViewById(R.id.pg);
         pgbar.setVisibility(View.INVISIBLE);
@@ -181,15 +183,15 @@ public class ItemDescriptionActivity extends AppCompatActivity {
             public void onClick(View view) {
 //                if(!ph.getText().toString().trim().isEmpty()){
 //                    if(ph.getText().toString().trim().length()==10){
-                        pgbar.setVisibility(View.VISIBLE);
-                        button.setVisibility(View.INVISIBLE);
+                pgbar.setVisibility(View.VISIBLE);
+                button.setVisibility(View.INVISIBLE);
                 PhoneAuthProvider.getInstance().verifyPhoneNumber(
                         "+91" + getIntent().getStringExtra("contact"),
                         60, TimeUnit.SECONDS, ItemDescriptionActivity.this,
                         new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                             @Override
                             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-                                        pgbar.setVisibility(View.GONE);
+                                pgbar.setVisibility(View.GONE);
 //                                        otp.setVisibility(View.VISIBLE);
                             }
 
@@ -204,8 +206,8 @@ public class ItemDescriptionActivity extends AppCompatActivity {
                             @Override
                             public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                                 super.onCodeSent(s, forceResendingToken);
-                                        pgbar.setVisibility(View.GONE);
-                                        button.setVisibility(View.VISIBLE);
+                                pgbar.setVisibility(View.GONE);
+                                button.setVisibility(View.VISIBLE);
                                 Intent intent= new Intent(getApplicationContext(), OtpVerifyActivity.class);
                                 intent.putExtra("mobile", getIntent().getStringExtra("contact"));
                                 intent.putExtra("backendOtp", s);

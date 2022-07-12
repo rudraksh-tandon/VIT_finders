@@ -16,14 +16,14 @@ public class ListItem{
     private String brandView;
     private String dateView;
     private String contactView;
-    ImageView ig;
+    public String categoryView;
 
     public ListItem(){
 
     }
 
 
-    public ListItem(String imageUrl, String nameView, String locView, String brandView, String dateView, String contactView) {
+    public ListItem(String imageUrl, String nameView, String locView, String brandView, String dateView, String contactView, String categoryView) {
 
         this.imageUrl = imageUrl;
         this.nameView = nameView;
@@ -31,9 +31,7 @@ public class ListItem{
         this.brandView = brandView;
         this.dateView = dateView;
         this.contactView = contactView;
-
-
-
+        this.categoryView = categoryView;
     }
 
 //    public int getImageView() {
@@ -45,22 +43,13 @@ public class ListItem{
 //    }
 
     public String getImageUrl() {
-    return imageUrl;
-}
+        return imageUrl;
+    }
     public String getNameView() {
         return nameView;
     }
-
-    public void setNameView(String nameView){
-        this.nameView = nameView;
-    }
-
     public String getLocView() {
         return locView;
-    }
-
-    public void setLocView(String locView){
-        this.locView = locView;
     }
     public String getBrandView() {
         return brandView;
@@ -68,25 +57,10 @@ public class ListItem{
     public String getDateView() {
         return dateView;
     }
-
     public String getContactView() {
         return contactView;
     }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public String getCategoryView() {
+        return categoryView;
     }
-
-    public void setBrandView(String brandView) {
-        this.brandView = brandView;
-    }
-
-    public void setDateView(String dateView) {
-        this.dateView = dateView;
-    }
-
-    public void setContactView(String contactView) {
-        this.contactView = contactView;
-    }
-
 }

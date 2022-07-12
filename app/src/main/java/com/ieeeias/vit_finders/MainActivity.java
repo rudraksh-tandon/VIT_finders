@@ -129,13 +129,13 @@ public class MainActivity extends AppCompatActivity {
 //            System.out.println(result);
 
             if (bool == true) {
-                Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "SignIn Successful", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(MainActivity.this, MainScreenActivity.class);
                 startActivity(intent);
                 //signInButton.setVisibility(View.VISIBLE);
                 //sg.setVisibility(View.INVISIBLE);
             } else {
- //                Intent intent = new Intent(MainActivity.this, PersonalInfo.class);
+                //                Intent intent = new Intent(MainActivity.this, PersonalInfo.class);
 //                startActivity(intent);
 //                Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
                 Toast.makeText(MainActivity.this, "Access denied Please use VIT MAIL ID", Toast.LENGTH_LONG).show();
@@ -143,13 +143,13 @@ public class MainActivity extends AppCompatActivity {
                 //signInButton.setVisibility(View.INVISIBLE);
                 //sg.setVisibility(View.VISIBLE);
 
-                    mGoogleSignInClient.signOut()
-                            .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
+                mGoogleSignInClient.signOut()
+                        .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
 //                                    Toast.makeText(MainActivity.this,"Signout successful",Toast.LENGTH_LONG).show();
-                                }
-                            });
+                            }
+                        });
 
 
             }
@@ -211,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    }
+}
 
 
 

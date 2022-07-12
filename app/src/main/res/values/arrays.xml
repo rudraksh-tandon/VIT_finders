@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- These are the options displayed in the category drop-down Spinner -->
+    <string-array name="array_category_options">
+        <item>@string/category_clothes</item>
+        <item>@string/category_electronics</item>
+        <item>@string/category_accessories</item>
+        <item>@string/category_books</item>
+        <item>@string/category_others</item>
+    </string-array>
+</resources>

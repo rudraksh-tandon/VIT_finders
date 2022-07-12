@@ -75,13 +75,10 @@
         android:layout_height="50dp"
         android:layout_below="@id/logo"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
         android:background="@drawable/list_item_box"
-        app:iconifiedByDefault="false"
-        app:queryHint="Search Item name" />
+        android:layout_margin="10dp"
+        app:queryHint="Search Item name"
+        app:iconifiedByDefault="false"/>
 
     <ListView
         android:id="@+id/itemsList"
@@ -92,22 +89,19 @@
         android:dividerHeight="8dp"
         android:padding="16dp" />
 
-    <!--    <com.getbase.floatingactionbutton.AddFloatingActionButton-->
-    <!--        android:id="@+id/fab"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_alignParentEnd="true"-->
-    <!--        android:layout_alignParentBottom="true"-->
-    <!--        android:layout_marginStart="16dp"-->
-    <!--        android:layout_marginTop="16dp"-->
-    <!--        android:layout_marginEnd="16dp"-->
-    <!--        android:layout_marginBottom="16dp"-->
-    <!--        app:fab_colorNormal="@color/space_pink"-->
-    <!--        app:rippleColor="@color/purple"/>-->
+        <com.getbase.floatingactionbutton.AddFloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            app:fab_colorNormal="@color/space_pink"
+            app:rippleColor="@color/purple"/>
 
-    <!--        <ProgressBar-->
-    <!--            android:id="@+id/progressBar"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_centerInParent="true"/>-->
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
 </RelativeLayout>

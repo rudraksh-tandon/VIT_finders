@@ -23,7 +23,7 @@ import java.util.List;
 public class ListItemAdapter extends ArrayAdapter<ListItem> {
 //    private List<ListItem> itemList;
 
-//    public ListItemAdapter(List<ListItem> itemList) {
+    //    public ListItemAdapter(List<ListItem> itemList) {
 //        this.itemList = itemList;
 //    }
     URL imageUrl;

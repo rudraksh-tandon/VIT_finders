@@ -1,24 +1,24 @@
 package com.ieeeias.vit_finders;
 
-        import android.content.Intent;
-        import android.os.Bundle;
-        import android.util.Log;
-        import android.view.View;
-        import android.widget.AdapterView;
-        import android.widget.ImageView;
-        import android.widget.ListView;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.ListView;
 
-        import androidx.annotation.NonNull;
-        import androidx.annotation.Nullable;
-        import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
-        import com.google.firebase.database.ChildEventListener;
-        import com.google.firebase.database.DataSnapshot;
-        import com.google.firebase.database.DatabaseError;
-        import com.google.firebase.database.DatabaseReference;
-        import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-        import java.util.ArrayList;
+import java.util.ArrayList;
 
 public class LostItemsActivity extends AppCompatActivity {
 
@@ -99,6 +99,7 @@ public class LostItemsActivity extends AppCompatActivity {
                     intent.putExtra("date", listItem.getDateView());
                     intent.putExtra("location", listItem.getLocView());
                     intent.putExtra("contact", listItem.getContactView());
+                    intent.putExtra("category", listItem.getCategoryView());
                     intent.putExtra("imageUrl", listItem.getImageUrl());
                     startActivity(intent);
                 } catch (Exception e) {
@@ -112,14 +113,14 @@ public class LostItemsActivity extends AppCompatActivity {
             }
         });
 
-        // Setup FAB to open AddItemActivity
-//        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(LostItemsActivity.this, AddItemActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+//         Setup FAB to open AddItemActivity
+        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LostItemsActivity.this, AddItemActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 //    @Override

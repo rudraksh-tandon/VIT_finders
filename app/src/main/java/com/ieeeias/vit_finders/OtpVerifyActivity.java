@@ -133,6 +133,7 @@ public class OtpVerifyActivity extends AppCompatActivity {
                                 if(task.isSuccessful()){
                                     pgbar.setVisibility(View.GONE);
                                     button.setVisibility(View.VISIBLE);
+
                                     onDelete(getIntent().getStringExtra("imageUrl"));
                                     Toast.makeText(OtpVerifyActivity.this, "OTP verified successfully", Toast.LENGTH_LONG).show();
                                     Intent intent=new Intent(OtpVerifyActivity.this,MainScreenActivity.class);

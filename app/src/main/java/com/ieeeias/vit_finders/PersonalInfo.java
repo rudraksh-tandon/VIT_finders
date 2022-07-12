@@ -51,7 +51,7 @@ public class PersonalInfo extends AppCompatActivity {
         setContentView(R.layout.person_info);
 
 
-       name = findViewById(R.id.namee);
+        name = findViewById(R.id.namee);
         email = findViewById(R.id.pegv);
         persongiven = findViewById(R.id.persongivenname);
         personfamily = findViewById(R.id.personfamily);
@@ -69,7 +69,7 @@ public class PersonalInfo extends AppCompatActivity {
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         //acct = GoogleSignIn.getLastSignedInAccount(this);
         if (acct != null) {
-             String personName = acct.getDisplayName();
+            String personName = acct.getDisplayName();
             String personGivenName = acct.getGivenName();
             String personFamilyName = acct.getFamilyName();
             String personEmail = acct.getEmail();
@@ -88,7 +88,7 @@ public class PersonalInfo extends AppCompatActivity {
 
             Map<String, Object> user = new HashMap<>();
             user.put("Reference",  personName);
-           // user.put("ID CODE", personId);
+            // user.put("ID CODE", personId);
             user.put("Names", personGivenName);
             user.put("EMAIL", personEmail);
             user.put("Details", personFamilyName);
@@ -162,9 +162,9 @@ public class PersonalInfo extends AppCompatActivity {
 //
 //                }
 
-            }
+    }
 
-        }
+}
 //        edit.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -198,7 +198,7 @@ public class PersonalInfo extends AppCompatActivity {
 //                    }
 //                });
 
-    //}
+//}
 
 
 

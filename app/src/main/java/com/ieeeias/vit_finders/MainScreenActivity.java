@@ -18,7 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 public class MainScreenActivity extends AppCompatActivity {
-    Button sss;
+    Button signOut;
     GoogleSignInClient mGoogleSignInClient;
 
     @Override
@@ -32,7 +32,6 @@ public class MainScreenActivity extends AppCompatActivity {
         setContentView(R.layout.main_screen);
 
         TextView lostText = findViewById(R.id.lost_text);
-        sss=findViewById(R.id.sss);
         lostText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,12 +48,14 @@ public class MainScreenActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        sss.setOnClickListener(new View.OnClickListener() {
+
+        signOut = findViewById(R.id.signout_button);
+        signOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 signOut();
-                Toast.makeText(MainScreenActivity.this,"Signout successful",Toast.LENGTH_LONG).show();
-                Intent intent= new Intent(MainScreenActivity.this,MainActivity.class);
+//                Toast.makeText(MainScreenActivity.this,"SignOut successful",Toast.LENGTH_LONG).show();
+                Intent intent= new Intent(MainScreenActivity.this, MainActivity.class);
                 startActivity(intent);
 
             }
@@ -67,7 +68,7 @@ public class MainScreenActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(MainScreenActivity.this,"Signout successful",Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainScreenActivity.this,"SignOut successful",Toast.LENGTH_LONG).show();
                     }
                 });
     }

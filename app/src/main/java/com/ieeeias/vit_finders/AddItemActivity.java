@@ -5,13 +5,17 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,10 +45,11 @@ import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 
 public class AddItemActivity extends AppCompatActivity {
-    TextView date;
-    //ImageView ig;
+    TextView date, category;
     int year, mon, day;
     ImageView profile;
+    Spinner catSpinner;
+//    String itemCategory;
 
     private ImageView imageView;
     private ImageButton imageButton;
@@ -89,6 +94,7 @@ public class AddItemActivity extends AppCompatActivity {
         ImageView calendar = findViewById(R.id.calendar);
         //ig=findViewById(R.id.ig);
         final Calendar c = Calendar.getInstance();
+
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,6 +113,10 @@ public class AddItemActivity extends AppCompatActivity {
 
             }
         });
+
+        category = findViewById(R.id.CategoryView);
+        catSpinner = findViewById(R.id.categorySpinner);
+        setupSpinner();
 
 //        mListItemView = (ListView) findViewById(R.id.itemsList);
 
@@ -158,7 +168,7 @@ public class AddItemActivity extends AppCompatActivity {
 //                    newItem = new NewItem(imageUrl, getName(), getBrand(), getDate(), getLocation(), getContact());
 //                    mDatabaseReference.push().setValue(newItem);
                     Toast.makeText(AddItemActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(AddItemActivity.this, LostItemsActivity.class);
+                    Intent intent = new Intent(AddItemActivity.this, MainScreenActivity.class);
                     startActivity(intent);
                 }
                 else{
@@ -179,6 +189,29 @@ public class AddItemActivity extends AppCompatActivity {
 //                imageChooser();
 //            }
 //        });
+    }
+
+    private void setupSpinner(){
+        ArrayAdapter categorySpinnerAdapter = ArrayAdapter.createFromResource(this,
+                R.array.array_category_options, android.R.layout.simple_spinner_item);
+
+        categorySpinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+
+        catSpinner.setAdapter(categorySpinnerAdapter);
+        catSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                String selection = (String) adapterView.getItemAtPosition(position);
+                if (!TextUtils.isEmpty(selection)) {
+                    category.setText(selection);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                    category.setText(getString(R.string.category_others));
+            }
+        });
     }
 
 //    public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -244,6 +277,12 @@ public class AddItemActivity extends AppCompatActivity {
         return date;
     }
 
+    private String getCategory(){
+        TextView categoryView = findViewById(R.id.CategoryView);
+        String category = categoryView.getText().toString();
+        return category;
+    }
+
 //    private void imageChooser() {
 //        Intent i = new Intent();
 //        i.setType("image/*");
@@ -286,7 +325,7 @@ public class AddItemActivity extends AppCompatActivity {
                     public void onSuccess(Uri uri) {
 //                        imageUrl = uri.toString();
 //                        model = new Model(imageUrl);
-                        newItem = new NewItem(uri.toString(), getName(), getBrand(), getDate(), getLocation(), getContact());
+                        newItem = new NewItem(uri.toString(), getName(), getBrand(), getDate(), getLocation(), getContact(), getCategory());
                         newItemId = mDatabaseReference.push().getKey();
                         mDatabaseReference.child(newItemId).setValue(newItem);
                     }

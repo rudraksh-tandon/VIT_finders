@@ -19,7 +19,7 @@ import com.google.android.play.core.install.model.UpdateAvailability;
 import org.jetbrains.annotations.Nullable;
 
 public class SplashScreenActivity extends AppCompatActivity {
-   //private final int updatereqcode=1600;
+    //private final int updatereqcode=1600;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ;
