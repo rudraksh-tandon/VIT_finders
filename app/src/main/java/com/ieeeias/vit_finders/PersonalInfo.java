@@ -1,6 +1,8 @@
 package com.ieeeias.vit_finders;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,16 +34,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PersonalInfo extends AppCompatActivity {
-
+    Context context = null;
+    PrefManager prefManager;
     DatabaseReference reference;
 
     GoogleSignInClient googleSignInClient;
     TextView name, email, personfamily, persongiven,id;
-
-
-
-
-
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -49,6 +47,7 @@ public class PersonalInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.person_info);
+        prefManager = new PrefManager(this);
 
 
         name = findViewById(R.id.namee);
@@ -56,11 +55,6 @@ public class PersonalInfo extends AppCompatActivity {
         persongiven = findViewById(R.id.persongivenname);
         personfamily = findViewById(R.id.personfamily);
         //id = findViewById(R.id.id);
-
-
-
-
-
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -73,8 +67,12 @@ public class PersonalInfo extends AppCompatActivity {
             String personGivenName = acct.getGivenName();
             String personFamilyName = acct.getFamilyName();
             String personEmail = acct.getEmail();
-            //String personId = acct.getId();
+            String personId = acct.getId();
+            prefManager.setId(personId);
+            Log.w(TAG, "user id = " + personId);
             Uri personPhoto = acct.getPhotoUrl();
+            Log.w(TAG, "URI=" + personPhoto);
+            Log.w(TAG, "family name="+personFamilyName);
 
             name.setText(personName+" (Userid)");
             //id.setText(personId+"id");

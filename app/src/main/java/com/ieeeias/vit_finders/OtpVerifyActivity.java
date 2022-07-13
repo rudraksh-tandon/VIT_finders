@@ -29,6 +29,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.concurrent.TimeUnit;
 
@@ -38,9 +40,6 @@ public class OtpVerifyActivity extends AppCompatActivity {
     Button button;
     String backendOtp;
     ProgressBar pgbar, pgbar2;
-//    String img;
-//    ItemDescriptionActivity ida=new ItemDescriptionActivity();
-//    String imgf=ida.img;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,14 +54,19 @@ public class OtpVerifyActivity extends AppCompatActivity {
         inputNum5 = findViewById(R.id.inputNum5);
         inputNum6 = findViewById(R.id.inputNum6);
 
+        String img = getIntent().getStringExtra("imageUrl");
+        String con = getIntent().getStringExtra("contactView");
+        String brand = getIntent().getStringExtra("brandView");
+        String loc = getIntent().getStringExtra("locView");
+        String date = getIntent().getStringExtra("dateView");
+        String name = getIntent().getStringExtra("nameView");
+        String cat = getIntent().getStringExtra("category");
+        String userId = getIntent().getStringExtra("userId");
+
         sentText = findViewById(R.id.sentText);
         sentText.setText("OTP sent to " + getIntent().getStringExtra("mobile"));
         backendOtp = getIntent().getStringExtra("backendOtp");
 
-        //tt.setText(String.format("+91-%s",getIntent().getStringExtra("Mobile")));
-
-//        Log.w(, "img="+imgf);
-//        System.out.print("imgf = " + imgf);
         pgbar2 = findViewById(R.id.pg2);
         pgbar2.setVisibility(View.INVISIBLE);
 
@@ -81,10 +85,6 @@ public class OtpVerifyActivity extends AppCompatActivity {
                             @Override
                             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                                 pgbar2.setVisibility(View.GONE);
-//                        delete the item from database and then move to the lost items list
-//                                Toast.makeText(OtpVerifyActivity.this, "OTP verified successfully", Toast.LENGTH_LONG).show();
-//                        Intent intent = new Intent(ItemDescriptionActivity.this, LostItemsActivity.class);
-//                        startActivity(intent);
                             }
 
                             @Override
@@ -133,8 +133,8 @@ public class OtpVerifyActivity extends AppCompatActivity {
                                 if(task.isSuccessful()){
                                     pgbar.setVisibility(View.GONE);
                                     button.setVisibility(View.VISIBLE);
-
-                                    onDelete(getIntent().getStringExtra("imageUrl"));
+                                    storeDeletedItem(img, name, brand, date, loc, con, cat, userId);
+                                    deleteItem(getIntent().getStringExtra("imageUrl"));
                                     Toast.makeText(OtpVerifyActivity.this, "OTP verified successfully", Toast.LENGTH_LONG).show();
                                     Intent intent=new Intent(OtpVerifyActivity.this,MainScreenActivity.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -241,10 +241,18 @@ public class OtpVerifyActivity extends AppCompatActivity {
             }
         });
     }
+    private void storeDeletedItem(String img,String name,String brand,String date,String loc,String con,String cat, String userId)
+    {
+        DatabaseReference dDatabaseReference = FirebaseDatabase.getInstance().getReference("DeletedItems");
+        StorageReference dStorageReference = FirebaseStorage.getInstance().getReference("DeletedItems");
+        NewItem delItem = new NewItem(img, name, brand, date, loc, con, cat, userId);
+        String delItemId = dDatabaseReference.push().getKey();
+        dDatabaseReference.child(delItemId).setValue(delItem);
+    }
 
-    private void onDelete( String img) {
+    private void deleteItem( String img) {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-        Query applesQuery = ref.child("items").orderByChild("imageUrl").equalTo(img);
+        Query applesQuery = ref.child("Items").orderByChild("imageUrl").equalTo(img);
 
         applesQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

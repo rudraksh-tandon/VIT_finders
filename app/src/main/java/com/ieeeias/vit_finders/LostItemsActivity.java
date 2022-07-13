@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +19,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -51,7 +54,7 @@ public class LostItemsActivity extends AppCompatActivity {
         View emptyView = findViewById(R.id.empty_view);
         listView.setEmptyView(emptyView);
 
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference("items");
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference("Items");
 //        mStorageReference =  FirebaseStorage.getInstance().getReference();
 
         mDatabaseReference.addChildEventListener(new ChildEventListener() {
@@ -61,7 +64,6 @@ public class LostItemsActivity extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 ListItem listItem = snapshot.getValue(ListItem.class);
                 itemList.add(listItem);
-//                Log.w(TAG, itemList);
                 mAdapter.notifyDataSetChanged();
             }
 
@@ -101,15 +103,11 @@ public class LostItemsActivity extends AppCompatActivity {
                     intent.putExtra("contact", listItem.getContactView());
                     intent.putExtra("category", listItem.getCategoryView());
                     intent.putExtra("imageUrl", listItem.getImageUrl());
+                    intent.putExtra("userId", listItem.getUserId());
                     startActivity(intent);
                 } catch (Exception e) {
                     Log.w(TAG, e.getMessage());
                 }
-//                String key = mDatabaseReference.child("items").getKey();
-//                intent.putExtra("listItem", itemList);
-////                intent.putExtra("key", key);
-////                startActivity(intent);
-//                Log.w(TAG, "key = " + key);
             }
         });
 
@@ -121,30 +119,41 @@ public class LostItemsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.search, menu);
-//        MenuItem item = menu.findItem(R.id.search);
-//        SearchView searchView = (SearchView) item.getActionView();
-//
+//        SearchView searchView = findViewById(R.id.searchBar);
 //        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 //            @Override
 //            public boolean onQueryTextSubmit(String s) {
+//                mAdapter.getFilter().filter(s);
 //                return false;
 //            }
 //
 //            @Override
 //            public boolean onQueryTextChange(String s) {
+//                mAdapter.getFilter().filter(s);
 //                return false;
 //            }
 //        });
+
+//        AutoCompleteTextView searchBar = findViewById(R.id.searchBar);
+//        ValueEventListener eventListener = new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if(snapshot.exists()){
+//                    for(DataSnapshot ds: snapshot.getChildren()){
+//                        ListItem listItem = ds.child("items").getValue(ListItem.class);
+//                        itemList.add(listItem);
+//                    }
+//                }
+//                else{
+//                    Log.w("LostItemsActivity", "no items found");
+//                }
+//            }
 //
-//        return super.onCreateOptionsMenu(menu);
-//    }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
 //
-//    private void textSearch(String str){
-//
-//    }
+//            }
+//        }
+    }
 }

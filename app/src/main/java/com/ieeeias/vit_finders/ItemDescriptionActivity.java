@@ -208,10 +208,18 @@ public class ItemDescriptionActivity extends AppCompatActivity {
                                 super.onCodeSent(s, forceResendingToken);
                                 pgbar.setVisibility(View.GONE);
                                 button.setVisibility(View.VISIBLE);
+//                                intent user id == prefManager getid
                                 Intent intent= new Intent(getApplicationContext(), OtpVerifyActivity.class);
                                 intent.putExtra("mobile", getIntent().getStringExtra("contact"));
                                 intent.putExtra("backendOtp", s);
                                 intent.putExtra("imageUrl", getIntent().getStringExtra("imageUrl"));
+                                intent.putExtra("nameView", getIntent().getStringExtra("name"));
+                                intent.putExtra("locView", getIntent().getStringExtra("location"));
+                                intent.putExtra("dateView", getIntent().getStringExtra("date"));
+                                intent.putExtra("brandView", getIntent().getStringExtra("brand"));
+                                intent.putExtra("contactView", getIntent().getStringExtra("contact"));
+                                intent.putExtra("category", getIntent().getStringExtra("category"));
+                                intent.putExtra("userId", getIntent().getStringExtra("userId"));
                                 startActivity(intent);
                             }
                         }

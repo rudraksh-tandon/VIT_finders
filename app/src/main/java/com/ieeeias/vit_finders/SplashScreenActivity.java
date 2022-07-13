@@ -1,5 +1,6 @@
 package com.ieeeias.vit_finders;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
@@ -19,19 +20,26 @@ import com.google.android.play.core.install.model.UpdateAvailability;
 import org.jetbrains.annotations.Nullable;
 
 public class SplashScreenActivity extends AppCompatActivity {
+    Context context = null;
+    PrefManager prefManager;
     //private final int updatereqcode=1600;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ;
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.splash_screen_activity);
+        prefManager = new PrefManager(this);
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
-                Intent intent = new Intent(SplashScreenActivity.this,MainActivity.class );
+                Intent intent;
+                if(prefManager.getLogin()){
+                    intent = new Intent(SplashScreenActivity.this, MainScreenActivity.class);
+                }
+                else {
+                    intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+                }
                 startActivity(intent);
                 finish();
             }

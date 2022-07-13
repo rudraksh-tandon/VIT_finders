@@ -16,15 +16,15 @@ public class ListItem{
     private String brandView;
     private String dateView;
     private String contactView;
-    public String categoryView;
+    private String categoryView;
+    private String userId;
 
     public ListItem(){
 
     }
 
 
-    public ListItem(String imageUrl, String nameView, String locView, String brandView, String dateView, String contactView, String categoryView) {
-
+    public ListItem(String imageUrl, String nameView, String locView, String brandView, String dateView, String contactView, String categoryView, String userId) {
         this.imageUrl = imageUrl;
         this.nameView = nameView;
         this.locView = locView;
@@ -32,15 +32,8 @@ public class ListItem{
         this.dateView = dateView;
         this.contactView = contactView;
         this.categoryView = categoryView;
+        this.userId = userId;
     }
-
-//    public int getImageView() {
-//        return imageView;
-//    }
-//
-//    public void setImageView(int imageView) {
-//        this.imageView = imageView;
-//    }
 
     public String getImageUrl() {
         return imageUrl;
@@ -62,5 +55,8 @@ public class ListItem{
     }
     public String getCategoryView() {
         return categoryView;
+    }
+    public String getUserId() {
+        return userId;
     }
 }

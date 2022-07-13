@@ -45,12 +45,6 @@ import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 
 public class AddItemActivity extends AppCompatActivity {
-    TextView date, category;
-    int year, mon, day;
-    ImageView profile;
-    Spinner catSpinner;
-//    String itemCategory;
-
     private ImageView imageView;
     private ImageButton imageButton;
     private Uri imageUri;
@@ -58,6 +52,12 @@ public class AddItemActivity extends AppCompatActivity {
     private StorageReference mStorageReference;
     private NewItem newItem;
     private String newItemId;
+    PrefManager prefManager;
+
+    TextView date, category;
+    int year, mon, day;
+    ImageView profile;
+    Spinner catSpinner;
 
     ActivityResultLauncher<Intent> launcher =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), (ActivityResult result) -> {
@@ -66,22 +66,17 @@ public class AddItemActivity extends AppCompatActivity {
                     imageView.setImageURI(imageUri);
                     // Use the uri to load the image
                 } else if (result.getResultCode() == ImagePicker.RESULT_ERROR) {
-                    // Use ImagePicker.Companion.getError(result.getData()) to show an error
+                     ImagePicker.Companion.getError(result.getData());
                 }
             });
 
-//    private static final int PIC_ID = 1;
-//    Bitmap photo;
-//    private ListItemAdapter mListItemAdapter;
-//    private ListView mListItemView;
-
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-
-
+    protected void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.add_item);
+        prefManager = new PrefManager(this);
+
         date = findViewById(R.id.editDateView);
         profile = findViewById(R.id.profile_image);
         profile.setOnClickListener(new View.OnClickListener() {
@@ -118,16 +113,8 @@ public class AddItemActivity extends AppCompatActivity {
         catSpinner = findViewById(R.id.categorySpinner);
         setupSpinner();
 
-//        mListItemView = (ListView) findViewById(R.id.itemsList);
-
-        // Initialize message ListView and its adapter
-//        List<ListItem> listItems = new ArrayList<>();
-//        mListItemAdapter = new ListItemAdapter(this, R.layout.list_item, listItems);
-//        mListItemView.setAdapter(mListItemAdapter);
-
-//        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference("items");
-        mStorageReference =  FirebaseStorage.getInstance().getReference("items");
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference("Items");
+        mStorageReference =  FirebaseStorage.getInstance().getReference("Items");
 
         imageView = (ImageView) findViewById(R.id.imageView);
         imageButton = (ImageButton) findViewById(R.id.imageButton);
@@ -162,11 +149,6 @@ public class AddItemActivity extends AppCompatActivity {
 //                ListItem listItem = new ListItem()
                 if(imageUri != null){
                     uploadImage(imageUri);
-//                    Log.e(TAG, "image url = " + imageUrl);
-//                    Log.e(TAG, "model id = " + modelId);
-//                    Log.e(TAG, "model = " + model.toString());
-//                    newItem = new NewItem(imageUrl, getName(), getBrand(), getDate(), getLocation(), getContact());
-//                    mDatabaseReference.push().setValue(newItem);
                     Toast.makeText(AddItemActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(AddItemActivity.this, MainScreenActivity.class);
                     startActivity(intent);
@@ -176,19 +158,6 @@ public class AddItemActivity extends AppCompatActivity {
                 }
             }
         });
-
-//        imageView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-//                startActivityForResult(cameraIntent, PIC_ID);
-//                Intent intent = new Intent();
-//                intent.setAction(Intent.ACTION_GET_CONTENT);
-//                intent.setType("image/*");
-//                startForResult.launch(intent);
-//                imageChooser();
-//            }
-//        });
     }
 
     private void setupSpinner(){
@@ -214,106 +183,31 @@ public class AddItemActivity extends AppCompatActivity {
         });
     }
 
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == PIC_ID && resultCode == RESULT_OK) {
-//
-//            photo = (Bitmap) data.getExtras().get("data");
-//            submit();
-//        }
-//    }
-
-//    public void submit(){
-//
-//        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-//        photo.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-//
-//        byte[] b = stream.toByteArray();
-//        StorageReference storageReference =FirebaseStorage.getInstance().getReference().child("documentImages").child("noplateImg");
-//        //StorageReference filePath = FirebaseStorage.getInstance().getReference().child("profile_images").child(userID);
-//
-//        storageReference.putBytes(b).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//            @Override
-//            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//
-//                Uri downloadUrl = taskSnapshot.getDownloadUrl();
-//                Toast.makeText(CameraActivity.this, "uploaded", Toast.LENGTH_SHORT).show();
-//
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                Toast.makeText(CameraActivity.this,"failed",Toast.LENGTH_LONG).show();
-//
-//
-//            }
-//        });
-//
-//    }
-
     private String getName(){
         EditText nameView = findViewById(R.id.editNameView);
-        String name = nameView.getText().toString();
-        return name;
+        return nameView.getText().toString();
     }
     private String getBrand(){
         EditText brandView = findViewById(R.id.editBrandView);
-        String brand = brandView.getText().toString();
-        return brand;
+        return brandView.getText().toString();
     }
     private String getLocation(){
         EditText locView = findViewById(R.id.editLocView);
-        String loc = locView.getText().toString();
-        return loc;
+        return locView.getText().toString();
     }
     private String getContact(){
         EditText contactView = findViewById(R.id.editContactView);
-        String contact = contactView.getText().toString();
-        return contact;
+        return contactView.getText().toString();
     }
     private String getDate(){
         EditText dateView = findViewById(R.id.editDateView);
-        String date = dateView.getText().toString();
-        return date;
+        return dateView.getText().toString();
     }
 
     private String getCategory(){
         TextView categoryView = findViewById(R.id.CategoryView);
-        String category = categoryView.getText().toString();
-        return category;
+        return categoryView.getText().toString();
     }
-
-//    private void imageChooser() {
-//        Intent i = new Intent();
-//        i.setType("image/*");
-//        i.setAction(Intent.ACTION_GET_CONTENT);
-//
-//        launchSomeActivity.launch(i);
-//    }
-//
-//    ActivityResultLauncher<Intent> launchSomeActivity = registerForActivityResult(
-//            new ActivityResultContracts.StartActivityForResult(),
-//            result -> {
-//                if (result.getResultCode()
-//                        == Activity.RESULT_OK) {
-//                    Intent data = result.getData();
-//                    // do your operation from here....
-//                    if (data != null
-//                            && data.getData() != null) {
-//                        Uri selectedImageUri = data.getData();
-//                        Bitmap selectedImageBitmap = null;
-//                        try {
-//                            selectedImageBitmap = MediaStore.Images.Media.getBitmap(
-//                                    this.getContentResolver(),
-//                                    selectedImageUri);
-//                        }
-//                        catch (IOException e) {
-//                            e.printStackTrace();
-//                        }
-//                        imageView.setImageBitmap(selectedImageBitmap);
-//                    }
-//                }
-//            });
 
     private void uploadImage(Uri uri){
         StorageReference ref = mStorageReference.child(System.currentTimeMillis() + "." + getFileExtension(uri));
@@ -325,7 +219,7 @@ public class AddItemActivity extends AppCompatActivity {
                     public void onSuccess(Uri uri) {
 //                        imageUrl = uri.toString();
 //                        model = new Model(imageUrl);
-                        newItem = new NewItem(uri.toString(), getName(), getBrand(), getDate(), getLocation(), getContact(), getCategory());
+                        newItem = new NewItem(uri.toString(), getName(), getBrand(), getDate(), getLocation(), getContact(), getCategory(), prefManager.getId());
                         newItemId = mDatabaseReference.push().getKey();
                         mDatabaseReference.child(newItemId).setValue(newItem);
                     }

@@ -1,5 +1,6 @@
 package com.ieeeias.vit_finders;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
@@ -27,17 +28,14 @@ import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
 import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import static android.content.ContentValues.TAG;
 
 public class MainActivity extends AppCompatActivity {
-//    RecyclerView recyclerView;
-//    LinearLayoutManager layoutManager;
-//    List<ListItem>itemList;
-//    Adapter adapter;
-
+    PrefManager prefManager;
     GoogleSignInClient mGoogleSignInClient;
-    //Button sg;
     Button signInButton;
 
     private static int RC_SIGN_IN = 1000;
@@ -45,10 +43,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
+        prefManager = new PrefManager(this);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -56,9 +54,7 @@ public class MainActivity extends AppCompatActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         signInButton = findViewById(R.id.button);
 
-        //sg = findViewById(R.id.sg);
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        // Set the dimensions of the sign-in button.
 
 //        signInButton.setSize(SignInButton.SIZE_STANDARD);
         signInButton.setOnClickListener(new View.OnClickListener() {
@@ -67,40 +63,12 @@ public class MainActivity extends AppCompatActivity {
                 signIn();
             }
         });
-
-
     }
-
-
-//    private void iniData() {
-//        itemList=new ArrayList<>(); //we can also add data from firebase
-//        itemList.add(new ListItem(R.drawable.lost_item_img,"speaker","SJT"));
-//        itemList.add(new ListItem(R.drawable.lost_item_img,"speaker","SJT"));
-//        itemList.add(new ListItem(R.drawable.lost_item_img,"speaker","SJT"));
-//
-//
-//
-//    }
-//    private void iniRecyclerView() {
-//
-//        recyclerView=findViewById(R.id.rview);
-//        layoutManager=new LinearLayoutManager(this);
-//        layoutManager.setOrientation(RecyclerView.VERTICAL);
-//        recyclerView.setLayoutManager(layoutManager);
-//      adapter = (Adapter) new ListItemAdapter(itemList);
-//    recyclerView.setAdapter((RecyclerView.Adapter) adapter);
-//    ((RecyclerView.Adapter<?>) adapter).notifyDataSetChanged();
-//
-//    }
-
 
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
-
-
     }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -123,26 +91,16 @@ public class MainActivity extends AppCompatActivity {
             GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
             String result = acct.getEmail();
             boolean bool = result.contains("@vitstudent");
-//            Toast.makeText(MainActivity.this, "successfull", Toast.LENGTH_LONG).show();
-//Log.w(TAG, "email="+result);
-//            System.out.println(bool);
-//            System.out.println(result);
 
-            if (bool == true) {
+            if (bool) {
+                prefManager.isLogin(true);
+                AddUser();
                 Toast.makeText(MainActivity.this, "SignIn Successful", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(MainActivity.this, MainScreenActivity.class);
                 startActivity(intent);
-                //signInButton.setVisibility(View.VISIBLE);
-                //sg.setVisibility(View.INVISIBLE);
-            } else {
-                //                Intent intent = new Intent(MainActivity.this, PersonalInfo.class);
-//                startActivity(intent);
-//                Toast.makeText(MainActivity.this, "Signin Successfull", Toast.LENGTH_LONG).show();
+            }
+            else {
                 Toast.makeText(MainActivity.this, "Access denied Please use VIT MAIL ID", Toast.LENGTH_LONG).show();
-//                signin();
-                //signInButton.setVisibility(View.INVISIBLE);
-                //sg.setVisibility(View.VISIBLE);
-
                 mGoogleSignInClient.signOut()
                         .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                             @Override
@@ -150,21 +108,10 @@ public class MainActivity extends AppCompatActivity {
 //                                    Toast.makeText(MainActivity.this,"Signout successful",Toast.LENGTH_LONG).show();
                             }
                         });
-
-
             }
-
-            // Signed in successfully, show authenticated UI.
-
-
         } catch (ApiException e) {
-
-            // The ApiException status code indicates the detailed failure reason.
-            // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.e(TAG, "signInResult:failed code=" + e.getStatusCode());
-            //sg.setVisibility(View.VISIBLE);
         }
-
     }
 
     private void appupdate() {
@@ -211,8 +158,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void AddUser() {
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+        if (acct != null) {
+            String personName = acct.getGivenName();
+            String regNo = acct.getFamilyName();
+            String email = acct.getEmail();
+            String userId = acct.getId();
+            prefManager.setId(userId);
+
+            DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference("Users");
+            NewUser newUser = new NewUser(userId, personName, email, regNo);
+            String newUserId = mDatabaseReference.push().getKey();
+            mDatabaseReference.child(newUserId).setValue(newUser);
+        }
+    }
 }
-
-
-
-

@@ -11,12 +11,13 @@ public class NewItem {
     public String locView;
     public String contactView;
     public String categoryView;
+    public String userId;
 
     public NewItem(){
 
     }
 
-    public NewItem(String imageUrl, String nameView, String brandView, String dateView, String locView, String contactView, String categoryView) {
+    public NewItem(String imageUrl, String nameView, String brandView, String dateView, String locView, String contactView, String categoryView, String userId) {
 //        this.imageView = imageView;
 //        this.model = model;
         this.imageUrl = imageUrl;
@@ -26,5 +27,6 @@ public class NewItem {
         this.locView = locView;
         this.contactView = contactView;
         this.categoryView = categoryView;
+        this.userId = userId;
     }
 }
