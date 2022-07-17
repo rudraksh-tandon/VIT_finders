@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 prefManager.isLogin(true);
                 AddUser();
                 Toast.makeText(MainActivity.this, "SignIn Successful", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(MainActivity.this, MainScreenActivity.class);
+                Intent intent = new Intent(MainActivity.this, main2.class);
                 startActivity(intent);
             }
             else {

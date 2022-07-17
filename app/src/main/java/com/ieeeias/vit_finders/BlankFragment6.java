@@ -5,8 +5,14 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,18 +25,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.github.drjacky.imagepicker.ImagePicker;
 import com.github.drjacky.imagepicker.constant.ImageProvider;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -44,49 +43,78 @@ import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 
-public class AddItemActivity extends AppCompatActivity {
-    private ImageView imageView;
-    private ImageButton imageButton;
-    private Uri imageUri;
-    private DatabaseReference mDatabaseReference;
-    private StorageReference mStorageReference;
-    private NewItem newItem;
-    private String newItemId;
+///**
+// * A simple {@link Fragment} subclass.
+// * Use the {@link BlankFragment6#newInstance} factory method to
+// * create an instance of this fragment.
+// */
+public class BlankFragment6 extends Fragment {
     PrefManager prefManager;
-
+    GoogleSignInClient mGoogleSignInClient;
+    Button signInButton;
     TextView date, category;
     int year, mon, day;
     ImageView profile;
     Spinner catSpinner;
 
-    ActivityResultLauncher<Intent> launcher =
-            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), (ActivityResult result) -> {
-                if (result.getResultCode() == RESULT_OK) {
-                    imageUri = result.getData().getData();
-                    imageView.setImageURI(imageUri);
-                    // Use the uri to load the image
-                } else if (result.getResultCode() == ImagePicker.RESULT_ERROR) {
-                     ImagePicker.Companion.getError(result.getData());
-                }
-            });
-
+////
+////    // TODO: Rename parameter arguments, choose names that match
+////    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+////    private static final String ARG_PARAM1 = "param1";
+////    private static final String ARG_PARAM2 = "param2";
+//
+////    // TODO: Rename and change types of parameters
+////    private String mParam1;
+////    private String mParam2;
+//
+//    public BlankFragment6() {
+//        // Required empty public constructor
+//    }
+//
+////    /**
+////     * Use this factory method to create a new instance of
+////     * this fragment using the provided parameters.
+////     *
+////     * @param param1 Parameter 1.
+////     * @param param2 Parameter 2.
+////     * @return A new instance of fragment BlankFragment6.
+////     */
+////    // TODO: Rename and change types and number of parameters
+////    public static BlankFragment6 newInstance(String param1, String param2) {
+////        BlankFragment6 fragment = new BlankFragment6();
+////        Bundle args = new Bundle();
+////        args.putString(ARG_PARAM1, param1);
+////        args.putString(ARG_PARAM2, param2);
+////        fragment.setArguments(args);
+////        return fragment;
+////    }
+//
+////    @Override
+////    public void onCreate(Bundle savedInstanceState) {
+////        super.onCreate(savedInstanceState);
+////        if (getArguments() != null) {
+////            mParam1 = getArguments().getString(ARG_PARAM1);
+////            mParam2 = getArguments().getString(ARG_PARAM2);
+////        }
+////    }
+//
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
-        setContentView(R.layout.add_item);
-        prefManager = new PrefManager(this);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_blank6, container, false);
+        prefManager = new PrefManager(BlankFragment6.this.getActivity());
 
-        date = findViewById(R.id.editDateView);
-        profile = findViewById(R.id.profile_image);
+        date = view.findViewById(R.id.editDateView);
+        profile = view.findViewById(R.id.profile_image);
         profile.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent= new Intent(AddItemActivity.this, PersonalInfo.class);
+                Intent intent= new Intent(BlankFragment6.this.getActivity(), PersonalInfo.class);
                 startActivity(intent);
             }
         });
 
-        ImageView calendar = findViewById(R.id.calendar);
+        ImageView calendar = view.findViewById(R.id.calendar);
         //ig=findViewById(R.id.ig);
         final Calendar c = Calendar.getInstance();
 
@@ -96,7 +124,7 @@ public class AddItemActivity extends AppCompatActivity {
                 year = c.get(Calendar.YEAR);
                 mon = c.get(Calendar.MONTH);
                 day = c.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog g = new DatePickerDialog(AddItemActivity.this, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog g = new DatePickerDialog(BlankFragment6.this.getActivity(), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
                         i1 = i1 + 1;
@@ -109,20 +137,20 @@ public class AddItemActivity extends AppCompatActivity {
             }
         });
 
-        category = findViewById(R.id.CategoryView);
-        catSpinner = findViewById(R.id.categorySpinner);
+        category = view.findViewById(R.id.CategoryView);
+        catSpinner = view.findViewById(R.id.categorySpinner);
         setupSpinner();
 
         mDatabaseReference = FirebaseDatabase.getInstance().getReference("Items");
         mStorageReference =  FirebaseStorage.getInstance().getReference("Items");
 
-        imageView = (ImageView) findViewById(R.id.imageView);
-        imageButton = (ImageButton) findViewById(R.id.imageButton);
+        imageView = (ImageView) view.findViewById(R.id.imageView);
+        imageButton = (ImageButton)view. findViewById(R.id.imageButton);
 
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ImagePicker.Companion.with(AddItemActivity.this)
+                ImagePicker.Companion.with(BlankFragment6.this.getActivity())
                         .crop()
                         .cropOval()
                         .maxResultSize(512, 512, true)
@@ -142,19 +170,19 @@ public class AddItemActivity extends AppCompatActivity {
             }
         });
 
-        Button submitButton = (Button) findViewById(R.id.button);
+        Button submitButton = (Button)view. findViewById(R.id.button);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                ListItem listItem = new ListItem()
                 if(imageUri != null){
                     uploadImage(imageUri);
-                    Toast.makeText(AddItemActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(AddItemActivity.this, MainScreenActivity.class);
+                    Toast.makeText(BlankFragment6.this.getActivity(), "Upload successful", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(BlankFragment6.this.getActivity(), MainScreenActivity.class);
                     startActivity(intent);
                 }
                 else{
-                    Toast.makeText(AddItemActivity.this, "Please upload image", Toast.LENGTH_LONG).show();
+                    Toast.makeText(BlankFragment6.this.getActivity(), "Please upload image", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -178,34 +206,34 @@ public class AddItemActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                    category.setText(getString(R.string.category_others));
+                category.setText(getString(R.string.category_others));
             }
         });
     }
 
     private String getName(){
-        EditText nameView = findViewById(R.id.editNameView);
+        EditText nameView =view. findViewById(R.id.editNameView);
         return nameView.getText().toString();
     }
     private String getBrand(){
-        EditText brandView = findViewById(R.id.editBrandView);
+        EditText brandView =view. findViewById(R.id.editBrandView);
         return brandView.getText().toString();
     }
     private String getLocation(){
-        EditText locView = findViewById(R.id.editLocView);
+        EditText locView =view. findViewById(R.id.editLocView);
         return locView.getText().toString();
     }
     private String getContact(){
-        EditText contactView = findViewById(R.id.editContactView);
+        EditText contactView = view.findViewById(R.id.editContactView);
         return contactView.getText().toString();
     }
     private String getDate(){
-        EditText dateView = findViewById(R.id.editDateView);
+        EditText dateView =view. findViewById(R.id.editDateView);
         return dateView.getText().toString();
     }
 
     private String getCategory(){
-        TextView categoryView = findViewById(R.id.CategoryView);
+        TextView categoryView =view. findViewById(R.id.CategoryView);
         return categoryView.getText().toString();
     }
 
@@ -228,7 +256,7 @@ public class AddItemActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(AddItemActivity.this, "Uploading failed", Toast.LENGTH_LONG).show();
+                Toast.makeText(BlankFragment6.this.getActivity(), "Uploading failed", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -238,5 +266,13 @@ public class AddItemActivity extends AppCompatActivity {
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cr.getType(uri));
     }
+
+}
+
+
+
+
+    }
+
 
 }

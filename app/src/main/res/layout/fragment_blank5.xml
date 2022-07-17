@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+
+
+    android:background="@drawable/profiledesign"
+    android:layout_height="match_parent">
+
+
+
+
+    <EditText
+        android:id="@+id/pegv"
+
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="648dp"
+        android:backgroundTint="#009688"
+        android:ems="10"
+        android:enabled="false"
+        android:inputType="none"
+        android:textColor="#1AD121"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/personfamily"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="532dp"
+        android:backgroundTint="#009688"
+        android:ems="10"
+        android:enabled="false"
+        android:inputType="none"
+        android:textColor="#1AD121"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/persongivenname"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="56dp"
+        android:backgroundTint="#009688"
+        android:ems="10"
+        android:enabled="false"
+        android:inputType="none"
+        android:textColor="#1AD121"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/namee"
+        tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/namee"
+        android:layout_width="402dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="232dp"
+        android:backgroundTint="#009688"
+        android:ems="10"
+        android:enabled="false"
+        android:inputType="none"
+        android:textColor="#1AD121"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
