@@ -37,7 +37,7 @@ public class main2 extends AppCompatActivity {
                     loadfragment(new BlankFragment2(), false);
 
                 } else if (id == R.id.nav_home2) {
-                    loadfragment(new BlankFragment2(), false);
+                    loadfragment(new BlankFragment7(), false);
 
                 } else if (id == R.id.nav_home3) {
                     loadfragment(new BlankFragment4(), false);

@@ -8,7 +8,7 @@
         android:icon="@drawable/ic_baseline_credit_card_24"/>
     <item android:id="@+id/nav_home2"
         android:title="additem"
-        android:itemIconSize="@dimen/bottom_navigation_icon_size"
+
 
         android:icon="@drawable/ic_baseline_add_circle_outline_24"
         />
