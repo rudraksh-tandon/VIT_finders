@@ -259,7 +259,7 @@ public class BlankFragment7 extends Fragment {
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(BlankFragment7.this.getActivity(), "Uploading failed", Toast.LENGTH_LONG).show();
+                        Toast.makeText(BlankFragment7.this.getActivity(), "Uploading failed please try again", Toast.LENGTH_LONG).show();
                     }
                 });
             }
