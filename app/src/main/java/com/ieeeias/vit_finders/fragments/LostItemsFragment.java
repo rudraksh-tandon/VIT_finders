@@ -1,4 +1,4 @@
-package com.ieeeias.vit_finders;
+package com.ieeeias.vit_finders.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,32 +12,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.SearchView;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.ieeeias.vit_finders.R;
+import com.ieeeias.vit_finders.adapter.ListItemAdapter;
+import com.ieeeias.vit_finders.model.ListItem;
+import com.ieeeias.vit_finders.view.AddItemActivity;
+import com.ieeeias.vit_finders.view.ItemDescriptionActivity;
 
 import java.util.ArrayList;
-import java.util.concurrent.Executor;
 
 ///**
 // * A simple {@link Fragment} subclass.
-// * Use the {@link BlankFragment2#newInstance} factory method to
+// * Use the {@link LostItemsFragment#newInstance} factory method to
 // * create an instance of this fragment.
 // */
-public class BlankFragment2 extends Fragment {
+public class LostItemsFragment extends Fragment {
     //GoogleSignInClient mGoogleSignInClient;
     private DatabaseReference mDatabaseReference;
 
@@ -50,14 +46,14 @@ public class BlankFragment2 extends Fragment {
 //    private String mParam1;
 //    private String mParam2;
 
-    public BlankFragment2() {
+    public LostItemsFragment() {
         // Required empty public constructor
     }
 
     //
 //    // TODO: Rename and change types and number of parameters
-//    public static BlankFragment2 newInstance(String param1, String param2) {
-//        BlankFragment2 fragment = new BlankFragment2();
+//    public static LostItemsFragment newInstance(String param1, String param2) {
+//        LostItemsFragment fragment = new LostItemsFragment();
 //        Bundle args = new Bundle();
 //        args.putString(ARG_PARAM1, param1);
 //        args.putString(ARG_PARAM2, param2);
@@ -80,23 +76,23 @@ public class BlankFragment2 extends Fragment {
         super.onCreate(savedInstanceState);
 
         //Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_blank2, container, false);
-        ListView listView= view.findViewById(R.id.itemsList);
+        View view = inflater.inflate(R.layout.items_list_fragment, container, false);
+        ListView listView = view.findViewById(R.id.itemsList);
         ArrayList<ListItem> itemList = new ArrayList<>();
         ListItemAdapter mAdapter = new ListItemAdapter(getContext(), R.layout.list_item, itemList);
 
-        ImageView profile = view.findViewById(R.id.profile_image);
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent= new Intent(BlankFragment2.this.getActivity(), PersonalInfo.class);
-                startActivity(intent);
-            }
-        });
+//        ImageView profile = view.findViewById(R.id.profile_image);
+//        profile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent= new Intent(LostItemsFragment.this.getActivity(), PersonalInfo.class);
+//                startActivity(intent);
+//            }
+//        });
 
         listView.setAdapter(mAdapter);
 
-        View emptyView =view. findViewById(R.id.empty_view);
+        View emptyView = view.findViewById(R.id.empty_view);
         listView.setEmptyView(emptyView);
 
         mDatabaseReference = FirebaseDatabase.getInstance().getReference("Items");
@@ -139,7 +135,7 @@ public class BlankFragment2 extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 try {
-                    Intent intent = new Intent(BlankFragment2.this.getActivity(), ItemDescriptionActivity.class);
+                    Intent intent = new Intent(LostItemsFragment.this.getActivity(), ItemDescriptionActivity.class);
                     ListItem listItem = (ListItem) listView.getItemAtPosition(i);
                     intent.putExtra("name", listItem.getNameView());
                     intent.putExtra("brand", listItem.getBrandView());
@@ -160,7 +156,7 @@ public class BlankFragment2 extends Fragment {
         view.findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(BlankFragment2.this.getActivity(), AddItemActivity.class);
+                Intent intent = new Intent(LostItemsFragment.this.getActivity(), AddItemActivity.class);
                 startActivity(intent);
             }
         });
@@ -201,10 +197,29 @@ public class BlankFragment2 extends Fragment {
 //            }
 //        }
 
-        return view;
+            SearchView searchView = view.findViewById(R.id.searchBar);
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String s) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String s) {
+                    ArrayList<ListItem> filtered = new ArrayList<ListItem>();
+                    for (ListItem listItem : itemList) {
+                        if (listItem.getNameView().toLowerCase().contains(s.toLowerCase())) {
+                            filtered.add(listItem);
+                        }
+                    }
+                    ListItemAdapter adapter = new ListItemAdapter(getActivity(), 0, filtered);
+                    listView.setAdapter(adapter);
+                    return false;
+                }
+            });
+    return view;
     }
 }
-
 
 
 

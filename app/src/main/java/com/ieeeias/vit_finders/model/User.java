@@ -1,16 +1,16 @@
-package com.ieeeias.vit_finders;
+package com.ieeeias.vit_finders.model;
 
-public class NewUser {
+public class User {
     public String userId;
     public String personName;
     public String email;
     public String regNo;
 
-    public NewUser(){
+    public User(){
 
     }
 
-    public NewUser(String userId, String personName, String email, String regNo){
+    public User(String userId, String personName, String email, String regNo){
         this.userId = userId;
         this.personName = personName;
         this.email = email;

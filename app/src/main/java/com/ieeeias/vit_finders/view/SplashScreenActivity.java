@@ -1,23 +1,16 @@
-package com.ieeeias.vit_finders;
+package com.ieeeias.vit_finders.view;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.Task;
-import com.google.android.play.core.appupdate.AppUpdateInfo;
-import com.google.android.play.core.appupdate.AppUpdateManager;
-import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
-import com.google.android.play.core.install.model.AppUpdateType;
-import com.google.android.play.core.install.model.UpdateAvailability;
-
-import org.jetbrains.annotations.Nullable;
+import com.ieeeias.vit_finders.MainActivity;
+import com.ieeeias.vit_finders.R;
+import com.ieeeias.vit_finders.main2;
+import com.ieeeias.vit_finders.utils.PrefManager;
 
 public class SplashScreenActivity extends AppCompatActivity {
     Context context = null;
@@ -35,7 +28,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             public void run() {
                 Intent intent;
                 if(prefManager.getLogin()){
-                    intent = new Intent(SplashScreenActivity.this,MainActivity.class);
+                    intent = new Intent(SplashScreenActivity.this, main2.class);
                 }
                 else {
                     intent = new Intent(SplashScreenActivity.this,MainActivity.class);

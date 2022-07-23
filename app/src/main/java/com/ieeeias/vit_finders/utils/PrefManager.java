@@ -1,4 +1,4 @@
-package com.ieeeias.vit_finders;
+package com.ieeeias.vit_finders.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

@@ -22,14 +22,14 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"/>
 
-        <ImageView
-            android:id="@+id/profile_image"
-            android:layout_width="84dp"
-            android:layout_height="76dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/profile_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <!--        <ImageView-->
+        <!--            android:id="@+id/profile_image"-->
+        <!--            android:layout_width="84dp"-->
+        <!--            android:layout_height="76dp"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:src="@drawable/profile_image"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" />-->
 
         <ImageView
             android:id="@+id/imageView"
@@ -45,190 +45,184 @@
             tools:src="@drawable/ic_photo_black_48dp" />
 
         <LinearLayout
-            android:id="@+id/linearLayoutName"
+            android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/item_white_box"
+            android:background="@drawable/login_background_box"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView"
-            android:layout_margin="20dp">
+            android:layout_margin="30dp">
 
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="140dp"
-                android:layout_height="50dp"
-                android:layout_margin="20dp"
-                android:text="ITEM NAME"
-                android:textColor="@color/purple"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/nameView"
-                android:layout_width="180dp"
-                android:layout_height="50dp"
+            <LinearLayout
+                android:id="@+id/linearLayoutName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginTop="20dp"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
-        </LinearLayout>
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/linearLayoutBrand"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/item_white_box"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutName"
-            android:layout_margin="20dp">
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="140dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="20dp"
+                    android:text="ITEM NAME"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/brand"
-                android:layout_width="140dp"
-                android:layout_height="50dp"
-                android:layout_margin="20dp"
-                android:text="BRAND"
-                android:textColor="@color/purple"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/nameView"
+                    android:layout_width="180dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/brandView"
-                android:layout_width="180dp"
-                android:layout_height="50dp"
+            <LinearLayout
+                android:id="@+id/linearLayoutBrand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginTop="20dp"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
-        </LinearLayout>
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/linearLayoutDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/item_white_box"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutBrand"
-            android:layout_margin="20dp">
+                <TextView
+                    android:id="@+id/brand"
+                    android:layout_width="140dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="20dp"
+                    android:text="BRAND"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/date"
-                android:layout_width="140dp"
-                android:layout_height="50dp"
-                android:layout_margin="20dp"
-                android:text="DATE"
-                android:textColor="@color/purple"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/brandView"
+                    android:layout_width="180dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/dateView"
-                android:layout_width="180dp"
-                android:layout_height="50dp"
-                android:textColor="@color/black"
+            <LinearLayout
+                android:id="@+id/linearLayoutDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginTop="20dp"
-                android:textSize="20sp"
-                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+                android:orientation="horizontal">
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="140dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="20dp"
+                    android:text="DATE"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
-        <LinearLayout
-            android:id="@+id/linearLayoutLocation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/item_white_box"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutDate"
-            android:layout_margin="20dp">
+                <TextView
+                    android:id="@+id/dateView"
+                    android:layout_width="180dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
-            <TextView
-                android:id="@+id/location"
-                android:layout_width="140dp"
-                android:layout_height="50dp"
-                android:layout_margin="20dp"
-                android:text="LOCATION"
-                android:textColor="@color/purple"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/locView"
-                android:layout_width="180dp"
-                android:layout_height="50dp"
+            <LinearLayout
+                android:id="@+id/linearLayoutLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginTop="20dp"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
-        </LinearLayout>
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/linearLayoutContact"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/item_white_box"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutLocation"
-            android:layout_margin="20dp">
+                <TextView
+                    android:id="@+id/location"
+                    android:layout_width="140dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="20dp"
+                    android:text="LOCATION"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/contact"
-                android:layout_width="140dp"
-                android:layout_height="50dp"
-                android:layout_margin="20dp"
-                android:text="CONTACT"
-                android:textColor="@color/purple"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/locView"
+                    android:layout_width="180dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/contactView"
-                android:layout_width="180dp"
-                android:layout_height="50dp"
-                android:textColor="@color/black"
+            <LinearLayout
+                android:id="@+id/linearLayoutContact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginTop="20dp"
-                android:textSize="20sp"
-                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
-        </LinearLayout>
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/linearLayoutCategory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/item_white_box"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutContact"
-            android:layout_margin="20dp">
+                <TextView
+                    android:id="@+id/contact"
+                    android:layout_width="140dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="20dp"
+                    android:text="CONTACT"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/category"
-                android:layout_width="140dp"
-                android:layout_height="50dp"
-                android:layout_margin="20dp"
-                android:text="CATEGORY"
-                android:textColor="@color/purple"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/contactView"
+                    android:layout_width="180dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/categoryView"
-                android:layout_width="180dp"
-                android:layout_height="50dp"
-                android:textColor="@color/black"
+            <LinearLayout
+                android:id="@+id/linearLayoutCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginTop="20dp"
-                android:textSize="20sp"
-                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/category"
+                    android:layout_width="140dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="20dp"
+                    android:text="CATEGORY"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/categoryView"
+                    android:layout_width="180dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+            </LinearLayout>
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -237,7 +231,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
             android:layout_marginTop="40dp"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="70dp"
             android:layout_marginEnd="100dp"
             android:background="@drawable/login_background_box"
             android:text="Received"
@@ -245,7 +239,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCategory" />
+            app:layout_constraintTop_toBottomOf="@+id/description" />
 
         <ProgressBar
             android:id="@+id/pg"

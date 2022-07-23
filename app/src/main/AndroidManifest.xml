@@ -17,7 +17,7 @@
         android:theme="@style/Theme.VIT_finders"
         tools:targetApi="31">
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".view.SplashScreenActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -32,23 +32,23 @@
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainScreenActivity"
+            android:name=".view.MainScreenActivity"
             android:excludeFromRecents="true"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".LostItemsActivity"
+            android:name=".view.LostItemsActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AddItemActivity"
+            android:name=".view.AddItemActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ItemDescriptionActivity"
+            android:name=".view.ItemDescriptionActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
-        <activity android:name=".OtpVerifyActivity"
+        <activity android:name=".view.OtpVerifyActivity"
             android:exported="true"
             android:screenOrientation="portrait"/>
         <activity
@@ -61,23 +61,23 @@
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".BlankFragment2"
+            android:name=".fragments.LostItemsFragment"
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="Instantiatable" />
 
         <activity
-            android:name=".BlankFragment4"
+            android:name=".fragments.HelpFragment"
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="Instantiatable" />
         <activity
-            android:name=".BlankFragment5"
+            android:name=".fragments.ProfileFragment"
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="Instantiatable" />
         <activity
-            android:name=".home1"
+            android:name=".fragments.AboutUsFragment"
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="Instantiatable" />
@@ -86,7 +86,7 @@
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".BlankFragment7"
+            android:name=".fragments.AddItemFragment"
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="Instantiatable" />

@@ -15,7 +15,6 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="15dp"
         android:scaleType="centerCrop"
-
         tools:srcCompat="@drawable/lost_item_img" />
 
     <TextView
@@ -25,9 +24,8 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="20dp"
         android:layout_toEndOf="@id/image"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        />
+        android:textColor="@color/white"
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/loc"
@@ -37,7 +35,7 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="20dp"
         android:layout_toEndOf="@id/image"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         tools:text="@string/location"
         android:textSize="25sp" />
 

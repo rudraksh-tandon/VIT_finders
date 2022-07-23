@@ -1,15 +1,11 @@
 package com.ieeeias.vit_finders;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.SoundEffectConstants;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -30,6 +26,8 @@ import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.ieeeias.vit_finders.model.User;
+import com.ieeeias.vit_finders.utils.PrefManager;
 
 import static android.content.ContentValues.TAG;
 
@@ -168,9 +166,9 @@ public class MainActivity extends AppCompatActivity {
             prefManager.setId(userId);
 
             DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference("Users");
-            NewUser newUser = new NewUser(userId, personName, email, regNo);
-            String newUserId = mDatabaseReference.push().getKey();
-            mDatabaseReference.child(newUserId).setValue(newUser);
+            User user = new User(userId, personName, email, regNo);
+//            String newUserId = mDatabaseReference.push().getKey();
+            mDatabaseReference.child(userId).setValue(user);
         }
     }
 }

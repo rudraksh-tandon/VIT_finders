@@ -101,7 +101,7 @@
 //
 //}
 
-package com.ieeeias.vit_finders;
+package com.ieeeias.vit_finders.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -121,6 +121,8 @@ import com.bumptech.glide.Glide;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.ieeeias.vit_finders.PersonalInfo;
+import com.ieeeias.vit_finders.R;
 
 import java.net.MalformedURLException;
 import java.net.URI;

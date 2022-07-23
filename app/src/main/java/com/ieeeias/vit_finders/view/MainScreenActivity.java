@@ -1,4 +1,4 @@
-package com.ieeeias.vit_finders;
+package com.ieeeias.vit_finders.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +16,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.ieeeias.vit_finders.MainActivity;
+import com.ieeeias.vit_finders.R;
 
 public class MainScreenActivity extends AppCompatActivity {
     Button signOut;

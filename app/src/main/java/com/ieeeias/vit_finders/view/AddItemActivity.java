@@ -1,4 +1,4 @@
-package com.ieeeias.vit_finders;
+package com.ieeeias.vit_finders.view;
 
 import android.app.DatePickerDialog;
 import android.content.ContentResolver;
@@ -35,6 +35,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.ieeeias.vit_finders.PersonalInfo;
+import com.ieeeias.vit_finders.R;
+import com.ieeeias.vit_finders.model.NewItem;
+import com.ieeeias.vit_finders.utils.PrefManager;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -78,13 +82,13 @@ public class AddItemActivity extends AppCompatActivity {
         prefManager = new PrefManager(this);
 
         date = findViewById(R.id.editDateView);
-        profile = findViewById(R.id.profile_image);
-        profile.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent= new Intent(AddItemActivity.this, PersonalInfo.class);
-                startActivity(intent);
-            }
-        });
+//        profile = findViewById(R.id.profile_image);
+//        profile.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View view) {
+//                Intent intent= new Intent(AddItemActivity.this, PersonalInfo.class);
+//                startActivity(intent);
+//            }
+//        });
 
         ImageView calendar = findViewById(R.id.calendar);
         //ig=findViewById(R.id.ig);
@@ -189,7 +193,7 @@ public class AddItemActivity extends AppCompatActivity {
     }
     private String getBrand(){
         EditText brandView = findViewById(R.id.editBrandView);
-        return brandView.getText().toString();
+        return brandView.toString();
     }
     private String getLocation(){
         EditText locView = findViewById(R.id.editLocView);
@@ -206,7 +210,7 @@ public class AddItemActivity extends AppCompatActivity {
 
     private String getCategory(){
         TextView categoryView = findViewById(R.id.CategoryView);
-        return categoryView.getText().toString();
+        return categoryView.toString();
     }
 
     private void uploadImage(Uri uri){

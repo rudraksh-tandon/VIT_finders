@@ -1,4 +1,4 @@
-package com.ieeeias.vit_finders;
+package com.ieeeias.vit_finders.model;
 
 import android.content.Intent;
 import android.view.View;

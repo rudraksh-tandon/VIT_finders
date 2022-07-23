@@ -1,20 +1,14 @@
 package com.ieeeias.vit_finders;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class BlankFragment1 extends AppCompatActivity  {
@@ -31,7 +25,7 @@ public class BlankFragment1 extends AppCompatActivity  {
             @Override
             public void onNavigationItemReselected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.nav_home:
+                    case R.id.aboutUs:
                         //tt.setText("Raghav I have done");
                         Toast.makeText(BlankFragment1.this, "DONE SUCCESSFULLY", Toast.LENGTH_SHORT).show();
                 }

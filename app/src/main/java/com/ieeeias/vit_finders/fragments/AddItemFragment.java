@@ -1,10 +1,9 @@
-package com.ieeeias.vit_finders;
+package com.ieeeias.vit_finders.fragments;
 
 import static android.app.Activity.RESULT_OK;
 import static com.google.common.io.Files.getFileExtension;
 
 import android.app.DatePickerDialog;
-import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,14 +12,12 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -41,6 +38,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.ieeeias.vit_finders.R;
+import com.ieeeias.vit_finders.model.NewItem;
+import com.ieeeias.vit_finders.utils.PrefManager;
+import com.ieeeias.vit_finders.view.MainScreenActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -55,7 +56,7 @@ import kotlin.jvm.internal.Intrinsics;
 // * Use the {@link BlankFragment7#newInstance} factory method to
 // * create an instance of this fragment.
 // */
-public class BlankFragment7 extends Fragment {
+public class AddItemFragment extends Fragment {
     private ImageView imageView;
     private ImageButton imageButton;
     private Uri imageUri;
@@ -67,7 +68,7 @@ public class BlankFragment7 extends Fragment {
 
     TextView date, category;
     int year, mon, day;
-    ImageView profile;
+    //    ImageView profile;
     Spinner catSpinner;
 
     ActivityResultLauncher<Intent> launcher =
@@ -90,7 +91,7 @@ public class BlankFragment7 extends Fragment {
 //    private String mParam1;
 //    private String mParam2;
 
-    public BlankFragment7() {
+    public AddItemFragment() {
         // Required empty public constructor
     }
 
@@ -125,17 +126,17 @@ public class BlankFragment7 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_blank7, container, false);
-        prefManager = new PrefManager(BlankFragment7.this.getActivity());
+        View view = inflater.inflate(R.layout.add_item, container, false);
+        prefManager = new PrefManager(AddItemFragment.this.getActivity());
 
         date = view.findViewById(R.id.editDateView);
-        profile = view.findViewById(R.id.profile_image);
-        profile.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intent = new Intent(BlankFragment7.this.getActivity(), PersonalInfo.class);
-                startActivity(intent);
-            }
-        });
+//        profile = view.findViewById(R.id.profile_image);
+//        profile.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View view) {
+//                Intent intent = new Intent(AddItemFragment.this.getActivity(), PersonalInfo.class);
+//                startActivity(intent);
+//            }
+//        });
 
         ImageView calendar =view.findViewById(R.id.calendar);
         //ig=findViewById(R.id.ig);
@@ -147,7 +148,7 @@ public class BlankFragment7 extends Fragment {
                 year = c.get(Calendar.YEAR);
                 mon = c.get(Calendar.MONTH);
                 day = c.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog g = new DatePickerDialog(BlankFragment7.this.getActivity(), new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog g = new DatePickerDialog(AddItemFragment.this.getActivity(), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
                         i1 = i1 + 1;
@@ -173,7 +174,7 @@ public class BlankFragment7 extends Fragment {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ImagePicker.Companion.with(BlankFragment7.this.getActivity())
+                ImagePicker.Companion.with(AddItemFragment.this.getActivity())
                         .crop()
                         .cropOval()
                         .maxResultSize(512, 512, true)
@@ -200,13 +201,28 @@ public class BlankFragment7 extends Fragment {
 //                ListItem listItem = new ListItem()
                 if (imageUri != null) {
                     uploadImage(imageUri);
-                    Toast.makeText(BlankFragment7.this.getActivity(), "Upload successful", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(BlankFragment7.this.getActivity(), MainScreenActivity.class);
+                    Toast.makeText(AddItemFragment.this.getActivity(), "Upload successful", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(AddItemFragment.this.getActivity(), MainScreenActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(BlankFragment7.this.getActivity(), "Please upload image", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddItemFragment.this.getActivity(), "Please upload image", Toast.LENGTH_LONG).show();
                 }
             }
+
+//            String name, brand, category, contact, loc, date;
+//            EditText name
+            EditText nameView = view.findViewById(R.id.editNameView);
+            String name = nameView.getText().toString();
+            EditText brandView = view.findViewById(R.id.editBrandView);
+            String brand = brandView.getText().toString();
+            EditText dateView = view.findViewById(R.id.editDateView);
+            String date = dateView.toString();
+            EditText categoryView = view.findViewById(R.id.categoryView);
+            String category = categoryView.toString();
+            EditText locView = view.findViewById(R.id.editLocView);
+            String loc = locView.toString();
+            EditText contactView = view.findViewById(R.id.editContactView);
+            String contact = contactView.getText().toString();
 
             private void uploadImage(Uri uri) {
                 StorageReference ref = mStorageReference.child(System.currentTimeMillis() + "." + getFileExtension(uri.toString()));
@@ -218,48 +234,48 @@ public class BlankFragment7 extends Fragment {
                             public void onSuccess(Uri uri) {
 //                        imageUrl = uri.toString();
 //                        model = new Model(imageUrl);
-                                newItem = new NewItem(uri.toString(), getName(), getBrand(), getDate(), getLocation(), getContact(), getCategory(), prefManager.getId());
+                                newItem = new NewItem(uri.toString(), name, brand, date, loc, contact, category, prefManager.getId());
                                 newItemId = mDatabaseReference.push().getKey();
                                 mDatabaseReference.child(newItemId).setValue(newItem);
                             }
 
-                            private String getCategory() {
-                                EditText brandView = view.findViewById(R.id.editBrandView);
-                                return brandView.toString();
-
-                            }
-
-                            private String getContact() {
-                                EditText contactView = view.findViewById(R.id.editContactView);
-                                return contactView.toString();
-                            }
-
-                            private String getLocation() {
-                                EditText locView = view.findViewById(R.id.editLocView);
-                                return locView.toString();
-                            }
-
-                            private String getDate() {
-                                EditText dateView =view. findViewById(R.id.editDateView);
-                                return dateView.getText().toString();
-                            }
-
-                            private String getBrand() {
-                                EditText brandView = view.findViewById(R.id.editBrandView);
-                                return brandView.toString();
-                            }
-
-                            private String getName() {
-                                EditText nameView = view.findViewById(R.id.editNameView);
-                                return nameView.toString();
-
-                            }
+//                            private String getCategory() {
+//                                EditText brandView = view.findViewById(R.id.editBrandView);
+//                                return brandView.toString();
+//
+//                            }
+//
+//                            private String getContact() {
+//                                EditText contactView = view.findViewById(R.id.editContactView);
+//                                return contactView.toString();
+//                            }
+//
+//                            private String getLocation() {
+//                                EditText locView = view.findViewById(R.id.editLocView);
+//                                return locView.toString();
+//                            }
+//
+//                            private String getDate() {
+//                                EditText dateView =view. findViewById(R.id.editDateView);
+//                                return dateView.getText().toString();
+//                            }
+//
+//                            private String getBrand() {
+//                                EditText brandView = view.findViewById(R.id.editBrandView);
+//                                return brandView.toString();
+//                            }
+//
+//                            private String getName() {
+//                                EditText nameView = view.findViewById(R.id.editNameView);
+//                                return nameView.toString();
+//
+//                            }
                         });
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(BlankFragment7.this.getActivity(), "Uploading failed please try again", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AddItemFragment.this.getActivity(), "Uploading failed", Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -269,20 +285,20 @@ public class BlankFragment7 extends Fragment {
     }
 
     private void setupSpinner() {
-        ArrayAdapter categorySpinnerAdapter = ArrayAdapter.createFromResource(BlankFragment7.this.getActivity(),
+        ArrayAdapter categorySpinnerAdapter = ArrayAdapter.createFromResource(AddItemFragment.this.getActivity(),
                 R.array.array_category_options, android.R.layout.simple_spinner_item);
 
         categorySpinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
 
         catSpinner.setAdapter(categorySpinnerAdapter);
         catSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                                                 @Override
-                                                 public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-                                                     String selection = (String) adapterView.getItemAtPosition(position);
-                                                     if (!TextUtils.isEmpty(selection)) {
-                                                         category.setText(selection);
-                                                     }
-                                                 }
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                String selection = (String) adapterView.getItemAtPosition(position);
+                if (!TextUtils.isEmpty(selection)) {
+                    category.setText(selection);
+                }
+            }
 
 
             @Override
@@ -390,6 +406,4 @@ public class BlankFragment7 extends Fragment {
 //    }
 
 
-    }
-
-
+}

@@ -1,4 +1,4 @@
-package com.ieeeias.vit_finders;
+package com.ieeeias.vit_finders.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,6 +31,8 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.ieeeias.vit_finders.R;
+import com.ieeeias.vit_finders.model.NewItem;
 
 import java.util.concurrent.TimeUnit;
 
