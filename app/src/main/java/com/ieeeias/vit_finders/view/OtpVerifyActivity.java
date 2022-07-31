@@ -46,7 +46,7 @@ public class OtpVerifyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
         setContentView(R.layout.otp_verify);
         //tt=findViewById(R.id.tt);
         inputNum1 = findViewById(R.id.inputNum1);

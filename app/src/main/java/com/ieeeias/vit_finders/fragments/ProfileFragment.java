@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -86,7 +87,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.profile, container, false);
+        View view = inflater.inflate(R.layout.profile_fragment, container, false);
         prefManager = new PrefManager(this.getActivity());
 
 
@@ -114,12 +115,12 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-//        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//                .requestEmail()
-//                .build();
-//        googleSignInClient = GoogleSignIn.getClient(this.getActivity(), gso);
-//        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getActivity());
-//        //acct = GoogleSignIn.getLastSignedInAccount(this);
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        googleSignInClient = GoogleSignIn.getClient(this.getActivity(), gso);
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getActivity());
+        acct = GoogleSignIn.getLastSignedInAccount(this.getActivity());
 //        if (acct != null) {
 //            String personName = acct.getDisplayName();
 //            String personGivenName = acct.getGivenName();

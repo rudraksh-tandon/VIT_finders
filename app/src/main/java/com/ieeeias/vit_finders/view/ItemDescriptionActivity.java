@@ -138,7 +138,7 @@ public class ItemDescriptionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
         setContentView(R.layout.description);
 
         TextView nameView = findViewById(R.id.nameView) ;

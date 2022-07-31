@@ -140,7 +140,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutCategory"
             android:background="@drawable/item_info_box"
-            android:hint="ITEM NAME"
+            android:hint="   ITEM NAME"
             android:textColor="@color/white"
             android:textSize="22sp"
             android:layout_margin="30dp"/>
@@ -185,7 +185,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutName"
             android:background="@drawable/item_info_box"
-            android:hint="BRAND"
+            android:hint="   BRAND"
             android:textColor="@color/white"
             android:textSize="22sp"
             android:layout_margin="30dp"/>
@@ -271,7 +271,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutDate"
             android:background="@drawable/item_info_box"
-            android:hint="LOCATION"
+            android:hint="   LOCATION"
             android:textColor="@color/white"
             android:textSize="22sp"
             android:layout_margin="30dp"/>
@@ -316,7 +316,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutLocation"
             android:background="@drawable/item_info_box"
-            android:hint="CONTACT"
+            android:hint="   CONTACT"
             android:textColor="@color/white"
             android:textSize="22sp"
             android:layout_margin="30dp"/>
@@ -367,9 +367,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="110dp"
-            android:layout_marginTop="40dp"
             android:layout_marginEnd="100dp"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="70dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/item_info_box"
             android:backgroundTint="@color/purple"
             android:text="Upload"
@@ -377,6 +377,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutContact" />
 

@@ -7,13 +7,6 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +21,12 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.github.drjacky.imagepicker.ImagePicker;
 import com.github.drjacky.imagepicker.constant.ImageProvider;
@@ -126,10 +125,12 @@ public class AddItemFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.add_item, container, false);
+        View view = inflater.inflate(R.layout.add_item_fragment, container, false);
         prefManager = new PrefManager(AddItemFragment.this.getActivity());
 
         date = view.findViewById(R.id.editDateView);
+        category = view.findViewById(R.id.CategoryView);
+        TextView dateView = view.findViewById(R.id.editDateView);
 //        profile = view.findViewById(R.id.profile_image);
 //        profile.setOnClickListener(new View.OnClickListener() {
 //            public void onClick(View view) {
@@ -152,7 +153,8 @@ public class AddItemFragment extends Fragment {
                     @Override
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
                         i1 = i1 + 1;
-                        date.setText(i2 + "/" + i1 + "/" + i);
+
+                        dateView.setText(i2 + "/" + i1 + "/" + i);
 
                     }
                 }, year, mon, day);
@@ -161,7 +163,7 @@ public class AddItemFragment extends Fragment {
             }
         });
 
-        category = view.findViewById(R.id.CategoryView);
+
         catSpinner = view.findViewById(R.id.categorySpinner);
         setupSpinner();
 
@@ -209,19 +211,19 @@ public class AddItemFragment extends Fragment {
                 }
             }
 
-//            String name, brand, category, contact, loc, date;
+            //            String name, brand, category, contact, loc, date;
 //            EditText name
-            EditText nameView = view.findViewById(R.id.editNameView);
+            EditText nameView = view.findViewById(R.id.linearLayoutName);
             String name = nameView.getText().toString();
-            EditText brandView = view.findViewById(R.id.editBrandView);
-            String brand = brandView.getText().toString();
-            EditText dateView = view.findViewById(R.id.editDateView);
+            TextView brandView = (TextView) view.findViewById(R.id.linearLayoutBrand);
+            String brand = brandView.toString();
+            TextView dateView = view.findViewById(R.id.editDateView);
             String date = dateView.toString();
-            EditText categoryView = view.findViewById(R.id.categoryView);
-            String category = categoryView.toString();
-            EditText locView = view.findViewById(R.id.editLocView);
-            String loc = locView.toString();
-            EditText contactView = view.findViewById(R.id.editContactView);
+            //            TextView categoryView =(TextView) view.findViewById(R.id.category);
+            String category1 = category.toString();
+            EditText locView = view.findViewById(R.id.linearLayoutLocation);
+            String loc = locView.getText().toString();
+            EditText contactView = view.findViewById(R.id.linearLayoutContact);
             String contact = contactView.getText().toString();
 
             private void uploadImage(Uri uri) {
@@ -234,7 +236,7 @@ public class AddItemFragment extends Fragment {
                             public void onSuccess(Uri uri) {
 //                        imageUrl = uri.toString();
 //                        model = new Model(imageUrl);
-                                newItem = new NewItem(uri.toString(), name, brand, date, loc, contact, category, prefManager.getId());
+                                newItem = new NewItem(uri.toString(), name, brand, date, loc, contact, category1, prefManager.getId());
                                 newItemId = mDatabaseReference.push().getKey();
                                 mDatabaseReference.child(newItemId).setValue(newItem);
                             }

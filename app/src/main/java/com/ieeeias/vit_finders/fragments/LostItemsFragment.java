@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.SearchView;
+import androidx.appcompat.widget.SearchView;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -197,30 +197,26 @@ public class LostItemsFragment extends Fragment {
 //            }
 //        }
 
-            SearchView searchView = view.findViewById(R.id.searchBar);
-            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                @Override
-                public boolean onQueryTextSubmit(String s) {
-                    return false;
-                }
+        SearchView searchView = view.findViewById(R.id.searchBar);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
 
-                @Override
-                public boolean onQueryTextChange(String s) {
-                    ArrayList<ListItem> filtered = new ArrayList<ListItem>();
-                    for (ListItem listItem : itemList) {
-                        if (listItem.getNameView().toLowerCase().contains(s.toLowerCase())) {
-                            filtered.add(listItem);
-                        }
+            @Override
+            public boolean onQueryTextChange(String s) {
+                ArrayList<ListItem> filtered = new ArrayList<ListItem>();
+                for (ListItem listItem : itemList) {
+                    if (listItem.getNameView().toLowerCase().contains(s.toLowerCase())) {
+                        filtered.add(listItem);
                     }
-                    ListItemAdapter adapter = new ListItemAdapter(getActivity(), 0, filtered);
-                    listView.setAdapter(adapter);
-                    return false;
                 }
-            });
-    return view;
+                ListItemAdapter adapter = new ListItemAdapter(getActivity(), 0, filtered);
+                listView.setAdapter(adapter);
+                return false;
+            }
+        });
+        return view;
     }
 }
-
-
-
-
