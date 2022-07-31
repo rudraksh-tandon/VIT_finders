@@ -32,6 +32,7 @@ import com.github.drjacky.imagepicker.ImagePicker;
 import com.github.drjacky.imagepicker.constant.ImageProvider;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -45,6 +46,7 @@ import com.ieeeias.vit_finders.view.MainScreenActivity;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -64,6 +66,7 @@ public class AddItemFragment extends Fragment {
     private NewItem newItem;
     private String newItemId;
     PrefManager prefManager;
+//    FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     TextView date, category;
     int year, mon, day;
@@ -126,7 +129,7 @@ public class AddItemFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.add_item_fragment, container, false);
-        prefManager = new PrefManager(AddItemFragment.this.getActivity());
+        prefManager = new PrefManager(AddItemFragment.this.requireActivity());
 
         date = view.findViewById(R.id.editDateView);
         category = view.findViewById(R.id.CategoryView);
@@ -204,8 +207,8 @@ public class AddItemFragment extends Fragment {
                 if (imageUri != null) {
                     uploadImage(imageUri);
                     Toast.makeText(AddItemFragment.this.getActivity(), "Upload successful", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(AddItemFragment.this.getActivity(), MainScreenActivity.class);
-                    startActivity(intent);
+//                    Intent intent = new Intent(AddItemFragment.this.getActivity(), LostItemsFragment.class);
+//                    startActivity(intent);
                 } else {
                     Toast.makeText(AddItemFragment.this.getActivity(), "Please upload image", Toast.LENGTH_LONG).show();
                 }
@@ -309,6 +312,7 @@ public class AddItemFragment extends Fragment {
             }
         });
     }
+
 //
 //    @Override
 //    public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -406,6 +410,7 @@ public class AddItemFragment extends Fragment {
 //
 //    private ContentResolver getContentResolver() {
 //    }
+
 
 
 }

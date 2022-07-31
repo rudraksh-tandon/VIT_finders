@@ -156,7 +156,7 @@ public class LostItemsFragment extends Fragment {
         view.findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LostItemsFragment.this.getActivity(), AddItemActivity.class);
+                Intent intent = new Intent(LostItemsFragment.this.getActivity(), AddItemFragment.class);
                 startActivity(intent);
             }
         });
