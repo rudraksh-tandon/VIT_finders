@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.ieeeias.vit_finders.MainActivity;
 import com.ieeeias.vit_finders.R;
-import com.ieeeias.vit_finders.main2;
+import com.ieeeias.vit_finders.MainActivity2;
 import com.ieeeias.vit_finders.utils.PrefManager;
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -28,7 +28,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             public void run() {
                 Intent intent;
                 if(prefManager.getLogin()){
-                    intent = new Intent(SplashScreenActivity.this, main2.class);
+                    intent = new Intent(SplashScreenActivity.this, MainActivity2.class);
                 }
                 else {
                     intent = new Intent(SplashScreenActivity.this,MainActivity.class);

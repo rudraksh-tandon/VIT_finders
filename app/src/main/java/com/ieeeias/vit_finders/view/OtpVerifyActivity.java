@@ -31,6 +31,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.ieeeias.vit_finders.MainActivity2;
 import com.ieeeias.vit_finders.R;
 import com.ieeeias.vit_finders.model.NewItem;
 
@@ -138,7 +139,7 @@ public class OtpVerifyActivity extends AppCompatActivity {
                                     storeDeletedItem(img, name, brand, date, loc, con, cat, userId);
                                     deleteItem(getIntent().getStringExtra("imageUrl"));
                                     Toast.makeText(OtpVerifyActivity.this, "OTP verified successfully", Toast.LENGTH_LONG).show();
-                                    Intent intent=new Intent(OtpVerifyActivity.this,MainScreenActivity.class);
+                                    Intent intent=new Intent(OtpVerifyActivity.this, MainActivity2.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     startActivity(intent);
                                 }

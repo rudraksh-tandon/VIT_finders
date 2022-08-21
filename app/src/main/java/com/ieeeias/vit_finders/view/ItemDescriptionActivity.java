@@ -121,7 +121,6 @@ import com.bumptech.glide.Glide;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.ieeeias.vit_finders.PersonalInfo;
 import com.ieeeias.vit_finders.R;
 
 import java.net.MalformedURLException;
@@ -149,14 +148,14 @@ public class ItemDescriptionActivity extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.imageView);
         TextView categoryView = findViewById(R.id.categoryView);
 
-        profile = findViewById(R.id.profile_image);
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent= new Intent(ItemDescriptionActivity.this, PersonalInfo.class);
-                startActivity(intent);
-            }
-        });
+//        profile = findViewById(R.id.profile_image);
+//        profile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent= new Intent(ItemDescriptionActivity.this, PersonalInfo.class);
+//                startActivity(intent);
+//            }
+//        });
         URI imageUri;
 
         try {

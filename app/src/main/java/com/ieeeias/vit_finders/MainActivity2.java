@@ -18,9 +18,8 @@ import com.ieeeias.vit_finders.fragments.HelpFragment;
 import com.ieeeias.vit_finders.fragments.LostItemsFragment;
 import com.ieeeias.vit_finders.fragments.ProfileFragment;
 
-public class main2 extends AppCompatActivity {
+public class MainActivity2 extends AppCompatActivity {
     BottomNavigationView bnview;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,47 +27,36 @@ public class main2 extends AppCompatActivity {
         setContentView(R.layout.main2);
 
         bnview = findViewById(R.id.bottomNavigationView);
-
         bnview.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-
                 if (id == R.id.aboutUs) {
-                    loadfragment(new AboutUsFragment(), false);
+                    loadFragment(new AboutUsFragment(), false);
                 } else if (id == R.id.lostItems) {
-                    loadfragment(new LostItemsFragment(), false);
-
+                    loadFragment(new LostItemsFragment(), false);
                 } else if (id == R.id.addItem) {
-                    loadfragment(new AddItemFragment(), false);
-
+                    loadFragment(new AddItemFragment(), false);
                 } else if (id == R.id.help) {
-                    loadfragment(new HelpFragment(), false);
-
+                    loadFragment(new HelpFragment(), false);
                 } else {
-                    loadfragment(new ProfileFragment(), true);
+                    loadFragment(new ProfileFragment(), true);
                 }
                 return true;
-
             }
-
         });
         bnview.setSelectedItemId(R.id.aboutUs);
     }
 
-
-    public void loadfragment(Fragment frg,boolean flag){
+    public void loadFragment(Fragment frg, boolean flag){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         if(flag){
             fragmentTransaction.add(R.id.container,frg);
-
         }
-        else
-        {
+        else {
             fragmentTransaction.replace(R.id.container,frg);
         }
-
         fragmentTransaction.commit();
     }
 }

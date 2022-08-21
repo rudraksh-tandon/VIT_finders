@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+
 import androidx.appcompat.widget.SearchView;
 
 import com.google.firebase.database.ChildEventListener;
@@ -23,52 +25,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.ieeeias.vit_finders.R;
 import com.ieeeias.vit_finders.adapter.ListItemAdapter;
 import com.ieeeias.vit_finders.model.ListItem;
-import com.ieeeias.vit_finders.view.AddItemActivity;
 import com.ieeeias.vit_finders.view.ItemDescriptionActivity;
 
 import java.util.ArrayList;
 
-///**
-// * A simple {@link Fragment} subclass.
-// * Use the {@link LostItemsFragment#newInstance} factory method to
-// * create an instance of this fragment.
-// */
 public class LostItemsFragment extends Fragment {
-    //GoogleSignInClient mGoogleSignInClient;
     private DatabaseReference mDatabaseReference;
-
-//    // TODO: Rename parameter arguments, choose names that match
-//    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-//    private static final String ARG_PARAM1 = "param1";
-//    private static final String ARG_PARAM2 = "param2";
-//
-//    // TODO: Rename and change types of parameters
-//    private String mParam1;
-//    private String mParam2;
 
     public LostItemsFragment() {
         // Required empty public constructor
     }
-
-    //
-//    // TODO: Rename and change types and number of parameters
-//    public static LostItemsFragment newInstance(String param1, String param2) {
-//        LostItemsFragment fragment = new LostItemsFragment();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
-//
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
-//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -81,14 +47,7 @@ public class LostItemsFragment extends Fragment {
         ArrayList<ListItem> itemList = new ArrayList<>();
         ListItemAdapter mAdapter = new ListItemAdapter(getContext(), R.layout.list_item, itemList);
 
-//        ImageView profile = view.findViewById(R.id.profile_image);
-//        profile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent= new Intent(LostItemsFragment.this.getActivity(), PersonalInfo.class);
-//                startActivity(intent);
-//            }
-//        });
+        ProgressBar progressBar = view.findViewById(R.id.progressBar);
 
         listView.setAdapter(mAdapter);
 
@@ -96,7 +55,6 @@ public class LostItemsFragment extends Fragment {
         listView.setEmptyView(emptyView);
 
         mDatabaseReference = FirebaseDatabase.getInstance().getReference("Items");
-//        mStorageReference =  FirebaseStorage.getInstance().getReference();
 
         mDatabaseReference.addChildEventListener(new ChildEventListener() {
             private static final String TAG = "LostItemsActivity";
@@ -106,26 +64,31 @@ public class LostItemsFragment extends Fragment {
                 ListItem listItem = snapshot.getValue(ListItem.class);
                 itemList.add(listItem);
                 mAdapter.notifyDataSetChanged();
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 mAdapter.notifyDataSetChanged();
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
                 mAdapter.notifyDataSetChanged();
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
             public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 mAdapter.notifyDataSetChanged();
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 mAdapter.notifyDataSetChanged();
+                progressBar.setVisibility(View.GONE);
             }
         });
 
@@ -135,7 +98,7 @@ public class LostItemsFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 try {
-                    Intent intent = new Intent(LostItemsFragment.this.getActivity(), ItemDescriptionActivity.class);
+                    Intent intent = new Intent(getActivity(), ItemDescriptionActivity.class);
                     ListItem listItem = (ListItem) listView.getItemAtPosition(i);
                     intent.putExtra("name", listItem.getNameView());
                     intent.putExtra("brand", listItem.getBrandView());
@@ -151,51 +114,6 @@ public class LostItemsFragment extends Fragment {
                 }
             }
         });
-
-//         Setup FAB to open AddItemActivity
-        view.findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LostItemsFragment.this.getActivity(), AddItemFragment.class);
-                startActivity(intent);
-            }
-        });
-
-//        SearchView searchView = findViewById(R.id.searchBar);
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String s) {
-//                mAdapter.getFilter().filter(s);
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String s) {
-//                mAdapter.getFilter().filter(s);
-//                return false;
-//            }
-//        });
-
-//        AutoCompleteTextView searchBar = findViewById(R.id.searchBar);
-//        ValueEventListener eventListener = new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                if(snapshot.exists()){
-//                    for(DataSnapshot ds: snapshot.getChildren()){
-//                        ListItem listItem = ds.child("items").getValue(ListItem.class);
-//                        itemList.add(listItem);
-//                    }
-//                }
-//                else{
-//                    Log.w("LostItemsActivity", "no items found");
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        }
 
         SearchView searchView = view.findViewById(R.id.searchBar);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

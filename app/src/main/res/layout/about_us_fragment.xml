@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,50 +9,312 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignParentStart="true"
-            android:src="@drawable/app_logo"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"/>
+        android:layout_height="match_parent" >
 
-        <!--    <TextView-->
-        <!--        android:id="@+id/textView"-->
-        <!--        android:layout_width="wrap_content"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        android:layout_marginTop="40dp"-->
-        <!--        android:text="ABOUT US"-->
-        <!--        android:textColor="@color/purple"-->
-        <!--        android:textSize="40sp"-->
-        <!--        android:textStyle="bold"-->
-        <!--        app:layout_constraintEnd_toEndOf="parent"-->
-        <!--        app:layout_constraintStart_toStartOf="parent"-->
-        <!--        app:layout_constraintTop_toBottomOf="@+id/logo" />-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-<!--        <ImageView-->
-<!--            android:layout_width="250dp"-->
-<!--            android:layout_height="250dp"-->
-<!--            android:background="@drawable/logo_back_circle"-->
-<!--            android:padding="30dp"-->
-<!--            android:src="@drawable/ieee_logo"-->
-<!--            android:layout_marginTop="30dp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/logo" />-->
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/app_logo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-<!--        &lt;!&ndash;    <ImageView&ndash;&gt;-->
-        <!--        android:layout_width="wrap_content"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        android:src="@drawable/bottom_arrow"-->
-        <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--        app:layout_constraintEnd_toEndOf="parent"-->
-        <!--        app:layout_constraintStart_toStartOf="parent"-->
-        <!--        android:layout_marginBottom="70dp"/>-->
+            <TextView
+                android:id="@+id/about_us"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@string/about_ieee_ias"
+                android:textColor="@color/purple"
+                android:textSize="40sp"
+                android:textStyle="bold"/>
+
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:background="@drawable/logo_back_circle"
+                android:padding="30dp"
+                android:src="@drawable/ieee_logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+            <TextView
+                android:id="@+id/textView_Aboutus"
+                android:layout_width="340dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:background="@drawable/list_item_box"
+                android:drawablePadding="50dp"
+                android:padding="15dp"
+                android:textSize="16sp"
+                android:text="@string/ieee_ias"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/contributors"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="30sp"
+                android:layout_gravity="center"
+                android:textColor="@color/white"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_margin="15dp"
+                android:background="@drawable/list_item_box">
+
+                <ImageView
+                    android:id="@+id/image1"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/rudraksh" />
+
+                <TextView
+                    android:id="@+id/name1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@id/image1"
+                    android:textColor="@color/white"
+                    android:text="@string/rudraksh_tandon"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/loc1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/name1"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toEndOf="@id/image1"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:text="@string/android_developer"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_margin="15dp"
+                android:background="@drawable/list_item_box">
+
+                <ImageView
+                    android:id="@+id/image2"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/raghav" />
+
+                <TextView
+                    android:id="@+id/name2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@id/image2"
+                    android:textColor="@color/white"
+                    android:text="@string/raghav_memani"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/loc2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/name2"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toEndOf="@id/image2"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:text="@string/android_developer"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_margin="15dp"
+                android:background="@drawable/list_item_box">
+
+                <ImageView
+                    android:id="@+id/image3"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/aditya" />
+
+                <TextView
+                    android:id="@+id/name3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@id/image3"
+                    android:textColor="@color/white"
+                    android:text="@string/aditya_kumar"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/loc3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/name3"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toEndOf="@id/image3"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:text="@string/android_developer"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_margin="15dp"
+                android:background="@drawable/list_item_box">
+
+                <ImageView
+                    android:id="@+id/image4"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/shreya_gupta" />
+
+                <TextView
+                    android:id="@+id/name4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@id/image4"
+                    android:textColor="@color/white"
+                    android:text="@string/shreya_gupta"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/loc4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/name4"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toEndOf="@id/image4"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:text="@string/ui_ux_developer"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_margin="15dp"
+                android:background="@drawable/list_item_box">
+
+                <ImageView
+                    android:id="@+id/image5"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/preet" />
+
+                <TextView
+                    android:id="@+id/name5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@id/image5"
+                    android:textColor="@color/white"
+                    android:text="@string/preet_raval"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/loc5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/name5"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toEndOf="@id/image5"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:text="@string/ui_ux_designer"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="70dp"
+                android:background="@drawable/list_item_box">
+
+                <ImageView
+                    android:id="@+id/image6"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/shreya_agrawal" />
+
+                <TextView
+                    android:id="@+id/name6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@id/image6"
+                    android:textColor="@color/white"
+                    android:text="@string/shreya_agrawal"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/loc6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/name6"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toEndOf="@id/image6"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:text="@string/ui_ux_developer"/>
+            </RelativeLayout>
+
+        </LinearLayout>
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

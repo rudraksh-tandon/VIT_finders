@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
 
         <ImageView
@@ -22,16 +22,6 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"/>
 
-        <!--        <ImageView-->
-        <!--            android:id="@+id/profile_image"-->
-        <!--            android:layout_width="70dp"-->
-        <!--            android:layout_height="70dp"-->
-        <!--            android:src="@drawable/profile_image"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="parent"-->
-        <!--            android:layout_marginStart="10dp"-->
-        <!--            android:layout_marginTop="10dp"/>-->
-
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
@@ -43,7 +33,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_photo_black_48dp" />
+            tools:src="@drawable/ic_photo_black_48dp"
+            android:padding="10dp"/>
 
         <ImageButton
             android:id="@+id/imageButton"
@@ -54,8 +45,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
             app:srcCompat="@android:drawable/ic_menu_upload"
-            android:background="@drawable/item_info_box"
-            tools:ignore="MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+            android:background="@drawable/item_info_box" />
 
         <LinearLayout
             android:id="@+id/linearLayoutCategory"
@@ -74,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_gravity="center"
-                android:text="CATEGORY"
+                android:text="@string/category"
                 android:textColor="@color/white"
                 android:textSize="22sp"/>
 
@@ -100,38 +90,6 @@
                 tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
         </LinearLayout>
 
-        <!--        <LinearLayout-->
-        <!--            android:id="@+id/linearLayoutName"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:orientation="horizontal"-->
-        <!--            android:background="@drawable/item_white_box"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toBottomOf="@+id/imageView"-->
-        <!--            android:layout_margin="20dp">-->
-
-        <!--            <TextView-->
-        <!--                android:id="@+id/name"-->
-        <!--                android:layout_width="140dp"-->
-        <!--                android:layout_height="50dp"-->
-        <!--                android:layout_margin="20dp"-->
-        <!--                android:text="ITEM NAME"-->
-        <!--                android:textColor="@color/purple"-->
-        <!--                android:textSize="24sp"-->
-        <!--                android:textStyle="bold" />-->
-
-        <!--            <EditText-->
-        <!--                android:id="@+id/editNameView"-->
-        <!--                android:layout_width="180dp"-->
-        <!--                android:layout_height="50dp"-->
-        <!--                android:layout_marginTop="20dp"-->
-        <!--                android:textColor="@color/black"-->
-        <!--                android:backgroundTint="@color/black"-->
-        <!--                android:textSize="20sp"-->
-        <!--                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />-->
-        <!--        </LinearLayout>-->
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/linearLayoutName"
             android:layout_width="match_parent"
@@ -140,42 +98,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutCategory"
             android:background="@drawable/item_info_box"
-            android:hint="   ITEM NAME"
+            android:hint="@string/item_name"
             android:textColor="@color/white"
             android:textSize="22sp"
-            android:layout_margin="30dp"/>
-
-        <!--        <LinearLayout-->
-        <!--            android:id="@+id/linearLayoutBrand"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:orientation="horizontal"-->
-        <!--            android:background="@drawable/item_white_box"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toBottomOf="@+id/linearLayoutName"-->
-        <!--            android:layout_margin="20dp">-->
-
-        <!--            <TextView-->
-        <!--                android:id="@+id/brand"-->
-        <!--                android:layout_width="140dp"-->
-        <!--                android:layout_height="50dp"-->
-        <!--                android:layout_margin="20dp"-->
-        <!--                android:text="BRAND"-->
-        <!--                android:textColor="@color/purple"-->
-        <!--                android:textSize="24sp"-->
-        <!--                android:textStyle="bold" />-->
-
-        <!--            <EditText-->
-        <!--                android:id="@+id/editBrandView"-->
-        <!--                android:layout_width="180dp"-->
-        <!--                android:layout_height="50dp"-->
-        <!--                android:layout_marginTop="20dp"-->
-        <!--                android:textColor="@color/black"-->
-        <!--                android:backgroundTint="@color/black"-->
-        <!--                android:textSize="20sp"-->
-        <!--                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />-->
-        <!--        </LinearLayout>-->
+            android:layout_margin="30dp"
+            android:paddingStart="20dp"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/linearLayoutBrand"
@@ -185,10 +112,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutName"
             android:background="@drawable/item_info_box"
-            android:hint="   BRAND"
+            android:hint="@string/brand"
             android:textColor="@color/white"
             android:textSize="22sp"
-            android:layout_margin="30dp"/>
+            android:layout_margin="30dp"
+            android:paddingStart="20dp"/>
 
         <LinearLayout
             android:id="@+id/linearLayoutDate"
@@ -206,7 +134,7 @@
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="DATE"
+                android:text="@string/date"
                 android:textColor="@color/white"
                 android:textSize="22sp"
                 android:layout_gravity="center"/>
@@ -218,50 +146,16 @@
                 android:textColor="@color/white"
                 android:backgroundTint="@color/white"
                 android:textSize="22sp"
-                android:layout_gravity="center"
-                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+                android:layout_gravity="center"/>
 
             <ImageView
                 android:id="@+id/calendar"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="4dp"
-                app:srcCompat="@drawable/calendar2" />
+                android:src="@drawable/calendar"/>
 
         </LinearLayout>
-
-
-        <!--        <LinearLayout-->
-        <!--            android:id="@+id/linearLayoutLocation"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:orientation="horizontal"-->
-        <!--            android:background="@drawable/item_white_box"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toBottomOf="@+id/linearLayoutDate"-->
-        <!--            android:layout_margin="20dp">-->
-
-        <!--            <TextView-->
-        <!--                android:id="@+id/location"-->
-        <!--                android:layout_width="140dp"-->
-        <!--                android:layout_height="50dp"-->
-        <!--                android:layout_margin="20dp"-->
-        <!--                android:text="LOCATION"-->
-        <!--                android:textColor="@color/purple"-->
-        <!--                android:textSize="24sp"-->
-        <!--                android:textStyle="bold" />-->
-
-        <!--            <EditText-->
-        <!--                android:id="@+id/editLocView"-->
-        <!--                android:layout_width="180dp"-->
-        <!--                android:layout_height="50dp"-->
-        <!--                android:layout_marginTop="20dp"-->
-        <!--                android:textColor="@color/black"-->
-        <!--                android:backgroundTint="@color/black"-->
-        <!--                android:textSize="20sp"-->
-        <!--                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />-->
-        <!--        </LinearLayout>-->
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/linearLayoutLocation"
@@ -271,42 +165,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutDate"
             android:background="@drawable/item_info_box"
-            android:hint="   LOCATION"
+            android:hint="@string/location"
             android:textColor="@color/white"
             android:textSize="22sp"
-            android:layout_margin="30dp"/>
-
-        <!--        <LinearLayout-->
-        <!--            android:id="@+id/linearLayoutContact"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:orientation="horizontal"-->
-        <!--            android:background="@drawable/item_white_box"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toBottomOf="@+id/linearLayoutLocation"-->
-        <!--            android:layout_margin="20dp">-->
-
-        <!--            <TextView-->
-        <!--                android:id="@+id/contact"-->
-        <!--                android:layout_width="140dp"-->
-        <!--                android:layout_height="50dp"-->
-        <!--                android:layout_margin="20dp"-->
-        <!--                android:text="CONTACT"-->
-        <!--                android:textColor="@color/purple"-->
-        <!--                android:textSize="24sp"-->
-        <!--                android:textStyle="bold" />-->
-
-        <!--            <EditText-->
-        <!--                android:id="@+id/editContactView"-->
-        <!--                android:layout_width="180dp"-->
-        <!--                android:layout_height="50dp"-->
-        <!--                android:textColor="@color/black"-->
-        <!--                android:backgroundTint="@color/black"-->
-        <!--                android:layout_marginTop="20dp"-->
-        <!--                android:textSize="20sp"-->
-        <!--                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />-->
-        <!--        </LinearLayout>-->
+            android:layout_margin="30dp"
+            android:paddingStart="20dp"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/linearLayoutContact"
@@ -316,51 +179,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutLocation"
             android:background="@drawable/item_info_box"
-            android:hint="   CONTACT"
+            android:hint="@string/contact"
             android:textColor="@color/white"
             android:textSize="22sp"
-            android:layout_margin="30dp"/>
-
-        <!--        <LinearLayout-->
-        <!--            android:id="@+id/linearLayoutCategory"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:orientation="horizontal"-->
-        <!--            android:background="@drawable/item_info_box"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toBottomOf="@+id/linearLayoutContact"-->
-        <!--            android:layout_margin="20dp">-->
-
-        <!--            <TextView-->
-        <!--                android:id="@+id/category"-->
-        <!--                android:layout_width="140dp"-->
-        <!--                android:layout_height="50dp"-->
-        <!--                android:layout_margin="20dp"-->
-        <!--                android:text="CATEGORY"-->
-        <!--                android:textColor="@color/white"-->
-        <!--                android:textSize="24sp"-->
-        <!--                android:textStyle="bold" />-->
-
-        <!--            <TextView-->
-        <!--                android:id="@+id/CategoryView"-->
-        <!--                android:layout_width="140dp"-->
-        <!--                android:layout_height="50dp"-->
-        <!--                android:textColor="@color/black"-->
-        <!--                android:backgroundTint="@color/black"-->
-        <!--                android:layout_marginTop="20dp"-->
-        <!--                android:textSize="20sp"-->
-        <!--                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />-->
-
-        <!--            <Spinner-->
-        <!--                android:id="@+id/categorySpinner"-->
-        <!--                android:layout_width="40dp"-->
-        <!--                android:layout_height="40dp"-->
-        <!--                android:layout_marginTop="20dp"-->
-        <!--                android:background="@android:drawable/arrow_down_float"-->
-        <!--                android:spinnerMode="dropdown"-->
-        <!--                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />-->
-        <!--        </LinearLayout>-->
+            android:layout_margin="30dp"
+            android:paddingStart="20dp"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button"
@@ -372,7 +195,7 @@
             android:layout_marginTop="40dp"
             android:background="@drawable/item_info_box"
             android:backgroundTint="@color/purple"
-            android:text="Upload"
+            android:text="@string/upload"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

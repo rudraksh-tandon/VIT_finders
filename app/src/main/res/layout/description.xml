@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
 
         <ImageView
@@ -21,15 +21,6 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"/>
-
-        <!--        <ImageView-->
-        <!--            android:id="@+id/profile_image"-->
-        <!--            android:layout_width="84dp"-->
-        <!--            android:layout_height="76dp"-->
-        <!--            android:layout_marginTop="10dp"-->
-        <!--            android:src="@drawable/profile_image"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="parent" />-->
 
         <ImageView
             android:id="@+id/imageView"
@@ -48,7 +39,7 @@
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/login_background_box"
+            android:background="@drawable/desc_background_box"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,12 +47,38 @@
             android:layout_margin="30dp">
 
             <LinearLayout
+                android:id="@+id/linearLayoutCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/category"
+                    android:layout_width="140dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="20dp"
+                    android:text="@string/category"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/categoryView"
+                    android:layout_width="180dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/linearLayoutName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -69,9 +86,10 @@
                     android:layout_width="140dp"
                     android:layout_height="30dp"
                     android:layout_margin="20dp"
-                    android:text="ITEM NAME"
+                    android:text="@string/item_name"
                     android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
 
                 <TextView
                     android:id="@+id/nameView"
@@ -89,7 +107,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -97,9 +114,10 @@
                     android:layout_width="140dp"
                     android:layout_height="30dp"
                     android:layout_margin="20dp"
-                    android:text="BRAND"
+                    android:text="@string/brand"
                     android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
 
                 <TextView
                     android:id="@+id/brandView"
@@ -107,8 +125,7 @@
                     android:layout_height="30dp"
                     android:layout_marginTop="20dp"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
-                    tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -117,7 +134,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -125,9 +141,10 @@
                     android:layout_width="140dp"
                     android:layout_height="30dp"
                     android:layout_margin="20dp"
-                    android:text="DATE"
+                    android:text="@string/date"
                     android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
 
                 <TextView
                     android:id="@+id/dateView"
@@ -135,8 +152,7 @@
                     android:layout_height="30dp"
                     android:layout_marginTop="20dp"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
-                    tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
@@ -146,7 +162,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -154,9 +169,10 @@
                     android:layout_width="140dp"
                     android:layout_height="30dp"
                     android:layout_margin="20dp"
-                    android:text="LOCATION"
+                    android:text="@string/location"
                     android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
 
                 <TextView
                     android:id="@+id/locView"
@@ -174,7 +190,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -182,9 +197,10 @@
                     android:layout_width="140dp"
                     android:layout_height="30dp"
                     android:layout_margin="20dp"
-                    android:text="CONTACT"
+                    android:text="@string/contact"
                     android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
 
                 <TextView
                     android:id="@+id/contactView"
@@ -192,37 +208,9 @@
                     android:layout_height="30dp"
                     android:layout_marginTop="20dp"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
-                    tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/linearLayoutCategory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/category"
-                    android:layout_width="140dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="20dp"
-                    android:text="CATEGORY"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/categoryView"
-                    android:layout_width="180dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="20dp"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
-            </LinearLayout>
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -234,7 +222,7 @@
             android:layout_marginBottom="70dp"
             android:layout_marginEnd="100dp"
             android:background="@drawable/login_background_box"
-            android:text="Received"
+            android:text="@string/received"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
