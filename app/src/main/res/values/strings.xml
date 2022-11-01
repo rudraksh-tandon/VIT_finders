@@ -31,4 +31,11 @@
     <string name="upload">Upload</string>
     <string name="received">Received</string>
     <string name="faq">FAQs</string>
+    <string name="vit_finders">VIT FINDERS</string>
+    <string name="technically_sponsored_by">Technically sponsored by</string>
+    <string name="about_us">About Us</string>
+    <string name="lost_items">Lost Items</string>
+    <string name="add_item">Add Item</string>
+    <string name="help">Help</string>
+    <string name="profile">Profile</string>
 </resources>

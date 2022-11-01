@@ -8,4 +8,33 @@
         <item>@string/category_books</item>
         <item>@string/category_others</item>
     </string-array>
+
+    <string-array name="clothes_name_options">
+        <item>Towel</item>
+        <item>Shirt</item>
+        <item>Trouser</item>
+        <item>Handkerchief</item>
+    </string-array>
+
+    <string-array name="electronics_name_options">
+        <item>Mobile</item>
+        <item>Laptop</item>
+        <item>Earphone</item>
+        <item>Mobile Charger</item>
+        <item>Laptop Charger</item>
+    </string-array>
+
+    <string-array name="books_name_options">
+        <item>Book</item>
+        <item>Notebook</item>
+        <item>Geometry box</item>
+        <item>Lab Coat</item>
+    </string-array>
+
+    <string-array name="accessories_name_options">
+        <item>ID Card</item>
+        <item>Keys</item>
+        <item>Bag</item>
+    </string-array>
+
 </resources>

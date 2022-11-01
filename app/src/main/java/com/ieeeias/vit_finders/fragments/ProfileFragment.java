@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,6 +53,8 @@ public class ProfileFragment extends Fragment {
         email = view.findViewById(R.id.email);
         personName = view.findViewById(R.id.personName);
         regNo = view.findViewById(R.id.regNo);
+        ProgressBar progressBar = view.findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
 
         DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference("Users");
         Query checkUser = mDatabaseReference.orderByChild("userId").equalTo(prefManager.getId());
@@ -59,6 +62,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
+                    progressBar.setVisibility(View.GONE);
                     email.setText(snapshot.child(prefManager.getId()).child("email").getValue(String.class));
                     personName.setText(snapshot.child(prefManager.getId()).child("personName").getValue(String.class));
                     regNo.setText(snapshot.child(prefManager.getId()).child("regNo").getValue(String.class));
@@ -76,7 +80,7 @@ public class ProfileFragment extends Fragment {
                 .build();
         googleSignInClient = GoogleSignIn.getClient(this.getActivity(), gso);
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getActivity());
-        acct = GoogleSignIn.getLastSignedInAccount(this.getActivity());
+//        acct = GoogleSignIn.getLastSignedInAccount(this.getActivity());
 //
         Button signOut = view.findViewById(R.id.signout_button);
         signOut.setOnClickListener(new View.OnClickListener() {

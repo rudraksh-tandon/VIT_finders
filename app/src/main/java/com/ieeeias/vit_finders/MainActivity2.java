@@ -45,7 +45,7 @@ public class MainActivity2 extends AppCompatActivity {
                 return true;
             }
         });
-        bnview.setSelectedItemId(R.id.aboutUs);
+        bnview.setSelectedItemId(R.id.lostItems);
     }
 
     public void loadFragment(Fragment frg, boolean flag){

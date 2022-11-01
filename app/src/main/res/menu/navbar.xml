@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:tools="http://schemas.android.com/tools"
+<menu
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/aboutUs"
-        android:title="about us"
-
-
+        android:title="@string/about_us"
         android:icon="@drawable/ic_baseline_info_24"/>
+
     <item android:id="@+id/lostItems"
-        android:title="lost Items"
-
+        android:title="@string/lost_items"
         android:icon="@drawable/ic_baseline_credit_card_24"/>
-    <item android:id="@+id/addItem"
-        android:title="Add Items"
-        android:icon="@drawable/ic_baseline_add_circle_outline_24" />
-    <item android:id="@+id/help"
-        android:title="Help"
 
+    <item android:id="@+id/addItem"
+        android:title="@string/add_item"
+        android:icon="@drawable/ic_baseline_add_circle_outline_24" />
+
+    <item android:id="@+id/help"
+        android:title="@string/help"
         android:icon="@drawable/ic_baseline_feedback_24"/>
+
     <item android:id="@+id/profile"
-        android:title="Personal Info"
+        android:title="@string/profile"
         android:iconTint="@color/cardview_shadow_start_color"
-        android:icon="@drawable/ic_baseline_person_pin_24"
-        />
+        android:icon="@drawable/ic_baseline_person_pin_24" />
 </menu>

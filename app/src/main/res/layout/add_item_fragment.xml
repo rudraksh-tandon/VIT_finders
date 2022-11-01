@@ -50,7 +50,7 @@
         <LinearLayout
             android:id="@+id/linearLayoutCategory"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
             android:orientation="horizontal"
             android:background="@drawable/item_info_box"
             app:layout_constraintEnd_toEndOf="parent"
@@ -60,40 +60,30 @@
 
             <TextView
                 android:id="@+id/category"
-                android:layout_width="140dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:layout_weight="1"
                 android:layout_gravity="center"
                 android:text="@string/category"
                 android:textColor="@color/white"
                 android:textSize="22sp"/>
 
-            <TextView
-                android:id="@+id/CategoryView"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:backgroundTint="@color/white"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:textSize="22sp"
-                android:layout_gravity="center"
-                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
-
             <Spinner
                 android:id="@+id/categorySpinner"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
                 android:layout_gravity="center"
-                android:background="@android:drawable/arrow_down_float"
+                android:layout_marginEnd="5dp"
                 android:spinnerMode="dropdown"
-                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                tools:listitem="@layout/spinner_item"/>
         </LinearLayout>
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/linearLayoutName"
+            android:id="@+id/nameTextView"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutCategory"
@@ -104,10 +94,42 @@
             android:layout_margin="30dp"
             android:paddingStart="20dp"/>
 
+        <LinearLayout
+            android:id="@+id/linearLayoutName"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal"
+            android:background="@drawable/item_info_box"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCategory"
+            android:layout_margin="30dp">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:text="@string/item_name"
+                android:textColor="@color/white"
+                android:textSize="22sp"/>
+
+            <Spinner
+                android:id="@+id/nameSpinner"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_marginEnd="5dp"
+                android:spinnerMode="dropdown" />
+        </LinearLayout>
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/linearLayoutBrand"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutName"
@@ -116,12 +138,13 @@
             android:textColor="@color/white"
             android:textSize="22sp"
             android:layout_margin="30dp"
-            android:paddingStart="20dp"/>
+            android:paddingStart="20dp"
+            android:inputType="textCapSentences"/>
 
         <LinearLayout
             android:id="@+id/linearLayoutDate"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
             android:orientation="horizontal"
             android:background="@drawable/item_info_box"
             app:layout_constraintEnd_toEndOf="parent"
@@ -131,8 +154,9 @@
 
             <TextView
                 android:id="@+id/date"
-                android:layout_width="140dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="3"
                 android:layout_marginStart="20dp"
                 android:text="@string/date"
                 android:textColor="@color/white"
@@ -141,8 +165,9 @@
 
             <TextView
                 android:id="@+id/editDateView"
-                android:layout_width="140dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="4"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/white"
                 android:textSize="22sp"
@@ -150,8 +175,9 @@
 
             <ImageView
                 android:id="@+id/calendar"
-                android:layout_width="40dp"
+                android:layout_width="0dp"
                 android:layout_height="40dp"
+                android:layout_weight="1.5"
                 android:layout_margin="4dp"
                 android:src="@drawable/calendar"/>
 
@@ -160,7 +186,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/linearLayoutLocation"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutDate"
@@ -169,12 +195,13 @@
             android:textColor="@color/white"
             android:textSize="22sp"
             android:layout_margin="30dp"
-            android:paddingStart="20dp"/>
+            android:paddingStart="20dp"
+            android:inputType="textCapSentences"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/linearLayoutContact"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutLocation"
@@ -203,6 +230,17 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayoutContact" />
+
+        <ProgressBar
+            android:id="@+id/pg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="110dp"
+            android:layout_marginEnd="110dp"
+            android:background="@drawable/login_background_box"
+            app:layout_constraintBottom_toBottomOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

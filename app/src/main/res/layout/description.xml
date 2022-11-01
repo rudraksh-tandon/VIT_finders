@@ -56,8 +56,9 @@
 
                 <TextView
                     android:id="@+id/category"
-                    android:layout_width="140dp"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
+                    android:layout_weight="1"
                     android:layout_margin="20dp"
                     android:text="@string/category"
                     android:textSize="24sp"
@@ -66,8 +67,9 @@
 
                 <TextView
                     android:id="@+id/categoryView"
-                    android:layout_width="180dp"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
+                    android:layout_weight="1"
                     android:layout_marginTop="20dp"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
@@ -83,8 +85,9 @@
 
                 <TextView
                     android:id="@+id/name"
-                    android:layout_width="140dp"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
+                    android:layout_weight="1"
                     android:layout_margin="20dp"
                     android:text="@string/item_name"
                     android:textSize="24sp"
@@ -93,8 +96,9 @@
 
                 <TextView
                     android:id="@+id/nameView"
-                    android:layout_width="180dp"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
+                    android:layout_weight="1"
                     android:layout_marginTop="20dp"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -111,8 +115,9 @@
 
                 <TextView
                     android:id="@+id/brand"
-                    android:layout_width="140dp"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
+                    android:layout_weight="1"
                     android:layout_margin="20dp"
                     android:text="@string/brand"
                     android:textSize="24sp"
@@ -121,8 +126,9 @@
 
                 <TextView
                     android:id="@+id/brandView"
-                    android:layout_width="180dp"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
+                    android:layout_weight="1"
                     android:layout_marginTop="20dp"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
@@ -138,8 +144,9 @@
 
                 <TextView
                     android:id="@+id/date"
-                    android:layout_width="140dp"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
+                    android:layout_weight="1"
                     android:layout_margin="20dp"
                     android:text="@string/date"
                     android:textSize="24sp"
@@ -148,8 +155,9 @@
 
                 <TextView
                     android:id="@+id/dateView"
-                    android:layout_width="180dp"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
+                    android:layout_weight="1"
                     android:layout_marginTop="20dp"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
@@ -166,8 +174,9 @@
 
                 <TextView
                     android:id="@+id/location"
-                    android:layout_width="140dp"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
+                    android:layout_weight="1"
                     android:layout_margin="20dp"
                     android:text="@string/location"
                     android:textSize="24sp"
@@ -176,8 +185,9 @@
 
                 <TextView
                     android:id="@+id/locView"
-                    android:layout_width="180dp"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
+                    android:layout_weight="1"
                     android:layout_marginTop="20dp"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -194,8 +204,9 @@
 
                 <TextView
                     android:id="@+id/contact"
-                    android:layout_width="140dp"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
+                    android:layout_weight="1"
                     android:layout_margin="20dp"
                     android:text="@string/contact"
                     android:textSize="24sp"
@@ -204,8 +215,9 @@
 
                 <TextView
                     android:id="@+id/contactView"
-                    android:layout_width="180dp"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
+                    android:layout_weight="1"
                     android:layout_marginTop="20dp"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
